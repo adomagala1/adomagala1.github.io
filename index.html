@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ZMIEŃ NA SWOJE IMIĘ I NAZWISKO -->
+    <title>Jan Kowalski - Data Analyst Portfolio</title>
+
+    <!-- Nowa ikona pasująca do analizy danych -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Skrypt do natychmiastowego ustawienia motywu (zapobiega mruganiu) -->
+    <script>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <!-- ZMIEŃ NA SWOJE INICJAŁY -->
+      <div class="loader-logo" id="loader-logo">
+        <span>J</span><span>A</span><span>N</span><span>&nbsp;</span
+        ><span>K</span><span>.</span>
+      </div>
+    </div>
+
+    <div id="page-content" class="hidden">
+      <!-- NAGŁÓWEK -->
+      <header>
+        <div class="container">
+          <a href="#" class="logo">JanKowalski/></a>
+
+          <!-- Zostały tylko kontrolki: przełącznik motywu i hamburger -->
+          <div class="header-controls">
+            <button class="theme-toggle" aria-label="Przełącz motyw"></button>
+            <button
+              class="hamburger"
+              id="hamburger-menu"
+              aria-label="Otwórz menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- NAKŁADKA MENU MOBILE (PUSTA, WYPEŁNIA JS) -->
+      <div id="overlay-menu" class="overlay-nav"></div>
+
+      <main>
+        <!-- SEKCJA HERO -->
+        <section class="hero">
+          <div class="hero-content">
+            <h1 data-text="Analityk Danych & Python Dev_">
+              <span>Analityk Danych & Python Dev</span>
+            </h1>
+            <p class="subtitle">
+              Przekształcam surowe dane w zrozumiałe wnioski i strategie
+              biznesowe. Odkryjmy razem potencjał ukryty w Twoich danych.
+            </p>
+            <a href="#projects" class="btn btn-primary">Zobacz Projekty</a>
+          </div>
+        </section>
+
+        <!-- SEKCJA O MNIE -->
+        <section id="about" class="about-section">
+          <div class="container animate-on-scroll">
+            <h2 class="section-title">O Mnie</h2>
+            <div class="about-content">
+              <div class="about-image">
+                <!-- ZMIEŃ NA SWOJE ZDJĘCIE -->
+                <img
+                  src="https://i.pravatar.cc/300"
+                  alt="Zdjęcie Jana Kowalskiego"
+                />
+              </div>
+              <div class="about-text">
+                <h3>Cześć, tu Jan. Rozwiązuję problemy za pomocą danych.</h3>
+                <p>
+                  Jestem analitykiem danych z zamiłowaniem do odkrywania
+                  wzorców, trendów i historii ukrytych w liczbach. Używam
+                  <strong>Pythona</strong>, <strong>SQL</strong> i bibliotek
+                  takich jak <strong>Pandas</strong> czy <strong>NumPy</strong>,
+                  aby czyścić, analizować i modelować dane.
+                </p>
+                <p>
+                  Moim celem jest tworzenie klarownych wizualizacji i
+                  dashboardów, które pomagają podejmować lepsze decyzje
+                  biznesowe. Wierzę, że dobrze przedstawione dane to klucz do
+                  sukcesu każdego projektu. Po godzinach analizuję statystyki
+                  sportowe i tworzę wizualizacje z otwartych źródeł danych.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEKCJA UMIEJĘTNOŚCI -->
+        <section id="skills" class="skills-section">
+          <div class="container animate-on-scroll">
+            <h2 class="section-title">Technologie i Narzędzia</h2>
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4>Języki i Bazy Danych</h4>
+                <div class="skills-list">
+                  <div class="skill-item"><span>Python</span></div>
+                  <div class="skill-item"><span>SQL</span></div>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h4>Analiza i Machine Learning</h4>
+                <div class="skills-list">
+                  <div class="skill-item"><span>Pandas</span></div>
+                  <div class="skill-item"><span>NumPy</span></div>
+                  <div class="skill-item"><span>Scikit-learn</span></div>
+                  <div class="skill-item"><span>Jupyter Notebook</span></div>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h4>Wizualizacja Danych</h4>
+                <div class="skills-list">
+                  <div class="skill-item"><span>Matplotlib</span></div>
+                  <div class="skill-item"><span>Seaborn</span></div>
+                  <div class="skill-item"><span>Plotly & Dash</span></div>
+                  <div class="skill-item"><span>Tableau</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEKCJA PROJEKTY -->
+        <section id="projects" class="projects-section">
+          <div class="container">
+            <h2 class="section-title animate-on-scroll">Wybrane Projekty</h2>
+            <div class="projects-grid">
+              <!-- PROJEKT 1: ANALIZA DANYCH (Zaktualizowany z linkiem do podstrony) -->
+              <div class="project-card animate-on-scroll">
+                <div class="project-image">
+                  <img
+                    src="https://placehold.co/600x400/0a0a0a/00f7ff?text=Dashboard+Sprzedaży"
+                    alt="Dashboard Sprzedaży"
+                  />
+                </div>
+                <div class="project-info">
+                  <h3>Interaktywny Dashboard Sprzedażowy</h3>
+                  <p>
+                    Stworzenie dashboardu do monitorowania kluczowych wskaźników
+                    (KPI) dla firmy e-commerce, co pozwoliło na optymalizację
+                    strategii.
+                  </p>
+                  <div class="project-tech">
+                    <span>Python</span><span>Pandas</span><span>SQL</span
+                    ><span>Plotly</span><span>Dash</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="projekt-dashboard.html" class="btn btn-secondary"
+                      >Zobacz Case Study</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- PROJEKT 2: MACHINE LEARNING -->
+              <div class="project-card animate-on-scroll">
+                <div class="project-image">
+                  <img
+                    src="https://placehold.co/600x400/0a0a0a/ff00ff?text=Analiza+Sentymentu"
+                    alt="Analiza Sentymentu"
+                  />
+                </div>
+                <div class="project-info">
+                  <h3>Analiza Sentymentu Recenzji</h3>
+                  <p>
+                    Model NLP do automatycznej kategoryzacji recenzji klientów.
+                    Wykorzystałem Scikit-learn do trenowania klasyfikatora.
+                  </p>
+                  <div class="project-tech">
+                    <span>Python</span><span>Pandas</span><span>NLTK</span
+                    ><span>Scikit-learn</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="btn btn-secondary disabled"
+                      >Case Study wkrótce</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEKCJA KONTAKTOWA -->
+        <section id="contact" class="contact-section">
+          <div class="container animate-on-scroll">
+            <h2 class="section-title">Nawiążmy Kontakt</h2>
+            <p class="contact-subtitle">
+              Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty
+              na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.
+            </p>
+            <!-- ZMIEŃ NA SWÓJ E-MAIL -->
+            <a
+              href="mailto:jan.kowalski.data@example.com"
+              class="btn btn-primary contact-button"
+              >Napisz Wiadomość</a
+            >
+            <div class="social-links">
+              <!-- ZMIEŃ LINKI NA SWOJE PROFILE -->
+              <a href="#" target="_blank" aria-label="GitHub">GitHub</a>
+              <a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container">
+          <!-- ZMIEŃ NA SWOJE IMIĘ I NAZWISKO -->
+          <p>&copy; 2024 Jan Kowalski. Stworzone z pasją i kawą.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
