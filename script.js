@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(interval);
             element.innerHTML = targetChar;
           }
-        }, 50);
+        }, 80);
       };
 
       const startPreloaderSequence = () => {

@@ -1,4 +1,19 @@
+/*
+=================================================================
+  PLIK: style.css
+  OPIS: Główny arkusz stylów dla portfolio analityka danych.
+        Zawiera style dla motywu ciemnego i jasnego, animacje,
+        layout oraz responsywność.
+=================================================================
+*/
+
 /* --- RESET I PODSTAWOWE USTAWIENIA --- */
+/* 
+  Resetuje domyślne marginesy i paddingi przeglądarek.
+  `box-sizing: border-box;` sprawia, że padding i border
+  są wliczane w całkowitą szerokość i wysokość elementu,
+  co znacznie ułatwia tworzenie layoutów.
+*/
 *,
 *::before,
 *::after {
@@ -8,21 +23,31 @@
 }
 
 /* --- ZMIENNE KOLORÓW I MOTYWY --- */
+/*
+  Użycie zmiennych CSS (custom properties) w :root pozwala
+  na łatwe zarządzanie kolorystyką i tworzenie motywów.
+  Wszystkie kolory są zdefiniowane w jednym miejscu.
+*/
 :root {
-  --bg-color: #050505;
-  --bg-secondary-color: #0a0a0a;
-  --card-bg-color: #121212;
-  --text-color: #e0e0e0;
-  --text-secondary-color: #a0a0a0;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --primary-color: #24378d;
-  --secondary-color: #ff00ff;
-  --glitch-cyan: #00f7ff;
+  /* Kolory dla motywu ciemnego (domyślny) */
+  --bg-color: #050505; /* Główne tło strony */
+  --bg-secondary-color: #0a0a0a; /* Tło dla wyróżnionych sekcji */
+  --card-bg-color: #121212; /* Tło kart projektów */
+  --text-color: #e0e0e0; /* Główny kolor tekstu */
+  --text-secondary-color: #a0a0a0; /* Drugorzędny kolor tekstu (np. opisy) */
+  --border-color: rgba(255, 255, 255, 0.1); /* Kolor obramowań */
+  --primary-color: #0e33da; /* Główny kolor akcentu (linki, przyciski) */
+  --secondary-color: #ff00ff; /* Drugi kolor akcentu */
+  --glitch-cyan: #00f7ff; /* Kolory dla efektu "glitch" w sekcji hero */
   --glitch-red: #ff0055;
-  --shadow-color: rgba(0, 247, 255, 0.2);
-  --transition-speed: 0.3s;
+  --shadow-color: rgba(0, 247, 255, 0.2); /* Kolor cienia dla przycisków */
+  --transition-speed: 0.3s; /* Globalna szybkość animacji */
 }
 
+/* 
+  Definicja motywu jasnego. Gdy element <html> ma klasę .light-mode,
+  przeglądarka użyje tych wartości zmiennych, nadpisując domyślne.
+*/
 html.light-mode {
   --bg-color: #f0f2f5;
   --bg-secondary-color: #ffffff;
@@ -37,23 +62,29 @@ html.light-mode {
   --shadow-color: rgba(0, 123, 255, 0.2);
 }
 
+/* --- USTAWIENIA GLOBALNE --- */
 html {
+  /* Włącza płynne przewijanie przy kliknięciu na linki kotwiczne (np. #about) */
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono', monospace; /* Monospace - czcionka o stałej szerokości liter */
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Zapobiega pojawianiu się poziomego paska przewijania */
+  /* Animacja zmiany tła i koloru tekstu przy przełączaniu motywu */
   transition: background-color var(--transition-speed) ease,
     color var(--transition-speed) ease;
 }
+
+/* Klasa dodawana przez JS, gdy menu mobilne jest aktywne, aby zablokować przewijanie strony */
 body.nav-is-active {
   overflow: hidden;
 }
 
+/* Kontener centrujący treść i dodający marginesy boczne */
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -62,44 +93,52 @@ body.nav-is-active {
 
 /* --- PRELOADER --- */
 #preloader {
-  position: fixed;
+  position: fixed; /* Pokrywa cały ekran, niezależnie od przewijania */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #050505;
-  z-index: 9999;
+  background-color: #050505; /* Zawsze ciemne tło dla spójności */
+  z-index: 9999; /* Zawsze na wierzchu */
   display: flex;
   justify-content: center;
   align-items: center;
   transition: opacity 0.5s ease-out;
 }
+
+/* Klasa dodawana przez JS po zakończeniu animacji, aby płynnie ukryć preloader */
 #preloader.loaded {
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none; /* Wyłącza interakcje z ukrytym elementem */
 }
+
 .loader-logo {
-  font-size: clamp(2rem, 10vw, 5rem);
+  font-size: clamp(2rem, 10vw, 5rem); /* Elastyczny rozmiar czcionki */
   font-weight: 700;
   color: var(--primary-color);
   letter-spacing: 10px;
   text-shadow: 0 0 15px var(--shadow-color);
 }
 .loader-logo span {
-  display: inline-block;
+  display: inline-block; /* Potrzebne do indywidualnych animacji */
 }
+/* Animacja "rozpuszczania się" logo po zakończeniu ładowania */
 .loader-logo.dissolving {
   animation: dissolve-out 0.5s ease-out forwards;
 }
 @keyframes dissolve-out {
   to {
     opacity: 0;
-    transform: scale(1.1);
-    filter: blur(8px);
+    transform: scale(1.1); /* Lekkie powiększenie podczas znikania */
+    filter: blur(8px); /* Efekt rozmycia */
   }
 }
 
 /* --- Ukrywanie/Pokazywanie Głównej Treści --- */
+/*
+  Style zapewniające, że główna treść strony jest niewidoczna
+  podczas działania preloadera, a następnie płynnie się pojawia.
+*/
 #page-content.hidden {
   visibility: hidden;
 }
@@ -118,21 +157,31 @@ body.nav-is-active {
 
 /* --- NAGŁÓWEK --- */
 header {
-  position: sticky;
+  position: sticky; /* Nagłówek "przykleja się" do góry ekranu podczas przewijania */
   top: 0;
   width: 100%;
   padding: 20px 0;
   z-index: 1000;
+  /* Półprzezroczyste tło z efektem rozmycia (szkła) */
   background-color: rgba(5, 5, 5, 0.7);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Dla przeglądarki Safari */
   border-bottom: 1px solid var(--border-color);
   transition: background-color var(--transition-speed) ease,
     border-color var(--transition-speed) ease;
 }
+
+/* Dostosowanie tła nagłówka dla motywu jasnego */
 html.light-mode header {
   background-color: rgba(240, 242, 245, 0.7);
 }
+
+/*
+  Użycie CSS Grid do stworzenia trójkolumnowego layoutu w nagłówku:
+  1. Pusta kolumna (lub nawigacja desktopowa)
+  2. Wyśrodkowane logo
+  3. Kontrolki (motyw, hamburger)
+*/
 header .container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -140,8 +189,8 @@ header .container {
   gap: 15px;
 }
 .logo {
-  grid-column: 2 / 3;
-  justify-self: center;
+  grid-column: 2 / 3; /* Logo zajmuje środkową kolumnę */
+  justify-self: center; /* Wyśrodkowanie w poziomie wewnątrz komórki grida */
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-color);
@@ -152,12 +201,14 @@ header .container {
   color: var(--primary-color);
 }
 .header-controls {
-  grid-column: 3 / 4;
-  justify-self: end;
+  grid-column: 3 / 4; /* Kontrolki w prawej kolumnie */
+  justify-self: end; /* Wyrównanie do prawej krawędzi */
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
+/* Stylowanie przycisku hamburgera i jego animacja do "X" */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -167,7 +218,7 @@ header .container {
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1001; /* Wyżej niż tło menu, aby był klikalny */
   padding: 0;
 }
 .hamburger span {
@@ -176,17 +227,18 @@ header .container {
   background: var(--text-color);
   border-radius: 5px;
   transition: all 0.3s linear;
-  transform-origin: 1px;
+  transform-origin: 1px; /* Ustawia punkt obrotu dla animacji */
 }
+/* Animacja do "X" po dodaniu klasy .is-active */
 .hamburger.is-active span:nth-child(1) {
-  transform: translateY(4px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg); /* Górna kreska */
 }
 .hamburger.is-active span:nth-child(2) {
-  opacity: 0;
+  opacity: 0; /* Środkowa kreska znika */
   transform: translateX(20px);
 }
 .hamburger.is-active span:nth-child(3) {
-  transform: translateY(-4px) rotate(-45deg);
+  transform: translateY(-4px) rotate(-45deg); /* Dolna kreska */
 }
 
 /* --- PRZEŁĄCZNIK MOTYWU --- */
@@ -208,6 +260,7 @@ header .container {
 .theme-toggle:hover {
   color: var(--primary-color);
 }
+/* Logika pokazywania/ukrywania ikon słońca/księżyca */
 .sun-icon {
   display: none;
 }
@@ -229,17 +282,19 @@ html.light-mode .moon-icon {
   width: 100%;
   height: 100%;
   background: var(--bg-color);
-  z-index: 999;
+  z-index: 999; /* Pod hamburgerem, nad resztą strony */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 40px;
+  /* Początkowy stan (ukryty) */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
+/* Stan aktywny (widoczny) */
 .overlay-nav.is-active {
   opacity: 1;
   visibility: visible;
@@ -253,23 +308,22 @@ html.light-mode .moon-icon {
 }
 .overlay-nav .nav-links a {
   font-size: 2rem;
-  color: var(--text-color); /* Kolor tekstu pozostaje bez zmian */
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 700;
+  /* Początkowy stan dla animacji wejścia linków */
   transform: translateY(10px);
   opacity: 0;
-
-  /* DODAJEMY TO: */
-  position: relative; /* Potrzebne do pozycjonowania kreski */
-  padding-bottom: 8px; /* Robimy trochę miejsca na kreskę pod tekstem */
-
-  /* Zmieniamy transition, żeby kolor się nie animował */
+  position: relative; /* Potrzebne do pozycjonowania pseudo-elementu ::after */
+  padding-bottom: 8px; /* Miejsce na podkreślenie */
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+/* Animacja "wjeżdżania" linków po otwarciu menu */
 .overlay-nav.is-active .nav-links a {
   transform: translateY(0);
   opacity: 1;
 }
+/* Rozłożenie animacji w czasie dla każdego linku (efekt kaskady) */
 .overlay-nav.is-active .nav-links a:nth-child(1) {
   transition-delay: 0.1s;
 }
@@ -282,9 +336,11 @@ html.light-mode .moon-icon {
 .overlay-nav.is-active .nav-links a:nth-child(4) {
   transition-delay: 0.4s;
 }
+
 .overlay-nav .nav-links a:hover {
   color: var(--primary-color);
 }
+/* Tworzenie animowanego podkreślenia przy najechaniu myszką */
 .overlay-nav .nav-links a::after {
   content: '';
   position: absolute;
@@ -292,25 +348,20 @@ html.light-mode .moon-icon {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: var(--primary-color); /* Kolor kreski */
-
-  /* Magia animacji */
-  transform: scaleX(0); /* Początkowo kreska jest niewidoczna (skala 0) */
-  transform-origin: center; /* Animacja rozejdzie się od środka */
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* Płynne przejście */
+  background-color: var(--primary-color);
+  /* Początkowo kreska jest schowana (skala 0 w osi X) */
+  transform: scaleX(0);
+  transform-origin: center; /* Animacja rozchodzi się od środka na boki */
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* Płynne, elastyczne przejście */
 }
-
-/* I DODAJEMY TEN BLOK, KTÓRY URUCHAMIA ANIMACJĘ PRZY NAJECHANIU */
+/* Uruchomienie animacji podkreślenia przy najechaniu */
 .overlay-nav .nav-links a:hover::after {
-  transform: scaleX(
-    1
-  ); /* Przy najechaniu kreska rozciąga się na pełną szerokość */
+  transform: scaleX(1); /* Skalowanie do pełnej szerokości */
 }
-/* --- POZOSTAŁE STYLE (BEZ ZMIAN) --- */
 
 /* --- SEKCJA HERO --- */
 .hero {
-  min-height: calc(100vh - 81px);
+  min-height: calc(100vh - 81px); /* Wysokość ekranu minus wysokość nagłówka */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,6 +369,7 @@ html.light-mode .moon-icon {
   padding: 80px 20px;
   position: relative;
   overflow: hidden;
+  /* Tło z siatką stworzone za pomocą powtarzających się gradientów */
   background-image: repeating-linear-gradient(
       to right,
       var(--border-color) 0,
@@ -332,8 +384,18 @@ html.light-mode .moon-icon {
       transparent 1px,
       transparent 50px
     );
+  /* Animacja poruszającej się siatki */
   animation: moveGrid 10s linear infinite;
 }
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50px 50px;
+  }
+}
+
 @keyframes moveGrid {
   from {
     background-position: 0 0;
@@ -504,7 +566,9 @@ section {
   bottom: -10px;
   left: 20%;
 }
-
+.about-section {
+  height: 95vh;
+}
 /* --- SEKCJE TEMATYCZNE --- */
 .about-section,
 .contact-section,
