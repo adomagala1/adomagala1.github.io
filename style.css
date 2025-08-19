@@ -95,7 +95,6 @@ body.nav-is-active {
   padding: 0 clamp(1.25rem, 5vw, 2.5rem);
 }
 
-/* --- PRELOADER --- */
 #preloader {
   position: fixed;
   top: 0;
@@ -116,7 +115,7 @@ body.nav-is-active {
 .loader-logo {
   font-size: clamp(2rem, 10vw, 5rem);
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
   letter-spacing: 10px;
   text-shadow: 0 0 15px var(--shadow-color);
 }
