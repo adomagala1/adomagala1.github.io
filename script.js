@@ -155,4 +155,168 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+  // === CZĘŚĆ 6: ANIMACJA PŁYWAJĄCYCH UMIEJĘTNOŚCI Z KOLIZJAMI ===
+  const skillsBox = document.getElementById('skills-box');
+
+  if (skillsBox) {
+    const skillItems = skillsBox.querySelectorAll('.skill-item');
+    let skills = [];
+    let animationFrameId;
+    const speedFactor = 0.5; // Zmniejsz, aby spowolnić
+
+    const initSkillsAnimation = () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+
+      const boxRect = skillsBox.getBoundingClientRect();
+      skills = [];
+
+      skillItems.forEach((item) => {
+        const itemRect = item.getBoundingClientRect();
+        // Używamy promienia do detekcji kolizji
+        const radius = (itemRect.width + itemRect.height) / 4;
+
+        // Zapewnienie, że elementy nie startują na sobie
+        let positionOK = false;
+        let x, y;
+        while (!positionOK) {
+          x = Math.random() * (boxRect.width - itemRect.width);
+          y = Math.random() * (boxRect.height - itemRect.height);
+          positionOK = true;
+          for (const otherSkill of skills) {
+            const dist = Math.hypot(x - otherSkill.x, y - otherSkill.y);
+            if (dist < radius + otherSkill.radius) {
+              positionOK = false;
+              break;
+            }
+          }
+        }
+
+        skills.push({
+          element: item,
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 2 * speedFactor,
+          vy: (Math.random() - 0.5) * 2 * speedFactor,
+          width: itemRect.width,
+          height: itemRect.height,
+          radius: radius
+        });
+      });
+
+      animateSkills();
+    };
+
+    const animateSkills = () => {
+      const boxRect = skillsBox.getBoundingClientRect();
+
+      skills.forEach((skill, index) => {
+        // Aktualizacja pozycji
+        skill.x += skill.vx;
+        skill.y += skill.vy;
+
+        // Odbijanie od ścian kontenera
+        if (skill.x <= 0) {
+          skill.x = 0;
+          skill.vx *= -1;
+        }
+        if (skill.x + skill.width >= boxRect.width) {
+          skill.x = boxRect.width - skill.width;
+          skill.vx *= -1;
+        }
+        if (skill.y <= 0) {
+          skill.y = 0;
+          skill.vy *= -1;
+        }
+        if (skill.y + skill.height >= boxRect.height) {
+          skill.y = boxRect.height - skill.height;
+          skill.vy *= -1;
+        }
+
+        // Detekcja kolizji z innymi elementami
+        for (let i = index + 1; i < skills.length; i++) {
+          const otherSkill = skills[i];
+          const dx =
+            skill.x + skill.width / 2 - (otherSkill.x + otherSkill.width / 2);
+          const dy =
+            skill.y + skill.height / 2 - (otherSkill.y + otherSkill.height / 2);
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const minDistance = skill.radius + otherSkill.radius;
+
+          if (distance < minDistance) {
+            // 1. Rozwiązanie przenikania się
+            const overlap = minDistance - distance;
+            const ax = dx / distance;
+            const ay = dy / distance;
+
+            skill.x += (ax * overlap) / 2;
+            skill.y += (ay * overlap) / 2;
+            otherSkill.x -= (ax * overlap) / 2;
+            otherSkill.y -= (ay * overlap) / 2;
+
+            // 2. Wymiana pędu (uproszczony model elastycznego zderzenia)
+            const angle = Math.atan2(dy, dx);
+            const sin = Math.sin(angle);
+            const cos = Math.cos(angle);
+
+            // Obrót wektorów prędkości
+            const vx1 = skill.vx * cos + skill.vy * sin;
+            const vy1 = skill.vy * cos - skill.vx * sin;
+            const vx2 = otherSkill.vx * cos + otherSkill.vy * sin;
+            const vy2 = otherSkill.vy * cos - otherSkill.vx * sin;
+
+            // Wymiana prędkości na jednej osi
+            const vx1Final = vx2;
+            const vx2Final = vx1;
+
+            // Obrót z powrotem
+            skill.vx = vx1Final * cos - vy1 * sin;
+            skill.vy = vy1 * cos + vx1Final * sin;
+            otherSkill.vx = vx2Final * cos - vy2 * sin;
+            otherSkill.vy = vy2 * cos + vx2Final * sin;
+          }
+        }
+
+        skill.element.style.transform = `translate(${skill.x}px, ${skill.y}px)`;
+      });
+
+      animationFrameId = requestAnimationFrame(animateSkills);
+    };
+
+    const skillsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!animationFrameId) {
+              initSkillsAnimation();
+            }
+          } else {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    skillsObserver.observe(skillsBox);
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (
+          skillsObserver
+            .takeRecords()
+            .some((record) => record.isIntersecting) ||
+          animationFrameId
+        ) {
+          initSkillsAnimation();
+        }
+      }, 250);
+    });
+  }
 });
