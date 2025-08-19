@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Case Study: Interaktywny Dashboard Sprzedażowy - Jan Kowalski</title>
+    <title>
+      Case Study: Interaktywny Dashboard Sprzedażowy - Adrian Domagała
+    </title>
 
     <link
       rel="icon"
@@ -27,15 +29,10 @@
   </head>
   <body>
     <div id="page-content" class="visible">
+      <!-- NAGŁÓWEK - Teraz spójny ze stroną główną -->
       <header>
         <div class="container">
-          <a href="index.html" class="logo">adomagala/></a>
-          <nav class="desktop-nav">
-            <a href="index.html#about">O Mnie</a>
-            <a href="index.html#skills">Umiejętności</a>
-            <a href="index.html#projects">Projekty</a>
-            <a href="index.html#contact">Kontakt</a>
-          </nav>
+          <a href="index.html" class="logo">adomagala</a>
           <div class="header-controls">
             <button class="theme-toggle" aria-label="Przełącz motyw"></button>
             <button
@@ -49,27 +46,29 @@
         </div>
       </header>
 
+      <!-- Nakładka menu mobilnego (wypełniana przez script.js) -->
       <div id="overlay-menu" class="overlay-nav"></div>
 
       <main class="project-detail-page">
         <section class="project-hero">
-          <div class="container">
+          <div class="container animate-on-scroll">
             <h1 class="project-title">Interaktywny Dashboard Sprzedażowy</h1>
             <p class="project-subtitle">
               Analiza i wizualizacja wskaźników KPI dla sektora e-commerce w
               czasie rzeczywistym.
             </p>
             <div class="project-main-image">
+              <!-- ZMIEŃ NA OBRAZ SWOJEGO PROJEKTU -->
               <img
                 src="https://placehold.co/1200x600/0a0a0a/00f7ff?text=GŁÓWNY+OBRAZ+PROJEKTU"
-                alt="Główny widok dashboardu"
+                alt="Główny widok dashboardu sprzedażowego"
               />
             </div>
           </div>
         </section>
 
         <section class="project-content">
-          <div class="container">
+          <div class="container animate-on-scroll">
             <div class="project-grid-layout">
               <aside class="project-meta">
                 <div class="meta-block">
@@ -84,14 +83,15 @@
                   <h3>Użyte Technologie</h3>
                   <div class="project-tech">
                     <span>Python</span><span>Pandas</span><span>SQL</span
-                    ><span>Plotly</span><span>Dash</span><span>Heroku</span>
+                    ><span>Plotly</span><span>Dash</span>
                   </div>
                 </div>
                 <div class="meta-block">
                   <h3>Linki</h3>
                   <div class="project-links-detail">
+                    <!-- ZMIEŃ LINKI NA WŁAŚCIWE -->
                     <a href="#" target="_blank" class="btn btn-primary"
-                      >Live Demo</a
+                      >Zobacz Live Demo</a
                     >
                     <a href="#" target="_blank" class="btn btn-secondary"
                       >Kod na GitHub</a
@@ -114,10 +114,12 @@
                 <p>
                   Surowe dane zawierały wiele niespójności, braków i duplikatów.
                   Użyłem biblioteki <strong>Pandas</strong> do zautomatyzowania
-                  procesu czyszczenia.
+                  procesu czyszczenia, co pozwoliło na ustandaryzowanie formatów
+                  i przygotowanie spójnego zbioru danych do analizy.
                 </p>
 
                 <figure>
+                  <!-- ZMIEŃ NA OBRAZ SWOJEGO PROJEKTU -->
                   <img
                     src="https://placehold.co/800x450/121212/e0e0e0?text=Wykres+Przed+i+Po+Czyszczeniu"
                     alt="Wykres pokazujący dane przed i po czyszczeniu"
@@ -131,16 +133,21 @@
                 <h3>2. Tworzenie Interaktywnych Wizualizacji</h3>
                 <p>
                   Kluczowe było stworzenie wizualizacji, które są nie tylko
-                  estetyczne, ale przede wszystkim czytelne. Wykorzystałem
-                  <strong>Plotly</strong> ze względu na jego interaktywność.
+                  estetyczne, ale przede wszystkim czytelne i pozwalają na łatwe
+                  filtrowanie danych. Wykorzystałem
+                  <strong>Plotly & Dash</strong>, aby zbudować aplikację webową
+                  umożliwiającą dynamiczną interakcję z wykresami.
                 </p>
 
                 <h2>Wyniki i Wpływ na Biznes</h2>
                 <p>
                   Wdrożenie dashboardu pozwoliło na skrócenie czasu potrzebnego
-                  na raportowanie o <strong>75%</strong> i przełożyło się na
+                  na przygotowanie tygodniowych raportów o
+                  <strong>75%</strong>. Zespół marketingowy, dzięki szybszemu
+                  dostępowi do danych, mógł efektywniej optymalizować kampanie,
+                  co przełożyło się na
                   <strong>oszczędności rzędu 15%</strong> miesięcznego budżetu
-                  marketingowego.
+                  reklamowego przy zachowaniu tej samej skali sprzedaży.
                 </p>
               </article>
             </div>
@@ -150,6 +157,7 @@
         <nav class="project-navigation">
           <div class="container">
             <a href="index.html#projects" class="back-to-projects">
+              <!-- Lepsza, bardziej intuicyjna ikona strzałki -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -161,7 +169,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                <path d="M19 12H5m7 7l-7-7 7-7" />
               </svg>
               <span>Wszystkie Projekty</span>
             </a>
@@ -171,7 +179,7 @@
 
       <footer>
         <div class="container">
-          <p>&copy; 2025 Adrian Domagała.</p>
+          <p>&copy; 2025 Adrian Domagała</p>
         </div>
       </footer>
     </div>
