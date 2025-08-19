@@ -31,6 +31,7 @@
   --glitch-1: #270cc0;
   --glitch-red: #ff0055;
   --shadow-color: rgba(207, 200, 200, 0.2);
+  --shadow-color2: #051d49d0;
   --transition-speed: 0.3s;
   --project-techs: #ffffff;
 
@@ -54,7 +55,8 @@ html.light-mode {
   --secondary-color: #e83e8c;
   --glitch-cyan: #007bff;
   --glitch-red: #dc3545;
-  --shadow-color: rgba(0, 123, 255, 0.2);
+  --shadow-color: #051d49d0;
+  --nav-color: #3946be;
 }
 
 /* --- USTAWIENIA GLOBALNE --- */
@@ -514,7 +516,7 @@ section {
   position: absolute;
   width: 60%;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: var(--nav-color);
   bottom: -10px;
   left: 20%;
 }
@@ -548,7 +550,8 @@ section {
   border-radius: 50%;
   overflow: hidden;
   border: 5px solid var(--border-color);
-  box-shadow: 0 5px 240px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 1340px var(--shadow-color);
+
   justify-self: center;
 }
 .about-image img {
@@ -556,6 +559,7 @@ section {
   height: 100%;
   object-fit: cover;
 }
+
 .about-text h3 {
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 20px;
