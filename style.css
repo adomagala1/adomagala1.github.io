@@ -470,7 +470,7 @@ html.light-mode .moon-icon {
 
 /* --- PRZYCISKI --- */
 .btn {
-  padding: 12px 30px;
+  padding: 12px 60px;
   text-decoration: none;
   border-radius: 5px;
   font-weight: 700;
@@ -965,4 +965,14 @@ main.project-detail-page {
     padding: 8px 15px;
     font-size: 0.9rem;
   }
+}
+.about-motto {
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary-color);
+  opacity: 0.7;
+  margin-top: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
