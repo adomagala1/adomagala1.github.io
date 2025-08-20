@@ -34,6 +34,7 @@
   --shadow-color2: #051d49d0;
   --transition-speed: 0.3s;
   --project-techs: #ffffff;
+  --photo-shadow: #4871be8a;
 
   --color-database: #9c27b0;
   --color-analysis: #2196f3;
@@ -59,6 +60,7 @@ html.light-mode {
   --bg-secondary-color: #ffffff;
   --card-bg-color: #ffffff;
   --text-color: #333333;
+  --photo-shadow: #0055f1d0;
   --text-secondary-color: #666666;
   --border-color: rgba(0, 0, 0, 0.1);
   --primary-color: #007bff;
@@ -559,9 +561,8 @@ section {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  border: 5px solid var(--border-color);
-  box-shadow: 0 15px 1340px var(--shadow-color);
-
+  border: 1px solid var(--border-color);
+  box-shadow: 25px 25px 1440px var(--photo-shadow);
   justify-self: center;
 }
 .about-image img {
