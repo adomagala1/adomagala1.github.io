@@ -1,15 +1,16 @@
+// PLIK: script.js (WERSJA FINALNA Z ULEPSZENIAMI)
+
 document.addEventListener('DOMContentLoaded', () => {
   // === CZĘŚĆ 1: INTELIGENTNY PRELOADER & SEKWENCJA WEJŚCIA ===
+  // ... (bez zmian)
   const preloader = document.getElementById('preloader');
   const pageContent = document.getElementById('page-content');
-
   const showPageContent = () => {
     if (pageContent) {
       pageContent.classList.remove('hidden');
       pageContent.classList.add('visible');
     }
   };
-
   if (preloader) {
     if (sessionStorage.getItem('preloaderShown') === 'true') {
       preloader.style.display = 'none';
@@ -20,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ? loaderLogo.querySelectorAll('span')
         : [];
       const chars = '!<>-_\\/[]{}—=+*^?#_';
-
       const runScramble = (element, targetChar) => {
         let current_char = 0;
         const interval = setInterval(() => {
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }, 80);
       };
-
       const startPreloaderSequence = () => {
         let delay = 0;
         scrambleElements.forEach((el) => {
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => runScramble(el, target), delay);
           delay += 150;
         });
-
         setTimeout(() => {
           if (loaderLogo) loaderLogo.classList.add('dissolving');
           setTimeout(() => {
@@ -50,52 +48,43 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 500);
         }, delay + 300);
       };
-
       window.addEventListener('load', startPreloaderSequence);
     }
   } else {
     showPageContent();
   }
 
-  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE W STYLU SCHEMATU TOP-DOWN ===
+  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE & HAMBURGER (Z NOWYM PODMENU I SVG) ===
   const hamburgerBtn = document.getElementById('hamburger-menu');
   const overlayMenu = document.getElementById('overlay-menu');
 
   if (hamburgerBtn && overlayMenu) {
-    const navTreeHTML = `
-    <nav class="tree-nav-container">
-      <ul class="tree-nav top-down-tree">
-        <li class="tree-item is-root">
-          <div class="node-content"><a href="/">adomagala/</a></div>
-          <ul class="submenu">
-            <li class="tree-item"><a href="/#about"><div class="node-content">O Mnie</div></a></li>
-            <li class="tree-item"><a href="/#skills"><div class="node-content">Umiejętności</div></a></li>
-            <li class="tree-item has-children">
-              <div class="node-content tree-item-toggle">
-                <a href="/#projects">Projekty</a>
-                <span class="tree-icon"></span>
-              </div>
-              <ul class="submenu">
-                <li class="tree-item"><a href="projekt-dashboard.html"><div class="node-content">Dashboard Sprzedażowy</div></a></li>
-                <li class="tree-item disabled-link"><a><div class="node-content">Analiza Sentymentu (wkrótce)</div></a></li>
-              </ul>
-            </li>
-            <li class="tree-item"><a href="/#contact"><div class="node-content">Kontakt</div></a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  `;
+    // Zaktualizowana struktura HTML z podmenu i ikoną SVG
+    const navLinksHTML = `
+      <div class="nav-links">
+        <a href="#about">O Mnie</a>
+        <a href="#skills">Umiejętności</a>
+        
+        <div class="nav-item has-submenu">
+            <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu">
+                Projekty
+                <svg class="submenu-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <div class="submenu" id="projects-submenu">
+                <a href="projekt-dashboard.html">1</a>
+                <a href="#" class="disabled">2</a>
+            </div>
+        </div>
 
-    overlayMenu.innerHTML = navTreeHTML;
+        <a href="#contact">Kontakt</a>
+      </div>
+    `;
+    overlayMenu.innerHTML = navLinksHTML;
 
-    const menuLinks = overlayMenu.querySelectorAll('a:not(.disabled-link a)');
-    const treeToggles = overlayMenu.querySelectorAll('.tree-item-toggle');
-    const rootNode = overlayMenu.querySelector('.is-root');
-
-    if (rootNode) {
-      rootNode.classList.add('is-open');
-    }
+    const menuLinks = overlayMenu.querySelectorAll('a');
+    const submenuToggle = overlayMenu.querySelector('.submenu-toggle');
 
     const toggleMenu = () => {
       const isActive = hamburgerBtn.classList.toggle('is-active');
@@ -106,34 +95,30 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburgerBtn.addEventListener('click', toggleMenu);
 
     menuLinks.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        if (e.target.closest('.tree-item-toggle')) return;
+      link.addEventListener('click', () => {
         if (overlayMenu.classList.contains('is-active')) {
-          setTimeout(toggleMenu, 150);
+          toggleMenu();
         }
       });
     });
 
-    treeToggles.forEach((toggle) => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const parentItem = toggle.parentElement;
-        parentItem.classList.toggle('is-open');
+    // ULEPSZONA LOGIKA: Otwieranie/zamykanie podmenu z aktualizacją ARIA
+    if (submenuToggle) {
+      submenuToggle.addEventListener('click', () => {
+        const parentItem = submenuToggle.parentElement;
+        const isExpanded = parentItem.classList.toggle('is-open');
+        submenuToggle.setAttribute('aria-expanded', isExpanded);
       });
-    });
+    }
   }
 
-  // === CZĘŚĆ 3: LOGIKA PRZEŁĄCZNIKA MOTYWU (NAPRAWIONA) ===
-  // Definicje ikon SVG, które będą wstawiane do przycisku
+  // === CZĘŚĆ 3: LOGIKA PRZEŁĄCZNIKA MOTYWU ===
+  // ... (bez zmian)
   const sunIconSVG = `<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 7.106a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.06-1.061l-1.59-1.591z"/></svg>`;
   const moonIconSVG = `<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.981A10.503 10.503 0 0112 22.5a10.5 10.5 0 01-10.5-10.5c0-4.368 2.667-8.112 6.46-9.672a.75.75 0 01.818.162z" clip-rule="evenodd"/></svg>`;
-
   const themeToggleBtn = document.querySelector('.theme-toggle');
-
   if (themeToggleBtn) {
-    // Wstawiamy ikony do przycisku - to jest brakujący fragment
     themeToggleBtn.innerHTML = sunIconSVG + moonIconSVG;
-
     const toggleTheme = () => {
       document.documentElement.classList.toggle('light-mode');
       const isLight = document.documentElement.classList.contains('light-mode');
@@ -142,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggleBtn.addEventListener('click', toggleTheme);
   }
 
+  // === POZOSTAŁE CZĘŚCI (4, 5, 6) BEZ ZMIAN ===
+  // ... wklej tutaj resztę swojego kodu JS od "CZĘŚĆ 4" do końca ...
   // === CZĘŚĆ 4: ANIMACJE NA SCROLL ===
   const observer = new IntersectionObserver(
     (entries) => {
