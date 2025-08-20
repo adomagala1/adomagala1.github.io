@@ -34,7 +34,7 @@
   --shadow-color2: #051d49d0;
   --transition-speed: 0.3s;
   --project-techs: #ffffff;
-  --photo-shadow: #4871be8a;
+  --photo-shadow: #ffffff8a;
 
   --color-database: #9c27b0;
   --color-analysis: #2196f3;
@@ -562,7 +562,7 @@ section {
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  box-shadow: 30px 30px 1440px var(--photo-shadow);
+  box-shadow: 3px 30px 1440px var(--photo-shadow);
   justify-self: center;
 }
 .about-image img {
