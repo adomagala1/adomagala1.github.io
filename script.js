@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pageContent.classList.add('visible');
     }
   };
-  1;
+
   if (preloader) {
     if (sessionStorage.getItem('preloaderShown') === 'true') {
       preloader.style.display = 'none';
@@ -57,26 +57,45 @@ document.addEventListener('DOMContentLoaded', () => {
     showPageContent();
   }
 
-  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE & HAMBURGER ===
-  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE & HAMBURGER ===
+  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE W STYLU SCHEMATU TOP-DOWN ===
   const hamburgerBtn = document.getElementById('hamburger-menu');
   const overlayMenu = document.getElementById('overlay-menu');
 
-  // Sprawdzamy, czy kluczowe elementy istnieją
   if (hamburgerBtn && overlayMenu) {
-    // Tworzymy linki bezpośrednio w JS
-    const navLinksHTML = `
-    <div class="nav-links">
-      <a href="index.html#about">O Mnie</a>
-      <a href="index.html#skills">Umiejętności</a>
-      <a href="index.html#projects">Projekty</a>
-      <a href="index.html#contact">Kontakt</a>
-    </div>
+    const navTreeHTML = `
+    <nav class="tree-nav-container">
+      <ul class="tree-nav top-down-tree">
+        <li class="tree-item is-root">
+          <div class="node-content"><a href="/">adomagala/</a></div>
+          <ul class="submenu">
+            <li class="tree-item"><a href="/#about"><div class="node-content">O Mnie</div></a></li>
+            <li class="tree-item"><a href="/#skills"><div class="node-content">Umiejętności</div></a></li>
+            <li class="tree-item has-children">
+              <div class="node-content tree-item-toggle">
+                <a href="/#projects">Projekty</a>
+                <span class="tree-icon"></span>
+              </div>
+              <ul class="submenu">
+                <li class="tree-item"><a href="projekt-dashboard.html"><div class="node-content">Dashboard Sprzedażowy</div></a></li>
+                <li class="tree-item disabled-link"><a><div class="node-content">Analiza Sentymentu (wkrótce)</div></a></li>
+              </ul>
+            </li>
+            <li class="tree-item"><a href="/#contact"><div class="node-content">Kontakt</div></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
   `;
-    // Wstawiamy linki do nakładki
-    overlayMenu.innerHTML = navLinksHTML;
 
-    const menuLinks = overlayMenu.querySelectorAll('a');
+    overlayMenu.innerHTML = navTreeHTML;
+
+    const menuLinks = overlayMenu.querySelectorAll('a:not(.disabled-link a)');
+    const treeToggles = overlayMenu.querySelectorAll('.tree-item-toggle');
+    const rootNode = overlayMenu.querySelector('.is-root');
+
+    if (rootNode) {
+      rootNode.classList.add('is-open');
+    }
 
     const toggleMenu = () => {
       const isActive = hamburgerBtn.classList.toggle('is-active');
@@ -87,38 +106,41 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburgerBtn.addEventListener('click', toggleMenu);
 
     menuLinks.forEach((link) => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        if (e.target.closest('.tree-item-toggle')) return;
         if (overlayMenu.classList.contains('is-active')) {
-          toggleMenu();
+          setTimeout(toggleMenu, 150);
         }
+      });
+    });
+
+    treeToggles.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parentItem = toggle.parentElement;
+        parentItem.classList.toggle('is-open');
       });
     });
   }
 
-  // === CZĘŚĆ 3: WSPÓLNA LOGIKA PRZEŁĄCZNIKA MOTYWU ===
+  // === CZĘŚĆ 3: LOGIKA PRZEŁĄCZNIKA MOTYWU (NAPRAWIONA) ===
+  // Definicje ikon SVG, które będą wstawiane do przycisku
   const sunIconSVG = `<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 7.106a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.06-1.061l-1.59-1.591z"/></svg>`;
   const moonIconSVG = `<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.981A10.503 10.503 0 0112 22.5a10.5 10.5 0 01-10.5-10.5c0-4.368 2.667-8.112 6.46-9.672a.75.75 0 01.818.162z" clip-rule="evenodd"/></svg>`;
 
-  const headerThemeToggle = document.querySelector(
-    '.header-controls .theme-toggle'
-  );
+  const themeToggleBtn = document.querySelector('.theme-toggle');
 
-  if (overlayMenu && headerThemeToggle) {
-    const mobileThemeToggle = headerThemeToggle.cloneNode(true);
-    overlayMenu.appendChild(mobileThemeToggle);
+  if (themeToggleBtn) {
+    // Wstawiamy ikony do przycisku - to jest brakujący fragment
+    themeToggleBtn.innerHTML = sunIconSVG + moonIconSVG;
+
+    const toggleTheme = () => {
+      document.documentElement.classList.toggle('light-mode');
+      const isLight = document.documentElement.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    };
+    themeToggleBtn.addEventListener('click', toggleTheme);
   }
-
-  const allThemeToggles = document.querySelectorAll('.theme-toggle');
-
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('light-mode');
-    const isLight = document.documentElement.classList.contains('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  };
-
-  allThemeToggles.forEach((toggle) => {
-    toggle.addEventListener('click', toggleTheme);
-  });
 
   // === CZĘŚĆ 4: ANIMACJE NA SCROLL ===
   const observer = new IntersectionObserver(
@@ -142,26 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === CZĘŚĆ 5: NAPRAWA BUGA PRZY ZMIANIE ROZDZIELCZOŚCI ===
   window.addEventListener('resize', () => {
-    // Sprawdzamy, czy ekran jest szerszy niż breakpoint mobilny (768px)
     if (window.innerWidth > 768) {
-      // Jeśli tak, upewniamy się, że menu mobilne jest zamknięte
-      if (overlayMenu.classList.contains('is-active')) {
+      if (overlayMenu && overlayMenu.classList.contains('is-active')) {
         hamburgerBtn.classList.remove('is-active');
         overlayMenu.classList.remove('is-active');
         document.body.classList.remove('nav-is-active');
       }
     }
   });
-  const skillsBox = document.getElementById('skills-box');
 
+  // === CZĘŚĆ 6: ANIMACJA KULEK W SEKCJI UMIEJĘTNOŚCI ===
+  const skillsBox = document.getElementById('skills-box');
   if (skillsBox) {
     const skillItems = skillsBox.querySelectorAll('.skill-item');
     let skills = [];
     let animationFrameId;
     const speedFactor = 0.5;
-
-    // --- NOWE STAŁE DLA PRECYZJI ---
-    // Liczba iteracji na klatkę. Im wyższa, tym dokładniejsza fizyka, ale większe obciążenie. 3-5 to dobry kompromis.
     const PHYSICS_ITERATIONS = 4;
 
     const initSkillsAnimation = () => {
@@ -170,11 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const boxRect = skillsBox.getBoundingClientRect();
       skills = [];
-
       skillItems.forEach((item) => {
         const itemRect = item.getBoundingClientRect();
-        const radius = Math.max(itemRect.width, itemRect.height) / 2; // Używamy większego wymiaru dla bezpieczeństwa
-
+        const radius = Math.max(itemRect.width, itemRect.height) / 2;
         let positionOK = false;
         let x, y;
         let attempts = 0;
@@ -191,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           attempts++;
         }
-
         skills.push({
           element: item,
           x,
@@ -203,30 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
           radius: radius
         });
       });
-
       animateSkills();
     };
 
     const animateSkills = () => {
       const boxRect = skillsBox.getBoundingClientRect();
-
-      // Pętla iteracji fizyki - klucz do stabilności
       for (let i = 0; i < PHYSICS_ITERATIONS; i++) {
         skills.forEach((skill, index) => {
-          // Aktualizujemy pozycję w każdym kroku iteracji (dzielimy, by zachować stałą prędkość)
           skill.x += skill.vx / PHYSICS_ITERATIONS;
           skill.y += skill.vy / PHYSICS_ITERATIONS;
-
-          // Sprawdzanie kolizji z innymi elementami
           for (let j = index + 1; j < skills.length; j++) {
             const otherSkill = skills[j];
             const dx = otherSkill.x - skill.x;
             const dy = otherSkill.y - skill.y;
             const distance = Math.hypot(dx, dy);
             const minDistance = skill.radius + otherSkill.radius;
-
             if (distance < minDistance) {
-              // KROK 1: NATYCHMIASTOWA KOREKTA POZYCJI (eliminuje przenikanie)
               const overlap = minDistance - distance;
               const nx = dx / distance;
               const ny = dy / distance;
@@ -234,8 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
               skill.y -= (overlap / 2) * ny;
               otherSkill.x += (overlap / 2) * nx;
               otherSkill.y += (overlap / 2) * ny;
-
-              // KROK 2: FIZYKA ODBICIA (realistyczny ruch)
               const rvx = skill.vx - otherSkill.vx;
               const rvy = skill.vy - otherSkill.vy;
               const velAlongNormal = rvx * nx + rvy * ny;
@@ -258,8 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
-
-      // OSTATECZNA GWARANCJA - bezwzględne trzymanie w boxie i odbicie
       skills.forEach((skill) => {
         if (skill.x - skill.radius < 0) {
           skill.x = skill.radius;
@@ -276,14 +279,11 @@ document.addEventListener('DOMContentLoaded', () => {
           skill.vy *= -1;
         }
       });
-
-      // Renderowanie na ekranie (dopiero po wszystkich obliczeniach)
       skills.forEach((skill) => {
         skill.element.style.transform = `translate(${
           skill.x - skill.width / 2
         }px, ${skill.y - skill.height / 2}px)`;
       });
-
       animationFrameId = requestAnimationFrame(animateSkills);
     };
 
