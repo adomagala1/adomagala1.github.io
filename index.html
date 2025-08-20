@@ -3,64 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adrian Domagała Analityk Danych & Python</title>
+
+    <!-- ULEPSZONY TYTUŁ: Bardziej opisowy i zorientowany na działanie -->
+    <title>
+      Portfolio | Adrian Domagała - Analityk Danych & Python Developer
+    </title>
+
+    <!-- META TAGI SEO -->
+    <meta
+      name="description"
+      content="Przeglądaj portfolio Adriana Domagały, analityka danych i programisty Python. Odkryj projekty z analizy danych, machine learningu i wizualizacji z użyciem Pandas, SQL, Scikit-learn i Plotly., ucznia technikum progamistycznego z ogromna przyszloscia "
+    />
+    <meta name="author" content="Adrian Domagała" />
+    <meta
+      name="keywords"
+      content="analityk danych, python developer, analiza danych, sql, pandas, numpy, scikit-learn, machine learning, wizualizacja danych, portfolio, Adrian Domagała, adomagala, ADOMAGALA, Domagała, Python Developer Portfolio, Analityk Danych portfolio"
+    />
+
+    <!-- KANONICZNY URL: Kluczowy dla uniknięcia duplikacji treści -->
+    <link rel="canonical" href="https://adomagala1.github.io/" />
+
+    <!-- GOOGLE SITE VERIFICATION -->
     <meta
       name="google-site-verification"
       content="MTKoxtJiVXd7ayEocI9NpWCbQdi_vEh7ACBuuBKneD8"
     />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
-    />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta
-      name="description"
-      content="Poznaj portfolio Adriana Domagała, analityka danych i programisty Python. Zobacz projekty z zakresu analizy danych, machine learningu i wizualizacji przy użyciu narzędzi takich jak Pandas, SQL, Scikit-learn i Plotly."
-    />
-    <!-- Open Graph / Facebook / LinkedIn -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://adomagala1.github.io/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta
       property="og:title"
-      content="Adrian Domagała - Analityk Danych & Python Developer"
+      content="Portfolio | Adrian Domagała - Analityk Danych"
     />
+
     <meta
       property="og:description"
-      content="Portfolio projektów z zakresu analizy danych, machine learningu i wizualizacji."
+      content="Odkryj projekty z analizy danych, machine learningu i wizualizacji."
     />
+    <meta property="og:url" content="https://adomagala1.github.io/" />
+    <meta property="og:site_name" content="Portfolio Adriana Domagały" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:type" content="website" />
+
+    <!-- WAŻNE: Podmień na prawdziwą, pełną ścieżkę do obrazka podglądu (1200x630px) -->
     <meta
       property="og:image"
-      content="https://adomagala1.github.io/sciezka/do/obrazka_preview.jpg"
+      content="https://adomagala1.github.io/assets/images/social-preview.jpg"
     />
-    <!-- WAŻNE: Stwórz obrazek podglądu (np. 1200x630px) i wskaż do niego pełną ścieżkę -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://adomagala1.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
-      property="twitter:title"
-      content="Adrian Domagała - Analityk Danych & Python Developer"
+      name="twitter:title"
+      content="Portfolio | Adrian Domagała - Analityk Danych"
     />
     <meta
-      property="twitter:description"
-      content="Portfolio projektów z zakresu analizy danych, machine learningu i wizualizacji."
+      name="twitter:description"
+      content="Odkryj projekty z analizy danych, machine learningu i wizualizacji."
     />
+    <!-- WAŻNE: Użyj tej samej ścieżki do obrazka co w og:image -->
     <meta
-      property="twitter:image"
-      content="https://adomagala1.github.io/sciezka/do/obrazka_preview.jpg"
+      name="twitter:image"
+      content="https://adomagala1.github.io/assets/images/social-preview.jpg"
     />
-    <meta
-      name="keywords"
-      content="analityk danych, python developer, analiza danych, sql, pandas, numpy, scikit-learn, machine learning, wizualizacja danych, portfolio, Adrian Domagała"
-    />
+    <!-- Opcjonalnie, jeśli masz konto na Twitterze: <meta name="twitter:creator" content="@TwojLogin"> -->
+
+    <!-- =================================================================== -->
+    <!-- FONTY I STYLE -->
+    <!-- =================================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
 
+    <!-- =================================================================== -->
+    <!-- SKRYPTY -->
+    <!-- =================================================================== -->
+    <!-- Skrypt blokujący FOUC (Flash of Unstyled Content) dla motywu -->
     <script>
       (function () {
         const theme = localStorage.getItem('theme');
@@ -69,7 +96,30 @@
         }
       })();
     </script>
+
+    <!-- DANE STRUKTURALNE (JSON-LD): Mówi Google, kim jesteś -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Adrian Domagała",
+          "alternateName": "adomagala1",
+          "jobTitle": "Analityk Danych",
+          "description": "Analityk danych i programista Python specjalizujący się w analizie, machine learningu i wizualizacji danych.",
+          "url": "https://adomagala1.github.io/",
+          "image": "https://adomagala1.github.io/assets/images/social-preview.jpg",
+          "sameAs": [
+            "https://github.com/adomagala1",
+            "https://www.linkedin.com/in/twoj-profil/"
+            // Dodaj linki do innych profili (np. Twitter, Medium)
+          ]
+        }
+      }
+    </script>
   </head>
+
   <body>
     <!-- PRELOADER -->
     <div id="preloader">
