@@ -1,8 +1,4 @@
-// PLIK: script.js (WERSJA FINALNA Z ULEPSZENIAMI)
-
 document.addEventListener('DOMContentLoaded', () => {
-  // === CZĘŚĆ 1: INTELIGENTNY PRELOADER & SEKWENCJA WEJŚCIA ===
-  // ... (bez zmian)
   const preloader = document.getElementById('preloader');
   const pageContent = document.getElementById('page-content');
   const showPageContent = () => {
@@ -20,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrambleElements = loaderLogo
         ? loaderLogo.querySelectorAll('span')
         : [];
-      const chars = '!<>-_\\/[]{}—=+*^?#_';
+      const chars = '!<>-/[]{}—=+*^?#';
       const runScramble = (element, targetChar) => {
         let current_char = 0;
         const interval = setInterval(() => {
@@ -64,32 +60,44 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="nav-links">
         <a href="#about">O Mnie</a>
         <a href="#skills">Umiejętności</a>
-        
         <div class="nav-item has-submenu">
-            <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu">
-                Projekty
-                <svg class="submenu-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </button>
-            <div class="submenu" id="projects-submenu">
-                <a href="projekt-dashboard.html">1</a>
-                <a href="#" class="disabled">2</a>
-            </div>
+          <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu">
+            Projekty
+            <svg class="submenu-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="submenu" id="projects-submenu">
+            <a href="projekt-dashboard.html">Analiza Danych Sprzedażowych</a>
+            <a href="#" class="disabled">Sklep E-commerce (wkrótce)</a>
+          </div>
         </div>
-
         <a href="#contact">Kontakt</a>
       </div>
     `;
     overlayMenu.innerHTML = navLinksHTML;
-
     const menuLinks = overlayMenu.querySelectorAll('a');
     const submenuToggle = overlayMenu.querySelector('.submenu-toggle');
 
+    // ZMIANA: Zmienna flagi i stała czasu dla cooldownu
+    let isHamburgerOnCooldown = false;
+    const HAMBURGER_COOLDOWN = 500; // w milisekundach
+
     const toggleMenu = () => {
+      // ZMIANA: Sprawdzenie, czy cooldown jest aktywny
+      if (isHamburgerOnCooldown) return;
+
+      // ZMIANA: Aktywacja cooldownu
+      isHamburgerOnCooldown = true;
+
       const isActive = hamburgerBtn.classList.toggle('is-active');
       overlayMenu.classList.toggle('is-active', isActive);
       document.body.classList.toggle('nav-is-active', isActive);
+
+      // ZMIANA: Resetowanie flagi po upływie czasu cooldownu
+      setTimeout(() => {
+        isHamburgerOnCooldown = false;
+      }, HAMBURGER_COOLDOWN);
     };
 
     hamburgerBtn.addEventListener('click', toggleMenu);
@@ -113,23 +121,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // === CZĘŚĆ 3: LOGIKA PRZEŁĄCZNIKA MOTYWU ===
-  // ... (bez zmian)
   const sunIconSVG = `<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 7.106a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.06-1.061l-1.59-1.591z"/></svg>`;
   const moonIconSVG = `<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.981A10.503 10.503 0 0112 22.5a10.5 10.5 0 01-10.5-10.5c0-4.368 2.667-8.112 6.46-9.672a.75.75 0 01.818.162z" clip-rule="evenodd"/></svg>`;
   const themeToggleBtn = document.querySelector('.theme-toggle');
+
   if (themeToggleBtn) {
     themeToggleBtn.innerHTML = sunIconSVG + moonIconSVG;
+
+    // ZMIANA: Zmienna flagi i stała czasu dla cooldownu
+    let isThemeToggleOnCooldown = false;
+    const THEME_TOGGLE_COOLDOWN = 300; // w milisekundach
+
     const toggleTheme = () => {
+      // ZMIANA: Sprawdzenie, czy cooldown jest aktywny
+      if (isThemeToggleOnCooldown) return;
+
+      // ZMIANA: Aktywacja cooldownu
+      isThemeToggleOnCooldown = true;
+
       document.documentElement.classList.toggle('light-mode');
       const isLight = document.documentElement.classList.contains('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+      // ZMIANA: Resetowanie flagi po upływie czasu cooldownu
+      setTimeout(() => {
+        isThemeToggleOnCooldown = false;
+      }, THEME_TOGGLE_COOLDOWN);
     };
     themeToggleBtn.addEventListener('click', toggleTheme);
   }
 
-  // === POZOSTAŁE CZĘŚCI (4, 5, 6) BEZ ZMIAN ===
-  // ... wklej tutaj resztę swojego kodu JS od "CZĘŚĆ 4" do końca ...
   // === CZĘŚĆ 4: ANIMACJE NA SCROLL ===
+  // ... (bez zmian)
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -150,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === CZĘŚĆ 5: NAPRAWA BUGA PRZY ZMIANIE ROZDZIELCZOŚCI ===
+  // ... (bez zmian)
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
       if (overlayMenu && overlayMenu.classList.contains('is-active')) {
@@ -161,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === CZĘŚĆ 6: ANIMACJA KULEK W SEKCJI UMIEJĘTNOŚCI ===
+  // ... (bez zmian)
   const skillsBox = document.getElementById('skills-box');
   if (skillsBox) {
     const skillItems = skillsBox.querySelectorAll('.skill-item');
