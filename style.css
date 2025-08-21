@@ -35,6 +35,12 @@
   --transition-speed: 0.3s;
   --project-techs: #ffffff;
   --photo-shadow: #ffffff8a;
+  --primary-color-rgb: 76, 175, 80;
+
+  --btn-gradient-start: #961f4c;
+  --btn-gradient-end: #c93a70;
+  --btn-shadow-rgb: 150, 31, 76;
+  --btn-text-color: #ffffff;
 
   --color-database: #9c27b0;
   --color-analysis: #2196f3;
@@ -69,6 +75,11 @@ html.light-mode {
   --glitch-red: #dc3545;
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
+
+  --btn-gradient-start: #007bff;
+  --btn-gradient-end: #0056b3;
+  --btn-shadow-rgb: 0, 123, 255;
+  --btn-text-color: #ffffff;
 }
 
 /* --- USTAWIENIA GLOBALNE --- */
@@ -1096,4 +1107,89 @@ main.project-detail-page {
   .nav-item.is-open .submenu {
     grid-template-columns: 1fr; /* Jedna kolumna na bardzo wąskich ekranach */
   }
+}
+footer {
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+#more-about-me {
+  margin: 0 auto 2rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color-translucent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  max-width: 90%;
+}
+#more-about-me:hover {
+  opacity: 1;
+}
+#more-about-me p {
+  text-align: center;
+  max-width: 500px;
+  font-size: 0.9rem;
+  color: var(--text-secondary-color);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+footer .copyright {
+  font-size: 0.9rem;
+  color: var(--text-secondary-color);
+}
+
+/*
+============================================================
+  ULEPSZONY PRZYCISK "ESSEJE" Z PEŁNYM WSPARCIEM MOTYWÓW
+============================================================
+*/
+#more-about-me .btn.btn-fancy {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(
+    45deg,
+    var(--btn-gradient-start),
+    var(--btn-gradient-end)
+  );
+  border: none;
+  color: var(--btn-text-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  transform: perspective(1px) translateZ(0);
+  transition: all 0.3s ease-out;
+}
+#more-about-me .btn.btn-fancy::after {
+  content: '→';
+  position: absolute;
+  font-size: 1.2rem;
+  line-height: 1;
+  opacity: 0;
+  right: 1.2rem;
+  top: 50%;
+  transform: translate(10px, -50%);
+  transition: all 0.3s ease-out;
+}
+#more-about-me .btn.btn-fancy:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(var(--btn-shadow-rgb), 0.35);
+  padding-right: 3rem;
+}
+#more-about-me .btn.btn-fancy:hover::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+#more-about-me .btn.btn-fancy:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(var(--btn-shadow-rgb), 0.2);
+}
+/* Poprawka dostępności dla nawigacji klawiaturą */
+#more-about-me .btn.btn-fancy:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
 }
