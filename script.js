@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // === CZĘŚĆ 1: PRELOADER ===
   const preloader = document.getElementById('preloader');
   const pageContent = document.getElementById('page-content');
   const showPageContent = () => {
@@ -50,12 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     showPageContent();
   }
 
-  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE & HAMBURGER (Z NOWYM PODMENU I SVG) ===
+  // === CZĘŚĆ 2: DYNAMICZNE MENU MOBILNE & HAMBURGER ===
   const hamburgerBtn = document.getElementById('hamburger-menu');
   const overlayMenu = document.getElementById('overlay-menu');
 
   if (hamburgerBtn && overlayMenu) {
-    // Zaktualizowana struktura HTML z podmenu i ikoną SVG
     const navLinksHTML = `
       <div class="nav-links">
         <a href="#about">O Mnie</a>
@@ -76,25 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     overlayMenu.innerHTML = navLinksHTML;
-    const menuLinks = overlayMenu.querySelectorAll('a');
+    const menuLinks = overlayMenu.querySelectorAll('a:not(.disabled)');
     const submenuToggle = overlayMenu.querySelector('.submenu-toggle');
 
-    // ZMIANA: Zmienna flagi i stała czasu dla cooldownu
     let isHamburgerOnCooldown = false;
-    const HAMBURGER_COOLDOWN = 500; // w milisekundach
+    const HAMBURGER_COOLDOWN = 500;
 
     const toggleMenu = () => {
-      // ZMIANA: Sprawdzenie, czy cooldown jest aktywny
       if (isHamburgerOnCooldown) return;
-
-      // ZMIANA: Aktywacja cooldownu
       isHamburgerOnCooldown = true;
 
       const isActive = hamburgerBtn.classList.toggle('is-active');
       overlayMenu.classList.toggle('is-active', isActive);
       document.body.classList.toggle('nav-is-active', isActive);
 
-      // ZMIANA: Resetowanie flagi po upływie czasu cooldownu
       setTimeout(() => {
         isHamburgerOnCooldown = false;
       }, HAMBURGER_COOLDOWN);
@@ -110,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // ULEPSZONA LOGIKA: Otwieranie/zamykanie podmenu z aktualizacją ARIA
     if (submenuToggle) {
       submenuToggle.addEventListener('click', () => {
         const parentItem = submenuToggle.parentElement;
@@ -128,22 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (themeToggleBtn) {
     themeToggleBtn.innerHTML = sunIconSVG + moonIconSVG;
 
-    // ZMIANA: Zmienna flagi i stała czasu dla cooldownu
     let isThemeToggleOnCooldown = false;
-    const THEME_TOGGLE_COOLDOWN = 300; // w milisekundach
+    const THEME_TOGGLE_COOLDOWN = 300;
 
     const toggleTheme = () => {
-      // ZMIANA: Sprawdzenie, czy cooldown jest aktywny
       if (isThemeToggleOnCooldown) return;
-
-      // ZMIANA: Aktywacja cooldownu
       isThemeToggleOnCooldown = true;
 
       document.documentElement.classList.toggle('light-mode');
       const isLight = document.documentElement.classList.contains('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
-      // ZMIANA: Resetowanie flagi po upływie czasu cooldownu
       setTimeout(() => {
         isThemeToggleOnCooldown = false;
       }, THEME_TOGGLE_COOLDOWN);
@@ -152,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // === CZĘŚĆ 4: ANIMACJE NA SCROLL ===
-  // ... (bez zmian)
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -162,18 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     },
-    {
-      rootMargin: '0px',
-      threshold: 0.1
-    }
+    { rootMargin: '0px', threshold: 0.1 }
   );
-
   document.querySelectorAll('.animate-on-scroll').forEach((el) => {
     observer.observe(el);
   });
 
   // === CZĘŚĆ 5: NAPRAWA BUGA PRZY ZMIANIE ROZDZIELCZOŚCI ===
-  // ... (bez zmian)
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
       if (overlayMenu && overlayMenu.classList.contains('is-active')) {
@@ -185,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === CZĘŚĆ 6: ANIMACJA KULEK W SEKCJI UMIEJĘTNOŚCI ===
-  // ... (bez zmian)
   const skillsBox = document.getElementById('skills-box');
   if (skillsBox) {
     const skillItems = skillsBox.querySelectorAll('.skill-item');

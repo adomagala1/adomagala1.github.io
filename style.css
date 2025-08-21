@@ -36,6 +36,7 @@
   --project-techs: #ffffff;
   --photo-shadow: #ffffff8a;
   --primary-color-rgb: 76, 175, 80;
+  --projects-border: #1a3f91;
 
   --btn-gradient-start: #961f4c;
   --btn-gradient-end: #c93a70;
@@ -62,6 +63,7 @@
 }
 
 html.light-mode {
+  --projects-border: #1a3f91;
   --bg-color: #f0f2f5;
   --bg-secondary-color: #ffffff;
   --card-bg-color: #ffffff;
@@ -1072,16 +1074,20 @@ main.project-detail-page {
 /* Linki w podmenu */
 .submenu a {
   font-size: 1.1rem;
+  background-color: transparent;
   font-weight: 400;
   color: var(--text-secondary-color);
   padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border: 2px solid var(--projects-border);
+  border-radius: 25px;
   text-align: center;
-  transition: all 0.3s ease;
+  transform: translateY(0);
+  transition: background-color 1s ease-in-out, color 1s ease,
+    border-color 1s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .submenu a:hover {
+  text-decoration: none;
   background-color: var(--primary-color);
   color: var(--bg-color);
   border-color: var(--primary-color);
@@ -1090,7 +1096,7 @@ main.project-detail-page {
 }
 
 .submenu a::after {
-  display: none; /* Wyłączamy animację podkreślenia */
+  display: none;
 }
 
 .submenu a.disabled {
