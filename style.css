@@ -37,6 +37,7 @@
   --photo-shadow: #ffffff8a;
   --primary-color-rgb: 76, 175, 80;
   --projects-border: #1a3f91;
+  --most-important-p: #8380ac;
 
   --btn-gradient-start: #961f4c;
   --btn-gradient-end: #c93a70;
@@ -63,6 +64,7 @@
 }
 
 html.light-mode {
+  --most-important-p: #5f5d83;
   --projects-border: #1a3f91;
   --bg-color: #f0f2f5;
   --bg-secondary-color: #ffffff;
@@ -748,7 +750,7 @@ section {
   font-weight: 700;
 }
 html.light-mode .project-tech span {
-  background-color: rgba(0, 123, 255, 0.1);
+  background-color: rgba(105, 169, 238, 0.1);
   color: var(--primary-color);
 }
 .project-links {
@@ -1198,4 +1200,9 @@ footer .copyright {
 #more-about-me .btn.btn-fancy:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
+}
+
+#most-important {
+  font-weight: 700;
+  color: var(--most-important-p);
 }
