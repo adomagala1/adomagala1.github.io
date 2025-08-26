@@ -1,5 +1,3 @@
-// src/ts/main.ts
-
 // 1. Import CSS
 import '../style.css';
 
