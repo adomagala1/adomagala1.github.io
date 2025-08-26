@@ -17,7 +17,8 @@ export function initDodgingButtons(): void {
 
     button.addEventListener('mouseenter', () => {
       button.classList.toggle('is-dodging');
-      button.textContent = wittyText;
+
+      button.textContent = 'Ooops';
     });
 
     button.addEventListener('mouseleave', () => {

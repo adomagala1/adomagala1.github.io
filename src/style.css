@@ -741,11 +741,11 @@ html.light-mode .moon-icon {
   box-shadow: 0 5px 25px var(--shadow-color);
 }
 
-.btn-secondary.disabled {
+/* .btn-secondary.disabled {
   color: var(--text-secondary-color);
   border-color: var(--text-secondary-color);
   opacity: 0.5;
-}
+} */
 
 section {
   padding: clamp(60px, 10vw, 120px) 0;
@@ -1034,6 +1034,7 @@ section {
 .project-card {
   --border-width: 2px;
   position: relative;
+  overflow: hidden;
   border: none;
   border-radius: 16px;
   cursor: pointer;
@@ -1789,8 +1790,8 @@ main.project-detail-page {
 }
 
 .btn-secondary.disabled {
-  transition: margin-left 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), color 0.2s,
-    border-color 0.2s;
+  transition: margin-left 0s cubic-bezier(0.2, 0.9, 0.3, 1), color 0s,
+    border-color 0s;
   will-change: margin-left;
   margin-left: 0;
   pointer-events: auto;
