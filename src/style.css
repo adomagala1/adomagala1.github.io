@@ -972,6 +972,17 @@ section {
   will-change: transform;
   white-space: nowrap;
 }
+.skill-item svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.skill-item:hover svg {
+  opacity: 1;
+}
 
 .skill-item:active {
   cursor: grabbing;
