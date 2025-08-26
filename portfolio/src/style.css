@@ -1,6 +1,7 @@
 /* ==========================================================================
    1. IMPORTS, PROPERTIES & KEYFRAMES
    ========================================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 @property --angle {
@@ -18,16 +19,18 @@
   }
 }
 
-@keyframes pulse-arrow {
+@keyframes pulse-arrow-firework {
   0%,
   100% {
-    transform: translateX(0) scale(1);
-    filter: drop-shadow(0 0 5px rgba(var(--primary-color-rgb), 0.2));
+    transform: translateX(0) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(var(--primary-color-rgb), 0.5))
+      drop-shadow(0 0 15px var(--primary-color));
   }
   50% {
-    transform: translateX(-12px) scale(1.25);
-
-    filter: drop-shadow(0 0 20px var(--primary-color));
+    transform: translateX(-20px) scale(1.4);
+    filter: drop-shadow(0 0 25px var(--primary-color))
+      drop-shadow(0 0 40px rgba(var(--primary-color-rgb), 0.7))
+      drop-shadow(0 0 5px #fff);
   }
 }
 
@@ -127,8 +130,8 @@
 /* ==========================================================================
    2. ROOT VARIABLES & THEMES
    ========================================================================== */
+
 :root {
-  /* Kolory dla motywu ciemnego (domyślny) */
   --bg-color: #050505;
   --font-sans: 'Inter', sans-serif;
   --bg-secondary-color: #0a0a0a;
@@ -141,6 +144,7 @@
   --main-button: #961f4c;
   --secondary-color: #ff00ff;
   --glitch-cyan: #270cc0;
+  --lang-option-bg: #194783;
   --glitch-red: #ff0055;
   --shadow-color: rgba(207, 200, 200, 0.2);
   --shadow-color2: #051d49d0;
@@ -166,7 +170,6 @@
   --color-ml-hover: rgba(255, 152, 0, 0.15);
   --color-visualization-hover: rgba(76, 175, 80, 0.15);
 
-  /* Zmienne layoutu i typografii dla płynnego designu */
   --header-height: 81px;
   --font-size-base: 16px;
   --font-size-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.94rem);
@@ -201,6 +204,7 @@ html.light-mode {
 /* ==========================================================================
    3. GLOBAL STYLES & RESET
    ========================================================================== */
+
 *,
 *::before,
 *::after {
@@ -238,6 +242,7 @@ body.drawer-open {
 /* ==========================================================================
    4. PRELOADER & PAGE TRANSITION
    ========================================================================== */
+
 #preloader {
   position: fixed;
   top: 0;
@@ -285,6 +290,7 @@ body.drawer-open {
 /* ==========================================================================
    5. HEADER & NAVIGATION
    ========================================================================== */
+
 header {
   position: sticky;
   top: 0;
@@ -335,7 +341,111 @@ header .container {
   gap: 15px;
 }
 
-/* --- Hamburger Menu --- */
+.lang-switcher {
+  position: relative;
+}
+
+/* Przycisk otwierający menu języków */
+.lang-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary-color);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle-btn:hover {
+  color: var(--text-color);
+  border-color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+/* Strzałka w przycisku */
+.lang-arrow {
+  transition: transform 0.2s ease-out;
+}
+
+/* Obrót strzałki, gdy menu jest otwarte */
+.lang-switcher.is-open .lang-arrow {
+  transform: rotate(180deg);
+}
+
+/* Menu z opcjami językowymi */
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px); /* 8px pod przyciskiem */
+  right: 0;
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+
+  /* Logika chowania i pokazywania */
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* Pokazywanie menu */
+.lang-switcher.is-open .lang-menu {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.lang-option {
+  background: none;
+  border: none;
+  color: var(--text-secondary-color);
+  padding: 8px 16px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+  /* Kluczowe właściwości dla animacji fali: */
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-option:hover {
+  background-color: var(--lang-option-bg);
+  color: var(--text-color);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(156, 39, 176, 0.5);
+  transform: scale(0);
+  animation: ripple-effect 600ms linear;
+  pointer-events: none;
+}
+
+/* Definicja animacji - TERAZ JAKO OSOBNA REGUŁA */
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -371,7 +481,6 @@ header .container {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* --- Theme Toggle Switch --- */
 .theme-toggle {
   background: none;
   border: none;
@@ -406,7 +515,6 @@ html.light-mode .moon-icon {
   display: none;
 }
 
-/* --- Overlay Mobile Navigation --- */
 .overlay-nav {
   position: fixed;
   top: 0;
@@ -486,7 +594,6 @@ html.light-mode .moon-icon {
   transform: scaleX(1);
 }
 
-/* --- Navigation Submenu --- */
 .nav-item.has-submenu {
   text-align: center;
   width: 100%;
@@ -609,6 +716,7 @@ html.light-mode .moon-icon {
 /* ==========================================================================
    6. REUSABLE COMPONENTS (Buttons, Section Titles)
    ========================================================================== */
+
 .btn {
   padding: 12px 60px;
   text-decoration: none;
@@ -647,7 +755,6 @@ html.light-mode .moon-icon {
 .btn-secondary.disabled {
   color: var(--text-secondary-color);
   border-color: var(--text-secondary-color);
-  pointer-events: none;
   opacity: 0.5;
 }
 
@@ -679,7 +786,7 @@ section {
 /* ==========================================================================
    7. PAGE SECTIONS
    ========================================================================== */
-/* --- Hero Section --- */
+
 .hero {
   min-height: calc(100vh - var(--header-height));
   display: flex;
@@ -763,7 +870,6 @@ section {
   color: var(--text-secondary-color);
 }
 
-/* --- About Section --- */
 .about-section {
   min-height: calc(100vh - var(--header-height));
   display: grid;
@@ -823,7 +929,6 @@ section {
   text-transform: uppercase;
 }
 
-/* --- Skills Section --- */
 .skills-legend {
   display: flex;
   justify-content: center;
@@ -917,7 +1022,6 @@ section {
   background-color: var(--color-visualization-hover);
 }
 
-/* --- Projects Section --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -925,25 +1029,58 @@ section {
 }
 
 .project-card {
-  background: var(--card-bg-color);
-  border: 3px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform var(--transition-speed) ease,
-    box-shadow var(--transition-speed) ease;
+  --border-width: 3px;
+  position: relative;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
+  background: transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover:not(.animated-border) {
-  cursor: pointer;
-  transform: translateY(-10px);
-  box-shadow: 0 25px 30px rgba(0, 0, 0, 0.3);
+.project-card::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: conic-gradient(from var(--angle), #1287b6, #092da3, #698fc9);
+  border-radius: inherit;
+
+  opacity: 0;
+  filter: blur(8px);
+  transform: scale(1.05);
+  transition: opacity 0.5s ease-out, filter 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: var(--border-width);
+  left: var(--border-width);
+  width: calc(100% - var(--border-width) * 2);
+  height: calc(100% - var(--border-width) * 2);
+  background: var(--card-bg-color);
+  border-radius: calc(16px - var(--border-width));
+}
+
+.project-image,
+.project-info {
+  position: relative;
+  z-index: 2;
 }
 
 .project-image {
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  border-top-left-radius: calc(16px - var(--border-width));
+  border-top-right-radius: calc(16px - var(--border-width));
 }
 
 .project-image img {
@@ -954,10 +1091,31 @@ section {
   transition: transform 0.4s ease;
 }
 
-.project-card:hover .project-image img {
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-card:has(.project-image:hover, .project-info:hover) {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:has(.project-image:hover, .project-info:hover)
+  .project-image
+  img {
   transform: scale(1.05);
 }
 
+.project-card:has(.project-image:hover, .project-info:hover)::before {
+  opacity: 0.9;
+  filter: blur(2px);
+  transform: scale(1);
+  animation: spin 4s linear infinite;
+}
 .project-info {
   padding: 25px;
   flex-grow: 1;
@@ -1004,69 +1162,6 @@ html.light-mode .project-tech span {
   align-items: center;
 }
 
-/* --- Animated Border for Project Cards --- */
-.project-card.animated-border {
-  --border-width: 3px;
-  position: relative;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.project-card.animated-border:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 30px rgba(0, 0, 0, 0.3);
-}
-
-.project-card.animated-border::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0deg,
-    #ffd700 2deg,
-    transparent 10deg,
-    transparent 180deg,
-    #00aeef 182deg,
-    transparent 190deg,
-    transparent 360deg
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  mix-blend-mode: hard-light;
-  pointer-events: none;
-}
-
-.project-card.animated-border:hover::before {
-  opacity: 1;
-  animation: spin 2.5s linear infinite;
-}
-
-.project-card.animated-border::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  top: var(--border-width);
-  left: var(--border-width);
-  width: calc(100% - var(--border-width) * 2);
-  height: calc(100% - var(--border-width) * 2);
-  background: var(--card-bg-color);
-  border-radius: calc(16px - var(--border-width));
-}
-
-.project-card.animated-border .project-image,
-.project-card.animated-border .project-info {
-  position: relative;
-  z-index: 2;
-}
-
-/* --- Contact Section --- */
 .contact-section {
   text-align: center;
   background-color: var(--bg-secondary-color);
@@ -1100,9 +1195,16 @@ html.light-mode .project-tech span {
   color: var(--primary-color);
 }
 
+.project-links .btn {
+  padding: 8px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 /* ==========================================================================
    8. FOOTER
    ========================================================================== */
+
 footer {
   padding: 40px 0;
   text-align: center;
@@ -1140,7 +1242,6 @@ footer .copyright {
   color: var(--text-secondary-color);
 }
 
-/* --- Fancy Button in Footer --- */
 #more-about-me .btn.btn-fancy {
   position: relative;
   overflow: hidden;
@@ -1196,6 +1297,7 @@ footer .copyright {
 /* ==========================================================================
    9. PROJECT DETAIL PAGE STYLES
    ========================================================================== */
+
 main.project-detail-page {
   padding-top: 0;
 }
@@ -1320,31 +1422,37 @@ main.project-detail-page {
 .back-to-projects {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   text-decoration: none;
   color: var(--text-secondary-color);
   font-weight: 700;
   transition: color var(--transition-speed) ease;
+  padding: 20px;
+  margin: 10px;
 }
 
 .back-to-projects svg {
-  width: 52px;
-  height: 52px;
-  transition: transform 0.3s ease;
-  animation: pulse-arrow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  width: 60px;
+  height: 60px;
+  color: var(--primary-color);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+  animation: pulse-arrow-firework 2.5s infinite;
 }
 
 .back-to-projects:hover {
-  color: var(--primary-color);
+  color: #fff;
 }
 
 .back-to-projects:hover svg {
-  transform: translateX(-15px);
+  transform: translateX(-50px) scale(1.6) rotate(-5deg);
+  filter: drop-shadow(0 0 50px var(--primary-color))
+    drop-shadow(0 0 25px #ffd700) drop-shadow(0 0 8px #ffffff);
 }
 
 /* ==========================================================================
    10. CONTACT DRAWER
    ========================================================================== */
+
 .drawer-overlay {
   position: fixed;
   top: 0;
@@ -1575,6 +1683,7 @@ main.project-detail-page {
 /* ==========================================================================
    11. ANIMATIONS & UTILITIES
    ========================================================================== */
+
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -1593,10 +1702,14 @@ main.project-detail-page {
 .project-card.animate-on-scroll:nth-child(4) {
   transition-delay: 0.3s;
 }
+.project-card.is-clickable {
+  cursor: pointer;
+}
 
 /* ==========================================================================
    12. RESPONSIVE STYLES (MEDIA QUERIES)
    ========================================================================== */
+
 @media (min-width: 1440px) {
   .container {
     max-width: 1280px;
@@ -1661,4 +1774,29 @@ main.project-detail-page {
   .nav-item.is-open .submenu {
     gap: 15px;
   }
+}
+
+/* ==========================================================================
+   13. DODGING BUTTON EFFECT
+   ========================================================================== */
+
+.project-links {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-secondary.disabled {
+  transition: margin-left 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), color 0.2s,
+    border-color 0.2s;
+  will-change: margin-left;
+  margin-left: 0;
+  pointer-events: auto;
+  opacity: 0.5;
+}
+
+.btn-secondary.disabled.is-dodging {
+  margin-left: auto;
+  border-color: var(--glitch-red);
+  color: var(--glitch-red);
+  opacity: 1;
 }

@@ -1,13 +1,134 @@
+/* ==========================================================================
+   1. IMPORTS, PROPERTIES & KEYFRAMES
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes pulse-arrow-firework {
+  0%,
+  100% {
+    transform: translateX(0) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(var(--primary-color-rgb), 0.5))
+      drop-shadow(0 0 15px var(--primary-color));
+  }
+  50% {
+    transform: translateX(-20px) scale(1.4);
+    filter: drop-shadow(0 0 25px var(--primary-color))
+      drop-shadow(0 0 40px rgba(var(--primary-color-rgb), 0.7))
+      drop-shadow(0 0 5px #fff);
+  }
+}
+
+@keyframes dissolve-out {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(8px);
+  }
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(15% 0 86% 0);
+  }
+  20% {
+    clip-path: inset(50% 0 49% 0);
+  }
+  40% {
+    clip-path: inset(23% 0 78% 0);
+  }
+  60% {
+    clip-path: inset(78% 0 20% 0);
+  }
+  80% {
+    clip-path: inset(95% 0 2% 0);
+  }
+  100% {
+    clip-path: inset(45% 0 53% 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(80% 0 1% 0);
+  }
+  20% {
+    clip-path: inset(18% 0 83% 0);
+  }
+  40% {
+    clip-path: inset(98% 0 2% 0);
+  }
+  60% {
+    clip-path: inset(33% 0 65% 0);
+  }
+  80% {
+    clip-path: inset(62% 0 35% 0);
+  }
+  100% {
+    clip-path: inset(4% 0 95% 0);
+  }
+}
+
+@keyframes blink-cursor {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}
+
+/* ==========================================================================
+   2. ROOT VARIABLES & THEMES
+   ========================================================================== */
 :root {
   /* Kolory dla motywu ciemnego (domyślny) */
   --bg-color: #050505;
@@ -21,14 +142,14 @@
   --primary-color: #e7e7e7;
   --main-button: #961f4c;
   --secondary-color: #ff00ff;
-  --glitch-cyan: #270cc0; /* Zmieniono, aby pasowało do ciemnego motywu */
+  --glitch-cyan: #270cc0;
   --glitch-red: #ff0055;
   --shadow-color: rgba(207, 200, 200, 0.2);
   --shadow-color2: #051d49d0;
   --transition-speed: 0.3s;
   --project-techs: #ffffff;
   --photo-shadow: #ffffff8a;
-  --primary-color-rgb: 76, 175, 80; /* Używane w box-shadow dla focus */
+  --primary-color-rgb: 76, 175, 80;
   --projects-border: #1a3f91;
   --most-important-p: #8380ac;
 
@@ -79,7 +200,17 @@ html.light-mode {
   --btn-text-color: #ffffff;
 }
 
-/* --- USTAWIENIA GLOBALNE --- */
+/* ==========================================================================
+   3. GLOBAL STYLES & RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: var(--font-size-base);
@@ -100,38 +231,15 @@ body.drawer-open {
   overflow: hidden;
 }
 
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes spin {
-  from {
-    --angle: 0deg;
-  }
-  to {
-    --angle: 360deg;
-  }
-}
-@keyframes pulse-arrow {
-  0%,
-  100% {
-    transform: translateX(0) scale(1);
-    filter: drop-shadow(0 0 4px rgba(var(--primary-color-rgb), 0));
-  }
-  50% {
-    transform: translateX(-6px) scale(1.15);
-    filter: drop-shadow(0 0 12px var(--primary-color));
-  }
-}
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 5vw, 2.5rem);
 }
 
+/* ==========================================================================
+   4. PRELOADER & PAGE TRANSITION
+   ========================================================================== */
 #preloader {
   position: fixed;
   top: 0;
@@ -167,15 +275,6 @@ body.drawer-open {
   animation: dissolve-out 0.5s ease-out forwards;
 }
 
-@keyframes dissolve-out {
-  to {
-    opacity: 0;
-    transform: scale(1.1);
-    filter: blur(8px);
-  }
-}
-
-/* --- Ukrywanie/Pokazywanie Głównej Treści --- */
 #page-content.hidden {
   visibility: hidden;
 }
@@ -185,16 +284,9 @@ body.drawer-open {
   animation: fadeInPage 0.5s ease-in;
 }
 
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* --- NAGŁÓWEK --- */
+/* ==========================================================================
+   5. HEADER & NAVIGATION
+   ========================================================================== */
 header {
   position: sticky;
   top: 0;
@@ -245,6 +337,7 @@ header .container {
   gap: 15px;
 }
 
+/* --- Hamburger Menu --- */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -280,7 +373,7 @@ header .container {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* --- PRZEŁĄCZNIK MOTYWU --- */
+/* --- Theme Toggle Switch --- */
 .theme-toggle {
   background: none;
   border: none;
@@ -305,20 +398,17 @@ header .container {
 .sun-icon {
   display: none;
 }
-
 .moon-icon {
   display: block;
 }
-
 html.light-mode .sun-icon {
   display: block;
 }
-
 html.light-mode .moon-icon {
   display: none;
 }
 
-/* --- NAKŁADKA MENU MOBILE --- */
+/* --- Overlay Mobile Navigation --- */
 .overlay-nav {
   position: fixed;
   top: 0;
@@ -398,7 +488,200 @@ html.light-mode .moon-icon {
   transform: scaleX(1);
 }
 
-/* --- HERO SECTION --- */
+/* --- Navigation Submenu --- */
+.nav-item.has-submenu {
+  text-align: center;
+  width: 100%;
+}
+
+.submenu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.submenu-toggle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.submenu-toggle:hover::after {
+  transform: scaleX(1);
+}
+
+.submenu-arrow {
+  width: 28px;
+  height: 28px;
+  color: currentColor;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+.submenu-toggle:hover .submenu-arrow {
+  transform: scale(1.15);
+}
+
+.nav-item.is-open .submenu-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-item.is-open .submenu-toggle:hover .submenu-arrow {
+  transform: rotate(180deg) scale(1.15);
+}
+
+.submenu {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out,
+    visibility 0s 0.4s, margin-top 0.4s ease-in-out;
+  margin-top: 0;
+  padding: 0 15px;
+}
+
+.nav-item.is-open .submenu {
+  max-height: 250px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.submenu a {
+  font-size: 1.1rem;
+  background-color: transparent;
+  font-weight: 400;
+  color: var(--text-secondary-color);
+  padding: 12px;
+  border: 2px solid var(--projects-border);
+  border-radius: 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submenu a:hover {
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submenu a::after {
+  display: none;
+}
+
+.submenu a.disabled {
+  color: var(--text-secondary-color);
+  border-color: var(--text-secondary-color);
+  opacity: 0.5;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   6. REUSABLE COMPONENTS (Buttons, Section Titles)
+   ========================================================================== */
+.btn {
+  padding: 12px 60px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--main-button);
+  color: #fffcfc;
+  box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px var(--shadow-color);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: #050505;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px var(--shadow-color);
+}
+
+.btn-secondary.disabled {
+  color: var(--text-secondary-color);
+  border-color: var(--text-secondary-color);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+section {
+  padding: clamp(60px, 10vw, 120px) 0;
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin: 0 auto 60px auto;
+  color: var(--text-color);
+  position: relative;
+  display: block;
+  text-align: center;
+  width: fit-content;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background-color: var(--nav-color);
+  bottom: -10px;
+  left: 20%;
+}
+
+/* ==========================================================================
+   7. PAGE SECTIONS
+   ========================================================================== */
+/* --- Hero Section --- */
 .hero {
   min-height: calc(100vh - var(--header-height));
   display: flex;
@@ -423,15 +706,6 @@ html.light-mode .moon-icon {
       transparent 50px
     );
   animation: moveGrid 10s linear infinite;
-}
-
-@keyframes moveGrid {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 50px 50px;
-  }
 }
 
 .hero-content {
@@ -475,64 +749,12 @@ html.light-mode .moon-icon {
   animation: glitch-anim-2 2s infinite linear alternate-reverse;
 }
 
-@keyframes glitch-anim-1 {
-  0% {
-    clip-path: inset(15% 0 86% 0);
-  }
-  20% {
-    clip-path: inset(50% 0 49% 0);
-  }
-  40% {
-    clip-path: inset(23% 0 78% 0);
-  }
-  60% {
-    clip-path: inset(78% 0 20% 0);
-  }
-  80% {
-    clip-path: inset(95% 0 2% 0);
-  }
-  100% {
-    clip-path: inset(45% 0 53% 0);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(80% 0 1% 0);
-  }
-  20% {
-    clip-path: inset(18% 0 83% 0);
-  }
-  40% {
-    clip-path: inset(98% 0 2% 0);
-  }
-  60% {
-    clip-path: inset(33% 0 65% 0);
-  }
-  80% {
-    clip-path: inset(62% 0 35% 0);
-  }
-  100% {
-    clip-path: inset(4% 0 95% 0);
-  }
-}
-
 .hero h1 span::after {
   content: '_';
   margin-left: 0.2em;
   font-weight: 700;
   animation: blink-cursor 1s step-end infinite;
   color: var(--text-color);
-}
-
-@keyframes blink-cursor {
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
 }
 
 .hero .subtitle {
@@ -543,86 +765,12 @@ html.light-mode .moon-icon {
   color: var(--text-secondary-color);
 }
 
-/* --- PRZYCISKI --- */
-.btn {
-  padding: 12px 60px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  display: inline-block;
-  border: 2px solid transparent;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background-color: var(--main-button);
-  color: #fffcfc;
-  box-shadow: 0 0 20px var(--shadow-color);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 25px var(--shadow-color);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-.btn-secondary:hover {
-  background-color: var(--primary-color);
-  color: #050505;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 25px var(--shadow-color);
-}
-
-.btn-secondary.disabled {
-  color: var(--text-secondary-color);
-  border-color: var(--text-secondary-color);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-/* --- OGÓLNE STYLE SEKCJI --- */
-section {
-  padding: clamp(60px, 10vw, 120px) 0;
-}
-
-.section-title {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  margin: 0 auto 60px auto;
-  color: var(--text-color);
-  position: relative;
-  display: block;
-  text-align: center;
-  width: fit-content;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 3px;
-  background-color: var(--nav-color);
-  bottom: -10px;
-  left: 20%;
-}
-
-/* --- SEKCJE TEMATYCZNE --- */
-.about-section,
-.contact-section,
-.project-hero {
-  background-color: var(--bg-secondary-color);
-}
-
+/* --- About Section --- */
 .about-section {
   min-height: calc(100vh - var(--header-height));
   display: grid;
   place-items: center;
+  background-color: var(--bg-secondary-color);
 }
 
 .about-content {
@@ -661,6 +809,11 @@ section {
   max-width: 60ch;
 }
 
+#most-important {
+  font-weight: 700;
+  color: var(--most-important-p);
+}
+
 .about-motto {
   text-align: right;
   font-size: 0.8rem;
@@ -672,7 +825,7 @@ section {
   text-transform: uppercase;
 }
 
-/* --- SEKCJA UMIEJĘTNOŚCI --- */
+/* --- Skills Section --- */
 .skills-legend {
   display: flex;
   justify-content: center;
@@ -766,7 +919,7 @@ section {
   background-color: var(--color-visualization-hover);
 }
 
-/* --- SEKCJA PROJEKTÓW --- */
+/* --- Projects Section --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -852,15 +1005,18 @@ html.light-mode .project-tech span {
   margin-top: auto;
   align-items: center;
 }
-
-/* --- ANIMOWANY BORDER DLA KART PROJEKTÓW --- */
+/* --- WKLEJ TEN POPRAWNY KOD --- */
+/* --- Animated Border for Project Cards --- */
 .project-card.animated-border {
   --border-width: 3px;
   position: relative;
-  border: none;
+  border: none; /* Usuwamy standardowy border, bo stworzymy własny */
   border-radius: 16px;
-  overflow: hidden;
+  overflow: hidden; /* Ukrywa wszystko, co wychodzi poza zaokrąglone rogi */
   cursor: pointer;
+
+  /* Nadal zachowujemy fajny efekt podniesienia */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card.animated-border:hover {
@@ -868,61 +1024,68 @@ html.light-mode .project-tech span {
   box-shadow: 0 25px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* WARSTWA 1: Wirujący gradient (to jest nasz border) */
 .project-card.animated-border::before {
   content: '';
   position: absolute;
-  top: -3px; /* Pozycja dopasowana do grubości bordera */
-  left: -3px;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  border-radius: inherit; /* Dziedziczy zaokrąglenie z karty */
+  z-index: 0; /* Najniższa warstwa */
 
-  /* Gradient z dwoma świetlnymi smugami */
+  /* Rozciągamy ją, żeby była trochę większa niż karta, tworząc miejsce na border */
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+
+  /* KLUCZ DO SUKCESU: Gradient stożkowy z dwoma "kometami" */
   background: conic-gradient(
     from var(--angle),
-    transparent 0deg,
+    /* --angle będzie animowane od 0 do 360deg */ transparent 0deg,
     #ffd700 2deg,
-    transparent 10deg,
-    transparent 180deg,
-    #00aeef 182deg,
-    transparent 190deg,
-    transparent 360deg
+    /* Kometa 1 (żółta): GŁOWA */ transparent 15deg,
+    /* Kometa 1: KONIEC OGONA */ transparent 180deg,
+    /* Pusta przestrzeń */ #00aeef 182deg,
+    /* Kometa 2 (niebieska): GŁOWA */ transparent 195deg,
+    /* Kometa 2: KONIEC OGONA */ transparent 360deg
   );
 
+  /* Na starcie border jest niewidoczny */
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 
-  /* KLUCZ DO SUKCESU: Mieszamy gradient z tym, co jest pod nim (czyli z borderem) */
-  mix-blend-mode: hard-light;
-
-  /* Zapobiega blokowaniu kliknięć i innych interakcji z kartą */
-  pointer-events: none;
+  border-radius: inherit; /* Dziedziczy zaokrąglenie z karty */
 }
 
+/* Po najechaniu myszką, border się pojawia i zaczyna wirować */
 .project-card.animated-border:hover::before {
   opacity: 1;
   animation: spin 2.5s linear infinite;
 }
 
+/* WARSTWA 2: Maska (zakrywa środek wirującego gradientu) */
 .project-card.animated-border::after {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 1; /* Warstwa nad gradientem, ale pod treścią */
+
+  /* Idealnie dopasowana do wnętrza karty */
   top: var(--border-width);
   left: var(--border-width);
   width: calc(100% - var(--border-width) * 2);
   height: calc(100% - var(--border-width) * 2);
-  background: var(--card-bg-color); /* POPRAWIONO: użyto istniejącej zmiennej */
+
+  background: var(--card-bg-color); /* Ma kolor tła karty */
+
+  /* Zaokrąglenie musi być mniejsze o grubość borderu */
   border-radius: calc(16px - var(--border-width));
 }
 
+/* WARSTWA 3: Treść karty (obrazek, tekst) */
 .project-card.animated-border .project-image,
 .project-card.animated-border .project-info {
-  position: relative;
-  z-index: 2;
+  position: relative; /* Musi mieć position, żeby z-index zadziałał */
+  z-index: 2; /* Najwyższa warstwa, widoczna dla użytkownika */
 }
-
-/* --- SEKCJA KONTAKTOWA --- */
+/* --- Contact Section --- */
 .contact-section {
   text-align: center;
   background-color: var(--bg-secondary-color);
@@ -956,7 +1119,9 @@ html.light-mode .project-tech span {
   color: var(--primary-color);
 }
 
-/* --- FOOTER --- */
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
 footer {
   padding: 40px 0;
   text-align: center;
@@ -994,7 +1159,7 @@ footer .copyright {
   color: var(--text-secondary-color);
 }
 
-/* --- ULEPSZONY PRZYCISK W FOOTERZE --- */
+/* --- Fancy Button in Footer --- */
 #more-about-me .btn.btn-fancy {
   position: relative;
   overflow: hidden;
@@ -1047,32 +1212,9 @@ footer .copyright {
   outline-offset: 3px;
 }
 
-#most-important {
-  font-weight: 700;
-  color: var(--most-important-p);
-}
-
-/* --- ANIMACJE NA SCROLL --- */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.project-card.animate-on-scroll:nth-child(2) {
-  transition-delay: 0.1s;
-}
-.project-card.animate-on-scroll:nth-child(3) {
-  transition-delay: 0.2s;
-}
-.project-card.animate-on-scroll:nth-child(4) {
-  transition-delay: 0.3s;
-}
-
-/* --- STYLE STRONY SZCZEGÓŁOWEJ PROJEKTU --- */
+/* ==========================================================================
+   9. PROJECT DETAIL PAGE STYLES
+   ========================================================================== */
 main.project-detail-page {
   padding-top: 0;
 }
@@ -1081,6 +1223,7 @@ main.project-detail-page {
   padding: 80px 0;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary-color);
 }
 
 .project-title {
@@ -1196,154 +1339,46 @@ main.project-detail-page {
 .back-to-projects {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px; /* Trochę więcej miejsca */
   text-decoration: none;
   color: var(--text-secondary-color);
   font-weight: 700;
   transition: color var(--transition-speed) ease;
+  /* Dajemy kontenerowi trochę paddingu, żeby ogon się zmieścił i nie został ucięty */
+  padding: 20px;
+  margin: 10px; /* Dodatkowy margines dla bezpieczeństwa */
 }
 
 .back-to-projects svg {
-  width: 38px;
-  height: 38px;
-  transition: transform 0.3s ease;
-  animation: pulse-arrow 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  /* OGROMNY ROZMIAR PODSTAWOWY */
+  width: 60px;
+  height: 60px;
+  color: var(--primary-color); /* Strzałka sama w sobie ma kolor główny */
+
+  /* PŁYNNE PRZEJŚCIE DO EFEKTU SUPERNOVEJ */
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  /* Podpinamy nową animację */
+  animation: pulse-arrow-firework 2.5s infinite;
 }
 
 .back-to-projects:hover {
-  color: var(--primary-color);
+  color: #fff; /* Przy takim wybuchu tekst też musi być jaśniejszy */
 }
 
 .back-to-projects:hover svg {
-  transform: translateX(-8px);
+  /* STRZAŁKA WYSTRZELA DO PRZODU JAK RAKIETA */
+  transform: translateX(-50px) scale(1.6) rotate(-5deg);
+
+  /* A TERAZ PRAWDZIWY OGIEŃ - OGON KOMETY (POPRAWIONA SKŁADNIA) */
+  filter: drop-shadow(0 0 50px var(--primary-color))
+    /* Główny, gigantyczny, rozmyty blask */ drop-shadow(0 0 25px #ffd700)
+    /* Drugi, ognisty blask (złoty/żółty) */ drop-shadow(0 0 8px #ffffff); /* Biały, gorący rdzeń wokół strzałki */
 }
 
-.nav-item.has-submenu {
-  text-align: center;
-  width: 100%;
-}
-
-.submenu-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: inherit; /* Dziedziczy font z linków */
-  font-size: 2rem;
-  color: var(--text-color);
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 8px;
-  transition: color 0.3s ease;
-}
-
-.submenu-toggle::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary-color);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.submenu-toggle:hover::after {
-  transform: scaleX(1);
-}
-
-.submenu-arrow {
-  width: 22px;
-  height: 22px;
-  color: currentColor;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-item.is-open .submenu-arrow {
-  transform: rotate(180deg);
-}
-
-.submenu {
-  max-height: 0;
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out,
-    visibility 0s 0.4s, margin-top 0.4s ease-in-out;
-  margin-top: 0;
-  padding: 0 15px;
-}
-
-.nav-item.is-open .submenu {
-  max-height: 250px;
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-}
-
-.submenu a {
-  font-size: 1.1rem;
-  background-color: transparent;
-  font-weight: 400;
-  color: var(--text-secondary-color);
-  padding: 12px;
-  border: 2px solid var(--projects-border);
-  border-radius: 25px;
-  text-align: center;
-  transform: translateY(0);
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.submenu a:hover {
-  text-decoration: none;
-  background-color: var(--primary-color);
-  color: var(--bg-color);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.submenu a::after {
-  display: none;
-}
-
-.submenu a.disabled {
-  color: var(--text-secondary-color);
-  border-color: var(--text-secondary-color);
-  opacity: 0.5;
-  pointer-events: none;
-  transform: none;
-  box-shadow: none;
-}
-
-/* --- CONTACT DRAWER --- */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
-  }
-  70% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
-  }
-}
-
+/* ==========================================================================
+   10. CONTACT DRAWER
+   ========================================================================== */
 .drawer-overlay {
   position: fixed;
   top: 0;
@@ -1558,8 +1593,8 @@ main.project-detail-page {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--primary-color); /* Zmieniono na istniejącą zmienną */
-  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2); /* POPRAWIONO */
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
 }
 
 .contact-form textarea {
@@ -1571,7 +1606,31 @@ main.project-detail-page {
   padding: 1rem;
 }
 
-/* --- STYLE RESPONSIVE (MEDIA QUERIES) --- */
+/* ==========================================================================
+   11. ANIMATIONS & UTILITIES
+   ========================================================================== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.project-card.animate-on-scroll:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.project-card.animate-on-scroll:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.project-card.animate-on-scroll:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE STYLES (MEDIA QUERIES)
+   ========================================================================== */
 @media (min-width: 1440px) {
   .container {
     max-width: 1280px;

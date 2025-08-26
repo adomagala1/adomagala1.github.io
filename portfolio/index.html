@@ -136,6 +136,46 @@
           <a href="#" class="logo">adomagala</a>
 
           <div class="header-controls">
+            <!-- ====================================== -->
+            <!-- NOWY PRZYCISK ZMIANY JĘZYKA DODANY TUTAJ -->
+            <!-- ====================================== -->
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button class="lang-option" data-lang="pl">Polski</button>
+                </li>
+                <li>
+                  <button class="lang-option" data-lang="en">English</button>
+                </li>
+              </ul>
+            </div>
+            <!-- ====================================== -->
+            <!-- KONIEC NOWEGO PRZYCISKU               -->
+            <!-- ====================================== -->
+
             <button class="theme-toggle" aria-label="Przełącz motyw"></button>
             <button
               class="hamburger"
@@ -156,35 +196,44 @@
         <section class="hero">
           <div class="hero-content">
             <h1 data-text="Analityk Danych & Python">
-              <span>Analityk Danych & Python</span>
+              <span data-translate-key="heroTitle"
+                >Analityk Danych & Python</span
+              >
             </h1>
-            <p class="subtitle">
+            <p class="subtitle" data-translate-key="heroSubtitle">
               Posiadam umiejętności, i podejście, które twojej firmie się
               spodobają
             </p>
-            <a href="#about" class="btn btn-primary">O mnie</a>
+            <a
+              href="#about"
+              class="btn btn-primary"
+              data-translate-key="heroButton"
+              >O mnie</a
+            >
           </div>
         </section>
         <section id="about" class="about-section">
           <div class="container animate-on-scroll">
-            <h2 class="section-title">O Mnie</h2>
+            <h2 class="section-title" data-translate-key="aboutSectionTitle">
+              O Mnie
+            </h2>
             <div class="about-content">
               <div class="about-image">
                 <img src="/assets/ad3.png" alt="Zdjęcie Adrian Domagała" />
               </div>
               <div class="about-text">
-                <h3>
+                <h3 data-translate-key="aboutGreeting">
                   Cześc, tu Adrian Domagała.<br />
                   Tak właściwie, dlaczego tutaj jestes? <br />
                   - Już tłumaczę
                 </h3>
-                <p>
+                <p data-translate-key="aboutP1">
                   Szczerze - jestem młodą osobą z technikum programistycznego
                   interesującą się analizą danych i rynkiem IT, nie mam
                   dziesięciu lat doświadczenia na rynku ale mam konretne
                   założenia i cele.
                 </p>
-                <p>
+                <p data-translate-key="aboutP2">
                   Aktualnie moim najwiekszym jest wejście na rynek pracy i
                   zdobywanie realnego doświadczenia - ale, co ważniejsze to
                   <b>zdobycie odpowiedniego miejsca na rozwój </b> swoich pasji
@@ -197,10 +246,9 @@
                   jest troszkę ciężka. Ale z natury jestem upartym więc robie
                   swoje Aktualnie, nie brzmi to jak odpowiedź na pytanie w
                   nagłówku, więc już wracam do odpowiedzi na temat.
-
-                  <br />
-                  <br />
-                  <span id="most-important">
+                </p>
+                <p>
+                  <span id="most-important" data-translate-key="aboutP3">
                     Szukam firmy, która zauważy a przede wszystkim uwierzy w mój
                     potencjał oraz zapewni mi miejsce na rozwój tak by po
                     powrocie z technikum pracować i tak aby to była sytuacja
@@ -208,7 +256,9 @@
                   </span>
                 </p>
 
-                <p class="about-motto">Analizuję. Przewiduję. Wygrywam.</p>
+                <p class="about-motto" data-translate-key="aboutMotto">
+                  Analizuję. Przewiduję. Wygrywam.
+                </p>
               </div>
             </div>
           </div>
@@ -216,7 +266,9 @@
 
         <section id="skills" class="skills-section">
           <div class="container animate-on-scroll">
-            <h2 class="section-title">Technologie i Narzędzia</h2>
+            <h2 class="section-title" data-translate-key="skillsSectionTitle">
+              Technologie i Narzędzia
+            </h2>
 
             <!-- LEGENDA KATEGORII -->
             <div class="skills-legend">
@@ -225,28 +277,32 @@
                   class="legend-dot"
                   style="background-color: #9c27b0"
                 ></span
-                >Bazy Danych
+                ><span data-translate-key="skillsLegendDB">Bazy Danych</span>
               </div>
               <div class="legend-item">
                 <span
                   class="legend-dot"
                   style="background-color: #2196f3"
                 ></span
-                >Analiza Danych
+                ><span data-translate-key="skillsLegendAnalysis"
+                  >Analiza Danych</span
+                >
               </div>
               <div class="legend-item">
                 <span
                   class="legend-dot"
                   style="background-color: #ff9800"
                 ></span
-                >Machine Learning
+                ><span data-translate-key="skillsLegendML"
+                  >Machine Learning</span
+                >
               </div>
               <div class="legend-item">
                 <span
                   class="legend-dot"
                   style="background-color: #4caf50"
                 ></span
-                >Wizualizacja
+                ><span data-translate-key="skillsLegendViz">Wizualizacja</span>
               </div>
             </div>
             <div class="skills-box-container">
@@ -284,15 +340,22 @@
         <!-- SEKCJA PROJEKTY -->
         <section id="projects" class="projects-section">
           <div class="container">
-            <h2 class="section-title animate-on-scroll">Wybrane Projekty</h2>
+            <h2
+              class="section-title animate-on-scroll"
+              data-translate-key="projectsSectionTitle"
+            >
+              Wybrane Projekty
+            </h2>
             <div class="projects-grid">
               <div class="project-card animate-on-scroll animated-border">
                 <div class="project-image">
                   <!-- <img src="https://placehold.co/600x400" alt="1" /> -->
                 </div>
                 <div class="project-info">
-                  <h3>Interaktywny Dashboard Sprzedażowy</h3>
-                  <p>
+                  <h3 data-translate-key="project1Title">
+                    Interaktywny Dashboard Sprzedażowy
+                  </h3>
+                  <p data-translate-key="project1Desc">
                     Stworzenie dashboardu do monitorowania kluczowych wskaźników
                     (KPI) dla firmy e-commerce, co pozwoliło na optymalizację
                     strategii.
@@ -302,7 +365,10 @@
                     ><span>Plotly</span><span>Dash</span>
                   </div>
                   <div class="project-links">
-                    <a href="projekt-dashboard.html" class="btn btn-secondary"
+                    <a
+                      href="projekt-dashboard.html"
+                      class="btn btn-secondary"
+                      data-translate-key="project1Button"
                       >Zobacz Case Study</a
                     >
                   </div>
@@ -315,8 +381,10 @@
                   <!-- <img src="https://placehold.co/600x400" alt="2" /> -->
                 </div>
                 <div class="project-info">
-                  <h3>Analiza Sentymentu Recenzji</h3>
-                  <p>
+                  <h3 data-translate-key="project2Title">
+                    Analiza Sentymentu Recenzji
+                  </h3>
+                  <p data-translate-key="project2Desc">
                     Model NLP do automatycznej kategoryzacji recenzji klientów.
                     Wykorzystałem Scikit-learn do trenowania klasyfikatora.
                   </p>
@@ -325,7 +393,10 @@
                     ><span>Scikit-learn</span>
                   </div>
                   <div class="project-links">
-                    <a href="#" class="btn btn-secondary disabled"
+                    <a
+                      href="#"
+                      class="btn btn-secondary disabled"
+                      data-translate-key="project2Button"
                       >Case Study wkrótce</a
                     >
                   </div>
@@ -338,14 +409,17 @@
         <!-- SEKCJA KONTAKTOWA -->
         <section id="contact" class="contact-section">
           <div class="container animate-an-scroll">
-            <h2 class="section-title">Nawiążmy Kontakt</h2>
-            <p class="contact-subtitle">
+            <h2 class="section-title" data-translate-key="contactSectionTitle">
+              Nawiążmy Kontakt
+            </h2>
+            <p class="contact-subtitle" data-translate-key="contactSubtitle">
               Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty
               na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.
             </p>
             <a
               href="mailto:ad220022work@gmail.pl"
               class="btn btn-primary contact-button"
+              data-translate-key="contactButton"
               >Napisz Wiadomość</a
             >
 
@@ -571,16 +645,24 @@
       </div>
       <footer>
         <div class="container">
-          <!-- <div id="more-about-me">
-            <p>
+          <div id="more-about-me">
+            <p data-translate-key="footerEssayText">
               Jeśli jesteś osobą, której się nudzi bądź jest zainteresowana tym
               co mam w głowie, np. do rozwoju lub by rozszerzyć swoje horyzonty,
               to zapraszam tutaj.
             </p>
-            <a href="esseys.html" id="more-from-me" class="btn btn-fancy">Esseje</button>
-          </div> -->
+            <a
+              href="esseys.html"
+              id="more-from-me"
+              class="btn btn-fancy"
+              data-translate-key="footerEssayButton"
+              >Esseje</a
+            >
+          </div>
 
-          <p class="copyright">&copy; 2025 Adrian Domagała</p>
+          <p class="copyright" data-translate-key="footerCopyright">
+            &copy; 2025 Adrian Domagała
+          </p>
         </div>
       </footer>
     </div>
