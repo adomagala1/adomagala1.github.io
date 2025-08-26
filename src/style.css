@@ -164,6 +164,7 @@
   --color-analysis: #2196f3;
   --color-ml: #ff9800;
   --color-visualization: #4caf50;
+  --color-web: #f44336;
 
   --color-database-hover: rgba(156, 39, 176, 0.15);
   --color-analysis-hover: rgba(33, 150, 243, 0.15);
@@ -999,6 +1000,9 @@ section {
 }
 .skill-item[data-category='visualization'] {
   border-color: var(--color-visualization);
+}
+.skill-item[data-category='web'] {
+  border-color: var(--color-web);
 }
 
 .skill-item:hover {
