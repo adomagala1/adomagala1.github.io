@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>
+      Case Study: Interaktywny Dashboard Sprzedażowy - Adrian Domagała
+    </title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="page-content" class="visible">
+      <!-- NAGŁÓWEK - Teraz spójny ze stroną główną -->
+      <header>
+        <div class="container">
+          <a href="index.html" class="logo">adomagala</a>
+          <div class="header-controls">
+            <button class="theme-toggle" aria-label="Przełącz motyw"></button>
+            <button
+              class="hamburger"
+              id="hamburger-menu"
+              aria-label="Otwórz menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Nakładka menu mobilnego (wypełniana przez script.js) -->
+      <div id="overlay-menu" class="overlay-nav"></div>
+
+      <main class="project-detail-page">
+        <section class="project-hero">
+          <div class="container animate-on-scroll">
+            <h1 class="project-title">Interaktywny Dashboard Sprzedażowy</h1>
+            <p class="project-subtitle">
+              Analiza i wizualizacja wskaźników KPI dla sektora e-commerce w
+              czasie rzeczywistym.
+            </p>
+            <div class="project-main-image">
+              <img
+                src="https://placehold.co/1200x600/0a0a0a/00f7ff?text=GŁÓWNY+OBRAZ+PROJEKTU"
+                alt="Główny widok dashboardu sprzedażowego"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="project-content">
+          <div class="container animate-on-scroll">
+            <div class="project-grid-layout">
+              <aside class="project-meta">
+                <div class="meta-block">
+                  <h3>Cel Projektu</h3>
+                  <p>
+                    Stworzenie narzędzia, które pozwoli działowi marketingu i
+                    sprzedaży na bieżąco śledzić efektywność kampanii, konwersję
+                    i zachowania klientów.
+                  </p>
+                </div>
+                <div class="meta-block">
+                  <h3>Użyte Technologie</h3>
+                  <div class="project-tech">
+                    <span>Python</span><span>Pandas</span><span>SQL</span
+                    ><span>Plotly</span><span>Dash</span>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <h3>Linki</h3>
+                  <div class="project-links-detail">
+                    <a href="#" target="_blank" class="btn btn-primary"
+                      >Zobacz Live Demo</a
+                    >
+                    <a href="#" target="_blank" class="btn btn-secondary"
+                      >Kod na GitHub</a
+                    >
+                  </div>
+                </div>
+              </aside>
+
+              <article class="project-description">
+                <h2>Proces i Wyzwania</h2>
+                <p>
+                  Projekt rozpoczął się od zdefiniowania kluczowych metryk
+                  biznesowych (KPI) wspólnie z zespołem klienta. Największym
+                  wyzwaniem było połączenie danych z wielu źródeł: bazy danych
+                  PostgreSQL, plików CSV z systemów reklamowych oraz API Google
+                  Analytics.
+                </p>
+
+                <h3>1. Czyszczenie i Przygotowanie Danych</h3>
+                <p>
+                  Surowe dane zawierały wiele niespójności, braków i duplikatów.
+                  Użyłem biblioteki <strong>Pandas</strong> do zautomatyzowania
+                  procesu czyszczenia, co pozwoliło na ustandaryzowanie formatów
+                  i przygotowanie spójnego zbioru danych do analizy.
+                </p>
+
+                <figure>
+                  <img
+                    src="https://placehold.co/800x450/121212/e0e0e0?text=Wykres+Przed+i+Po+Czyszczeniu"
+                    alt="Wykres pokazujący dane przed i po czyszczeniu"
+                  />
+                  <figcaption>
+                    Porównanie dystrybucji danych przed i po procesie
+                    czyszczenia.
+                  </figcaption>
+                </figure>
+
+                <h3>2. Tworzenie Interaktywnych Wizualizacji</h3>
+                <p>
+                  Kluczowe było stworzenie wizualizacji, które są nie tylko
+                  estetyczne, ale przede wszystkim czytelne i pozwalają na łatwe
+                  filtrowanie danych. Wykorzystałem
+                  <strong>Plotly & Dash</strong>, aby zbudować aplikację webową
+                  umożliwiającą dynamiczną interakcję z wykresami.
+                </p>
+                d
+
+                <h2>Wyniki i Wpływ na Biznes</h2>
+                <p>
+                  Wdrożenie dashboardu pozwoliło na skrócenie czasu potrzebnego
+                  na przygotowanie tygodniowych raportów o
+                  <strong>75%</strong>. Zespół marketingowy, dzięki szybszemu
+                  dostępowi do danych, mógł efektywniej optymalizować kampanie,
+                  co przełożyło się na
+                  <strong>oszczędności rzędu 15%</strong> miesięcznego budżetu
+                  reklamowego przy zachowaniu tej samej skali sprzedaży.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <nav class="project-navigation">
+          <div class="container">
+            <a href="index.html#projects" class="back-to-projects">
+              <!-- Lepsza, bardziej intuicyjna ikona strzałki -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 12H5m7 7l-7-7 7-7" />
+              </svg>
+              <span>Wszystkie Projekty</span>
+            </a>
+          </div>
+        </nav>
+      </main>
+
+      <footer>
+        <div class="container">
+          <p>&copy; 2025 Adrian Domagała</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

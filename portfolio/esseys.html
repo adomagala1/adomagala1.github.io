@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Eseje | Adrian Domagała - Analityk Danych & Python Developer</title>
+
+    <meta
+      name="description"
+      content="Zbiór esejów i przemyśleń Adriana Domagały na tematy związane z analizą danych, technologią, AI i rozwojem w branży IT."
+    />
+    <meta name="author" content="Adrian Domagała" />
+    <meta
+      name="keywords"
+      content="eseje, blog, analiza danych, AI, machine learning, technologia, rozwój kariery, Adrian Domagała"
+    />
+
+    <link rel="canonical" href="https://adomagala1.github.io/esseys.html" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:title" content="Eseje | Adrian Domagała" />
+    <meta property="og:description" content="Przemyślenia na tematy zwiazane z
+    IT ale glownie to moje przekminy />
+    <meta
+      property="og:url"
+      content="https://adomagala1.github.io/esseys.html"
+    />
+    <meta
+      property="og:image"
+      content="https://adomagala1.github.io/assets/images/social-preview.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="esseys.css" />
+
+    <script>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <!-- UWAGA: Usunęliśmy preloader z tej podstrony dla szybszej nawigacji -->
+    <div id="page-content" class="visible">
+      <!-- NAGŁÓWEK (DOKŁADNIE TEN SAM CO NA STRONIE GŁÓWNEJ) -->
+      <header>
+        <div class="container">
+          <a href="index.html" class="logo">adomagala</a>
+          <div class="header-controls">
+            <button class="theme-toggle" aria-label="Przełącz motyw"></button>
+            <button
+              class="hamburger"
+              id="hamburger-menu"
+              aria-label="Otwórz menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div id="overlay-menu" class="overlay-nav"></div>
+
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h1><span>Eseje i Przekminki</span></h1>
+            <p class="subtitle">
+              Szczerze - chciałbym powiedzieć, że to będą ciekawe przemyślenia,
+              ale to wszystko zależy od nastawienia czytelnika.
+            </p>
+          </div>
+        </section>
+
+        <section id="essays-list" class="essays-section">
+          <div class="container">
+            <h2 class="section-title">Wszystkie Wpisy</h2>
+            <div class="essays-grid">
+              <div class="essay-card animate-on-scroll">
+                <h3>xyz</h3>
+                <p class="essay-meta">Opublikowano: 21.08.2026</p>
+                <p class="essay-excerpt">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Soluta perferendis eius esse aperiam corrupti, voluptatibus
+                  dolorum fugiat deserunt earum. Delectus quisquam eum dolorum
+                  quod quibusdam similique beatae blanditiis assumenda pariatur.
+                </p>
+                <div class="essay-links">
+                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                </div>
+              </div>
+
+              <div class="essay-card animate-on-scroll">
+                <h3>abc</h3>
+                <p class="essay-meta">....</p>
+                <p class="essay-excerpt">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Cumque voluptatem totam, accusamus, aperiam repellat
+                  aspernatur nihil saepe ut veniam sed deleniti. Commodi, itaque
+                  debitis est tempora quia alias sit libero?
+                </p>
+                <div class="essay-links">
+                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                </div>
+              </div>
+
+              <div class="essay-card animate-on-scroll">
+                <h3>1234</h3>
+                <p class="essay-meta">...</p>
+                <p class="essay-excerpt">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Provident eius rem voluptate dolorum, culpa saepe cumque id
+                  illo vero, unde eaque debitis sit corrupti necessitatibus,
+                  distinctio iusto deserunt. Sunt, ut.
+                </p>
+                <div class="essay-links">
+                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container">
+          <p class="copyright">&copy; 2025 Adrian Domagała</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>
