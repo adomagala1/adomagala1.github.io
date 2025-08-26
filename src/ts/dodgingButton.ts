@@ -11,6 +11,7 @@ export function initDodgingButtons(): void {
   dodgingButtons.forEach((button) => {
     const originalText = button.textContent;
     const wittyText = 'UPS!';
+
     const parentCard = button.closest('.project-card');
     if (!parentCard) return;
 
@@ -20,11 +21,12 @@ export function initDodgingButtons(): void {
     });
 
     button.addEventListener('mouseleave', () => {
-      button.textContent = originalText;
+      button.textContent = 'Ooops';
     });
 
     parentCard.addEventListener('mouseleave', () => {
       button.classList.remove('is-dodging');
+      button.textContent = originalText;
     });
   });
 }

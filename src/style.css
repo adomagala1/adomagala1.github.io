@@ -1032,7 +1032,7 @@ section {
 }
 
 .project-card {
-  --border-width: 3px;
+  --border-width: 2px;
   position: relative;
   border: none;
   border-radius: 16px;
@@ -1051,7 +1051,7 @@ section {
   left: calc(-1 * var(--border-width));
   width: calc(100% + var(--border-width) * 2);
   height: calc(100% + var(--border-width) * 2);
-  background: conic-gradient(from var(--angle), #1287b6, #092da3, #698fc9);
+  background: conic-gradient(from var(--angle), #151414, #580b90, #1318a6);
   border-radius: inherit;
 
   opacity: 0;
