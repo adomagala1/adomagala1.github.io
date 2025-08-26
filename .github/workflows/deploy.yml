@@ -1,0 +1,51 @@
+# Prosty workflow do budowania i deployowania strony na GitHub Pages
+name: Deploy GitHub Pages
+
+on:
+  # Uruchamia się po pushu na branch `main`
+  push:
+    branches: ['main']
+
+  # Pozwala na ręczne uruchomienie tego workflow z zakładki Actions na GitHubie
+  workflow_dispatch:
+
+# Ustawienia uprawnień dla GITHUB_TOKEN, aby pozwolić na deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pozwala na jeden współbieżny deployment, anuluje poprzednie, jeśli pushujesz ponownie
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  # Pojedyncze zadanie o nazwie deploy
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # lub wersja, której używasz
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Wrzuć wszystko z folderu dist
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
