@@ -10,8 +10,8 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
     />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./404.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/404.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,7 +40,7 @@
     <div id="page-content" class="hidden">
       <header>
         <div class="container">
-          <a href="#" class="logo">adomagala</a>
+          <a href="./index.html" class="logo">adomagala</a>
 
           <div class="header-controls">
             <div id="lang-switcher" class="lang-switcher">
@@ -130,7 +130,23 @@
 
       <footer>
         <div class="container">
-          <p>&copy; 2025 Adrian Domagała</p>
+          <div id="more-about-me">
+            <p data-translate-key="footerEssayText">
+              Jeśli jesteś zainteresowany tym co mam w głowie, poczytać o
+              przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj
+            </p>
+            <a
+              href="esseys.html"
+              id="more-from-me"
+              class="btn btn-fancy"
+              data-translate-key="footerEssayButton"
+              >Esseje</a
+            >
+          </div>
+
+          <p class="copyright" data-translate-key="footerCopyright">
+            &copy; 2025. Adrian Domagała
+          </p>
         </div>
       </footer>
     </div>

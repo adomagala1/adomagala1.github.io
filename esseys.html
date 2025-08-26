@@ -41,8 +41,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./esseys.css" />
+    <link rel="stylesheet" href="/src/esseys.css" />
 
     <script>
       (function () {
@@ -58,7 +57,7 @@
     <div id="page-content" class="visible">
       <header>
         <div class="container">
-          <a href="#" class="logo">adomagala</a>
+          <a href="./index.html" class="logo">adomagala</a>
 
           <div class="header-controls">
             <div id="lang-switcher" class="lang-switcher">
@@ -206,9 +205,261 @@
         </section>
       </main>
 
+       <section id="contact" class="contact-section">
+          <div class="container animate-an-scroll">
+            <h2 class="section-title" data-translate-key="contactSectionTitle">
+              Nawiążmy Kontakt
+            </h2>
+            <p class="contact-subtitle" data-translate-key="contactSubtitle">
+              Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty
+              na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.
+            </p>
+            <a
+              href="mailto:ad220022work@gmail.pl"
+              class="btn btn-primary contact-button"
+              data-translate-key="contactButton"
+              >Napisz Wiadomość</a
+            >
+
+            <div class="social-links">
+              <a
+                href="https://github.com/adomagala1"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Profil GitHub"
+              >
+                <!-- IKONA GITHUB SVG -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path>
+                </svg>
+                GitHub
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/adrian-domaga%C5%82a-9a09372a1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Profil LinkedIn"
+              >
+                <!-- IKONA LINKEDIN SVG -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div id="drawer-overlay" class="drawer-overlay"></div>
+
+      <div id="contact-drawer" class="contact-drawer">
+        <!-- Uchwyt do zamykania panelu -->
+        <div id="close-drawer-handle" class="drawer-handle-wrapper">
+          <div class="drawer-handle"></div>
+        </div>
+
+        <!-- Nagłówek panelu z ikonami -->
+        <div class="drawer-header">
+          <div class="drawer-socials">
+            <a
+              href="https://github.com/adomagala1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil GitHub"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adrian-domaga%C5%82a-9a09372a1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil LinkedIn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Główna treść panelu -->
+        <div class="drawer-content">
+          <div class="drawer-tabs">
+            <button class="drawer-tab active" data-tab="quick-connect">
+              Quick connect
+            </button>
+            <button class="drawer-tab" data-tab="fill-form">Fill a form</button>
+          </div>
+
+          <!-- Kontener na zawartość zakładek -->
+          <div class="tab-content-wrapper">
+            <!-- Zakładka 1: Szybki kontakt -->
+            <div id="quick-connect-content" class="tab-content active">
+              <div class="drawer-cards-grid">
+                <a href="mailto:ad220022work@gmail.com" class="drawer-card">
+                  <div class="card-icon-wrapper email">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <h3>Email</h3>
+                  <p class="card-main-text">ad220022work@gmail.com</p>
+                  <p class="card-sub-text">Napisz do mnie bezpośrednio</p>
+                </a>
+                <a href="#" class="drawer-card">
+                  <div class="card-icon-wrapper call">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect
+                        x="3"
+                        y="4"
+                        width="18"
+                        height="18"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                  <h3>Book a Call</h3>
+                  <p class="card-main-text">Umów się na rozmowę</p>
+                  <p class="card-sub-text">Zarezerwuj termin w kalendarzu</p>
+                </a>
+              </div>
+              <div class="availability-status">
+                <span class="status-dot"></span>
+                <p>Zawsze dostępny na nowe możliwości</p>
+              </div>
+            </div>
+
+            <!-- Zakładka 2: Formularz -->
+            <div id="fill-form-content" class="tab-content">
+              <form class="contact-form">
+                <div class="form-group">
+                  <label for="name">Imię i nazwisko</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Adres email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="message">Wiadomość</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit-btn">
+                  Wyślij
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <footer>
         <div class="container">
-          <p class="copyright">&copy; 2025 Adrian Domagała</p>
+          <div id="more-about-me">
+            <p data-translate-key="footerEssayText">
+              Jeśli jesteś zainteresowany tym co mam w głowie, poczytać o
+              przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj
+            </p>
+            <a
+              href="esseys.html"
+              id="more-from-me"
+              class="btn btn-fancy"
+              data-translate-key="footerEssayButton"
+              >Esseje</a
+            >
+          </div>
+
+          <p class="copyright" data-translate-key="footerCopyright">
+            &copy; 2025. Adrian Domagała
+          </p>
         </div>
       </footer>
     </div>
