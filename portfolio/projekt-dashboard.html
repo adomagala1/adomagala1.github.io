@@ -33,8 +33,55 @@
       <!-- NAGŁÓWEK - Teraz spójny ze stroną główną -->
       <header>
         <div class="container">
-          <a href="index.html" class="logo">adomagala</a>
+          <a href="#" class="logo">adomagala</a>
+
           <div class="header-controls">
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
+
             <button class="theme-toggle" aria-label="Przełącz motyw"></button>
             <button
               class="hamburger"
@@ -53,8 +100,16 @@
       <main class="project-detail-page">
         <section class="project-hero">
           <div class="container animate-on-scroll">
-            <h1 class="project-title">Interaktywny Dashboard Sprzedażowy</h1>
-            <p class="project-subtitle">
+            <h1
+              class="project-title"
+              data-translate-key="projectDetailHeroTitle"
+            >
+              Interaktywny Dashboard Sprzedażowy
+            </h1>
+            <p
+              class="project-subtitle"
+              data-translate-key="projectDetailHeroSubtitle"
+            >
               Analiza i wizualizacja wskaźników KPI dla sektora e-commerce w
               czasie rzeczywistym.
             </p>
@@ -72,27 +127,37 @@
             <div class="project-grid-layout">
               <aside class="project-meta">
                 <div class="meta-block">
-                  <h3>Cel Projektu</h3>
-                  <p>
+                  <h3 data-translate-key="projectMetaGoal">Cel Projektu</h3>
+                  <p data-translate-key="projectMetaGoalDesc">
                     Stworzenie narzędzia, które pozwoli działowi marketingu i
                     sprzedaży na bieżąco śledzić efektywność kampanii, konwersję
                     i zachowania klientów.
                   </p>
                 </div>
                 <div class="meta-block">
-                  <h3>Użyte Technologie</h3>
+                  <h3 data-translate-key="projectMetaTech">
+                    Użyte Technologie
+                  </h3>
                   <div class="project-tech">
                     <span>Python</span><span>Pandas</span><span>SQL</span
                     ><span>Plotly</span><span>Dash</span>
                   </div>
                 </div>
                 <div class="meta-block">
-                  <h3>Linki</h3>
+                  <h3 data-translate-key="projectMetaLinks">Linki</h3>
                   <div class="project-links-detail">
-                    <a href="#" target="_blank" class="btn btn-primary"
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="btn btn-primary"
+                      data-translate-key="projectLinksDemo"
                       >Zobacz Live Demo</a
                     >
-                    <a href="#" target="_blank" class="btn btn-secondary"
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="btn btn-secondary"
+                      data-translate-key="projectLinksCode"
                       >Kod na GitHub</a
                     >
                   </div>
@@ -100,8 +165,10 @@
               </aside>
 
               <article class="project-description">
-                <h2>Proces i Wyzwania</h2>
-                <p>
+                <h2 data-translate-key="projectArticleTitle">
+                  Proces i Wyzwania
+                </h2>
+                <p data-translate-key="projectArticleP1">
                   Projekt rozpoczął się od zdefiniowania kluczowych metryk
                   biznesowych (KPI) wspólnie z zespołem klienta. Największym
                   wyzwaniem było połączenie danych z wielu źródeł: bazy danych
@@ -109,8 +176,10 @@
                   Analytics.
                 </p>
 
-                <h3>1. Czyszczenie i Przygotowanie Danych</h3>
-                <p>
+                <h3 data-translate-key="projectArticleH1">
+                  1. Czyszczenie i Przygotowanie Danych
+                </h3>
+                <p data-translate-key="projectArticleP2">
                   Surowe dane zawierały wiele niespójności, braków i duplikatów.
                   Użyłem biblioteki <strong>Pandas</strong> do zautomatyzowania
                   procesu czyszczenia, co pozwoliło na ustandaryzowanie formatów
@@ -122,24 +191,27 @@
                     src="https://placehold.co/800x450/121212/e0e0e0?text=Wykres+Przed+i+Po+Czyszczeniu"
                     alt="Wykres pokazujący dane przed i po czyszczeniu"
                   />
-                  <figcaption>
+                  <figcaption data-translate-key="projectArticleFigcaption">
                     Porównanie dystrybucji danych przed i po procesie
                     czyszczenia.
                   </figcaption>
                 </figure>
 
-                <h3>2. Tworzenie Interaktywnych Wizualizacji</h3>
-                <p>
+                <h3 data-translate-key="projectArticleH2">
+                  2. Tworzenie Interaktywnych Wizualizacji
+                </h3>
+                <p data-translate-key="projectArticleP3">
                   Kluczowe było stworzenie wizualizacji, które są nie tylko
                   estetyczne, ale przede wszystkim czytelne i pozwalają na łatwe
                   filtrowanie danych. Wykorzystałem
                   <strong>Plotly & Dash</strong>, aby zbudować aplikację webową
                   umożliwiającą dynamiczną interakcję z wykresami.
                 </p>
-                d
 
-                <h2>Wyniki i Wpływ na Biznes</h2>
-                <p>
+                <h2 data-translate-key="projectArticleH3">
+                  Wyniki i Wpływ na Biznes
+                </h2>
+                <p data-translate-key="projectArticleP4">
                   Wdrożenie dashboardu pozwoliło na skrócenie czasu potrzebnego
                   na przygotowanie tygodniowych raportów o
                   <strong>75%</strong>. Zespół marketingowy, dzięki szybszemu
@@ -156,21 +228,10 @@
         <nav class="project-navigation">
           <div class="container">
             <a href="index.html#projects" class="back-to-projects">
-              <!-- Lepsza, bardziej intuicyjna ikona strzałki -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              <svg ...>...</svg>
+              <span data-translate-key="projectNavBack"
+                >Wszystkie Projekty</span
               >
-                <path d="M19 12H5m7 7l-7-7 7-7" />
-              </svg>
-              <span>Wszystkie Projekty</span>
             </a>
           </div>
         </nav>

@@ -58,8 +58,55 @@
     <div id="page-content" class="visible">
       <header>
         <div class="container">
-          <a href="index.html" class="logo">adomagala</a>
+          <a href="#" class="logo">adomagala</a>
+
           <div class="header-controls">
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
+
             <button class="theme-toggle" aria-label="Przełącz motyw"></button>
             <button
               class="hamburger"
@@ -77,8 +124,12 @@
       <main>
         <section class="hero">
           <div class="hero-content">
-            <h1><span>Eseje i Przekminki</span></h1>
-            <p class="subtitle">
+            <h1>
+              <span data-translate-key="essaysHeroTitle"
+                >Eseje i Przekminki</span
+              >
+            </h1>
+            <p class="subtitle" data-translate-key="essaysHeroSubtitle">
               Szczerze - chciałbym powiedzieć, że to będą ciekawe przemyślenia,
               ale to wszystko zależy od nastawienia czytelnika.
             </p>
@@ -87,11 +138,16 @@
 
         <section id="essays-list" class="essays-section">
           <div class="container">
-            <h2 class="section-title">Wszystkie Wpisy</h2>
+            <h2 class="section-title" data-translate-key="essaysSectionTitle">
+              Wszystkie Wpisy
+            </h2>
             <div class="essays-grid">
               <div class="essay-card animate-on-scroll">
                 <h3>xyz</h3>
-                <p class="essay-meta">Opublikowano: 21.08.2026</p>
+                <p class="essay-meta">
+                  <span data-translate-key="essayPublished">Opublikowano</span>:
+                  21.08.2026
+                </p>
                 <p class="essay-excerpt">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Soluta perferendis eius esse aperiam corrupti, voluptatibus
@@ -99,7 +155,12 @@
                   quod quibusdam similique beatae blanditiis assumenda pariatur.
                 </p>
                 <div class="essay-links">
-                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                  <a
+                    href="#"
+                    class="btn btn-secondary disabled"
+                    data-translate-key="essayButtonSoon"
+                    >Soon</a
+                  >
                 </div>
               </div>
 
@@ -113,7 +174,12 @@
                   debitis est tempora quia alias sit libero?
                 </p>
                 <div class="essay-links">
-                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                  <a
+                    href="#"
+                    class="btn btn-secondary disabled"
+                    data-translate-key="essayButtonSoon"
+                    >Soon</a
+                  >
                 </div>
               </div>
 
@@ -127,7 +193,12 @@
                   distinctio iusto deserunt. Sunt, ut.
                 </p>
                 <div class="essay-links">
-                  <a href="#" class="btn btn-secondary disabled">Soon</a>
+                  <a
+                    href="#"
+                    class="btn btn-secondary disabled"
+                    data-translate-key="essayButtonSoon"
+                    >Soon</a
+                  >
                 </div>
               </div>
             </div>

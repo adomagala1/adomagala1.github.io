@@ -40,9 +40,55 @@
     <div id="page-content" class="hidden">
       <header>
         <div class="container">
-          <a href="/" class="logo">adomagala</a>
+          <a href="#" class="logo">adomagala</a>
 
           <div class="header-controls">
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
+
             <button class="theme-toggle" aria-label="Przełącz motyw"></button>
             <button
               class="hamburger"
@@ -58,35 +104,25 @@
       <div id="overlay-menu" class="overlay-nav"></div>
 
       <main>
-        <!-- SEKCJA BŁĘDU 404 -->
         <section class="error-section">
           <div class="container">
             <div class="error-content">
-              <svg
-                class="error-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                <line x1="11" y1="8" x2="11" y2="11"></line>
-                <line x1="11" y1="14" x2="11.01" y2="14"></line>
-              </svg>
-              <h1 class="error-title">404</h1>
-              <p class="error-subtitle">Strona nie została znaleziona</p>
-              <p class="error-message">
+              <svg class="error-icon" ...>...</svg>
+              <h1 class="error-title" data-translate-key="errorTitle">404</h1>
+              <p class="error-subtitle" data-translate-key="errorSubtitle">
+                Strona nie została znaleziona
+              </p>
+              <p class="error-message" data-translate-key="errorMessage">
                 Chyba wygląda na to, że taka strona nie została znaleziona,
                 <br />
                 no cóż
               </p>
-              <a href="/" class="btn btn-primary">Wróć na stronę główną</a>
+              <a
+                href="/"
+                class="btn btn-primary"
+                data-translate-key="errorButtonBack"
+                >Wróć na stronę główną</a
+              >
             </div>
           </div>
         </section>

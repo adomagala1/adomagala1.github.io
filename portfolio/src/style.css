@@ -144,7 +144,7 @@
   --main-button: #961f4c;
   --secondary-color: #ff00ff;
   --glitch-cyan: #270cc0;
-  --lang-option-bg: #194783;
+  --lang-option-bg: #104c9b;
   --glitch-red: #ff0055;
   --shadow-color: rgba(207, 200, 200, 0.2);
   --shadow-color2: #051d49d0;
@@ -378,10 +378,9 @@ header .container {
   transform: rotate(180deg);
 }
 
-/* Menu z opcjami językowymi */
 .lang-menu {
   position: absolute;
-  top: calc(100% + 8px); /* 8px pod przyciskiem */
+  top: calc(100% + 8px);
   right: 0;
   background-color: var(--card-bg-color);
   border: 1px solid var(--border-color);
@@ -392,8 +391,7 @@ header .container {
   flex-direction: column;
   gap: 4px;
   z-index: 10;
-
-  /* Logika chowania i pokazywania */
+  min-width: 120px;
   opacity: 0;
   transform: translateY(10px);
   visibility: hidden;

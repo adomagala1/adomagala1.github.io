@@ -31,7 +31,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="./public/site.webmanifest" />
 
     <meta
       property="og:title"
@@ -151,10 +151,22 @@
               </button>
               <ul id="lang-menu" class="lang-menu">
                 <li>
-                  <button class="lang-option" data-lang="pl">Polski</button>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
                 </li>
                 <li>
-                  <button class="lang-option" data-lang="en">English</button>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
                 </li>
               </ul>
             </div>
@@ -630,9 +642,8 @@
         <div class="container">
           <div id="more-about-me">
             <p data-translate-key="footerEssayText">
-              Jeśli jesteś osobą, której się nudzi bądź jest zainteresowana tym
-              co mam w głowie, np. do rozwoju lub by rozszerzyć swoje horyzonty,
-              to zapraszam tutaj.
+              Jeśli jesteś zainteresowany tym co mam w głowie, poczytać o
+              przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj
             </p>
             <a
               href="esseys.html"
