@@ -429,22 +429,12 @@ header .container {
   background-color: var(--lang-option-bg);
   color: var(--text-color);
 }
-
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(156, 39, 176, 0.5);
-  transform: scale(0);
-  animation: ripple-effect 600ms linear;
+.lang-option.is-scrambling {
+  font-family: 'Roboto Mono', monospace;
+  text-shadow: 0 0 4px var(--glitch-red), 0 0 4px var(--glitch-cyan);
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
   pointer-events: none;
-}
-
-/* Definicja animacji - TERAZ JAKO OSOBNA REGUŁA */
-@keyframes ripple-effect {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
 }
 .hamburger {
   display: flex;

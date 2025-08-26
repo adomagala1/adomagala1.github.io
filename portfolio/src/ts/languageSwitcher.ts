@@ -198,6 +198,49 @@ export function initLanguageSwitcher(): void {
   if (!langSwitcher || !langToggleButton || !langMenu || !currentLangText)
     return;
 
+  let isAnimating = false; // Flaga, żeby nie odpalać animacji jedna na drugiej
+
+  // Funkcja do animacji "skakania" liter
+  const scrambleEffect = (
+    element: HTMLElement,
+    newText: string
+  ): Promise<void> => {
+    // Zwracamy Promise, żeby wiedzieć, kiedy animacja się skończyła
+    return new Promise((resolve) => {
+      const letters = '█▓▒░@#$%*!?<>[]{}01';
+      let interval: number | null = null;
+      let iteration = 0;
+
+      element.classList.add('is-scrambling');
+      const originalText = element.innerText;
+
+      const animDuration = 800; // Czas trwania animacji w ms
+      const stepDuration = 30; // Co ile ms ma się zmieniać litera
+
+      interval = window.setInterval(() => {
+        element.innerText = originalText
+          .split('')
+          .map((letter, index) => {
+            if (index < iteration) {
+              return newText[index];
+            }
+            return letters[Math.floor(Math.random() * letters.length)];
+          })
+          .join('');
+
+        // Zakończenie animacji
+        if (iteration >= newText.length) {
+          if (interval) clearInterval(interval);
+          element.innerText = newText;
+          element.classList.remove('is-scrambling');
+          resolve(); // Informujemy, że Promise jest zakończony
+        }
+
+        iteration += newText.length / (animDuration / stepDuration);
+      }, stepDuration);
+    });
+  };
+
   // 1. Ładowanie zapisanego języka (bez zmian)
   const savedLang = localStorage.getItem('language') as Language | null;
   const initialLang: Language = savedLang || 'pl';
@@ -205,51 +248,46 @@ export function initLanguageSwitcher(): void {
 
   // 2. Otwieranie/zamykanie menu (bez zmian)
   langToggleButton.addEventListener('click', (event) => {
+    if (isAnimating) return; // Blokujemy otwieranie/zamykanie podczas animacji
     event.stopPropagation();
     const isOpen = langSwitcher.classList.toggle('is-open');
     langToggleButton.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // 3. Wybór języka z menu (TUTAJ JEST ZMIANA)
-  langMenu.addEventListener('click', (event) => {
+  // 3. Wybór języka z menu (GŁÓWNA ZMIANA)
+  langMenu.addEventListener('click', async (event) => {
+    if (isAnimating) return; // Jeśli animacja już leci, ignorujemy kliknięcia
+
     const target = event.target as HTMLElement;
 
     if (target.classList.contains('lang-option')) {
-      // === POCZĄTEK NOWEGO KODU DO ANIMACJI FALI ===
-
-      const rect = target.getBoundingClientRect();
-      const ripple = document.createElement('span');
-
-      ripple.classList.add('ripple');
-      // Obliczamy pozycję fali na podstawie miejsca kliknięcia
-      ripple.style.height = ripple.style.width = `${Math.max(
-        rect.width,
-        rect.height
-      )}px`;
-      ripple.style.top = `${
-        event.clientY - rect.top - ripple.offsetHeight / 2
-      }px`;
-      ripple.style.left = `${
-        event.clientX - rect.left - ripple.offsetWidth / 2
-      }px`;
-
-      target.appendChild(ripple);
-
-      // Usuwamy falę po zakończeniu animacji, żeby nie zaśmiecać DOM
-      setTimeout(() => {
-        ripple.remove();
-      }, 600); // Czas musi być taki sam jak w animacji CSS
-
-      // === KONIEC NOWEGO KODU ===
-
-      // Ta część zostaje, zmienia język jak wcześniej
       const selectedLang = target.dataset.lang as Language;
-      setLanguage(selectedLang);
+      const currentLang = document.documentElement.lang;
+
+      if (selectedLang === currentLang) {
+        langSwitcher?.classList.remove('is-open');
+        langToggleButton?.setAttribute('aria-expanded', 'false');
+        return;
+      }
+
+      isAnimating = true; // Zaczynamy animację, blokujemy inne akcje
+
+      const newText = selectedLang === 'pl' ? 'Polski' : 'English';
+
+      // Czekamy, aż animacja "scramble" się zakończy
+      await scrambleEffect(target, newText);
+
+      // Dopiero PO zakończeniu animacji:
+      setLanguage(selectedLang); // Zmieniamy język
+      // Menu zamyka się samo w funkcji setLanguage
+
+      isAnimating = false; // Kończymy animację, odblokowujemy
     }
   });
 
-  // 4. Zamykanie menu po kliknięciu gdziekolwiek indziej (bez zmian)
+  // 4. Zamykanie menu po kliknięciu gdziekolwiek indziej
   window.addEventListener('click', () => {
+    if (isAnimating) return; // Blokujemy zamykanie podczas animacji
     if (langSwitcher.classList.contains('is-open')) {
       langSwitcher.classList.remove('is-open');
       langToggleButton.setAttribute('aria-expanded', 'false');
