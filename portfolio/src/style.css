@@ -22,11 +22,12 @@
   0%,
   100% {
     transform: translateX(0) scale(1);
-    filter: drop-shadow(0 0 4px rgba(var(--primary-color-rgb), 0));
+    filter: drop-shadow(0 0 5px rgba(var(--primary-color-rgb), 0.2));
   }
   50% {
-    transform: translateX(-6px) scale(1.15);
-    filter: drop-shadow(0 0 12px var(--primary-color));
+    transform: translateX(-12px) scale(1.25);
+
+    filter: drop-shadow(0 0 20px var(--primary-color));
   }
 }
 
@@ -526,14 +527,23 @@ html.light-mode .moon-icon {
 }
 
 .submenu-arrow {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   color: currentColor;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+.submenu-toggle:hover .submenu-arrow {
+  transform: scale(1.15);
 }
 
 .nav-item.is-open .submenu-arrow {
   transform: rotate(180deg);
+}
+
+.nav-item.is-open .submenu-toggle:hover .submenu-arrow {
+  transform: rotate(180deg) scale(1.15);
 }
 
 .submenu {
@@ -1318,10 +1328,10 @@ main.project-detail-page {
 }
 
 .back-to-projects svg {
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   transition: transform 0.3s ease;
-  animation: pulse-arrow 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  animation: pulse-arrow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .back-to-projects:hover {
@@ -1329,7 +1339,7 @@ main.project-detail-page {
 }
 
 .back-to-projects:hover svg {
-  transform: translateX(-8px);
+  transform: translateX(-15px);
 }
 
 /* ==========================================================================
