@@ -10,7 +10,6 @@ export function initDodgingButtons(): void {
 
   dodgingButtons.forEach((button) => {
     const originalText = button.textContent;
-    const wittyText = 'UPS!';
 
     const parentCard = button.closest('.project-card');
     if (!parentCard) return;
