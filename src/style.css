@@ -1752,14 +1752,19 @@ main.project-detail-page {
     padding: 8px 15px;
     font-size: 0.9rem;
   }
+  .loader-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 0;
+    gap: clamp(0px, 1.5vh, 10px);
+    white-space: normal;
+  }
   #loader-logo > span:first-child {
     margin: 0;
   }
-
-  /* ...I CAŁKOWICIE UKRYWAMY litery "nad" i "pod"! */
   #loader-logo > span:first-child::before,
   #loader-logo > span:first-child::after {
-    content: '' !important; /* Gwarantuje, że znikną */
     display: none;
   }
 }
