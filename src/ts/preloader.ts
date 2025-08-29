@@ -163,6 +163,7 @@ export function initPreloader(): void {
   }
 
   const startPreloaderSequence = async () => {
+    if (loaderLogo) loaderLogo.style.opacity = '1';
     const allSpans = Array.from(
       loaderLogo.querySelectorAll<HTMLElement>(':scope > span')
     );

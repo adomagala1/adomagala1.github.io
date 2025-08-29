@@ -246,7 +246,8 @@ body.drawer-open {
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 30vh;
   transition: opacity 0.5s ease-out;
 }
 
@@ -256,12 +257,14 @@ body.drawer-open {
 }
 
 .loader-logo {
-  font-size: clamp(2rem, 10vw, 5rem);
+  font-size: clamp(1.8rem, 9vw, 5rem);
   font-weight: 700;
   color: var(--text-color);
   letter-spacing: clamp(2px, 2vw, 10px);
   text-shadow: 0 0 15px var(--shadow-color);
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
 }
 
 .loader-logo span {
@@ -303,7 +306,7 @@ html.light-mode header {
 
 header .container {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr max-content 1fr;
   align-items: center;
   gap: 15px;
   width: 100%;
