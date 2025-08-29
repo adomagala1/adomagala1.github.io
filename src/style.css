@@ -1752,6 +1752,16 @@ main.project-detail-page {
     padding: 8px 15px;
     font-size: 0.9rem;
   }
+  #loader-logo > span:first-child {
+    margin: 0;
+  }
+
+  /* ...I CAŁKOWICIE UKRYWAMY litery "nad" i "pod"! */
+  #loader-logo > span:first-child::before,
+  #loader-logo > span:first-child::after {
+    content: '' !important; /* Gwarantuje, że znikną */
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
