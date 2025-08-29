@@ -259,9 +259,9 @@ body.drawer-open {
   font-size: clamp(2rem, 10vw, 5rem);
   font-weight: 700;
   color: var(--text-color);
-  letter-spacing: 10px;
+  letter-spacing: clamp(2px, 2vw, 10px);
   text-shadow: 0 0 15px var(--shadow-color);
-  transform-origin: center;
+  white-space: nowrap;
 }
 
 .loader-logo span {
@@ -1807,8 +1807,42 @@ main.project-detail-page {
   }
 
   100% {
-    transform: scale(0.4);
-    opacity: 0;
-    filter: blur(8px);
+    transform: scale(0.7);
+    opacity: 0.04;
+    filter: blur(2px);
   }
+}
+#loader-logo > span:first-child {
+  position: relative;
+  margin: 0.2em 0;
+}
+
+#loader-logo > span:first-child::before,
+#loader-logo > span:first-child::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0.4; /* Są mniej widoczne niż główna litera */
+  transform: scale(0.8); /* Są trochę mniejsze */
+  color: var(--text-secondary-color);
+}
+
+/* Litera nad */
+#loader-logo > span:first-child::before {
+  content: var(--char-before, ''); /* Pobieramy treść z JS */
+  bottom: 100%;
+}
+
+/* Litera pod */
+#loader-logo > span:first-child::after {
+  content: var(--char-after, ''); /* Pobieramy treść z JS */
+  top: 100%;
+}
+
+/* koncowa literka */
+#loader-logo > span:first-child.is-final {
+  color: #b42222;
+  transform: scale(1.15);
+  transition: all 0.3s ease-out;
 }

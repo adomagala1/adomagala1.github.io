@@ -1,59 +1,84 @@
-// src/ts/preloader.ts
-
-// --- NOWA KLASA DO OBSŁUGI EFEKTU SLOT MACHINE ---
 class SlotMachineManager {
   private readonly element: HTMLElement;
   private readonly finalChar: string;
-  private readonly chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*#@!';
+  private readonly chars = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   constructor(element: HTMLElement) {
     this.element = element;
     this.finalChar = element.dataset.char || 'A';
   }
 
-  // Funkcja ease-out: zaczyna szybko, kończy wolno
-  private easeOutCubic(x: number): number {
-    return 1 - Math.pow(1 - x, 3);
+  // Nowa, oddzielna funkcja do wolnego finału
+  private async finalReveal(): Promise<void> {
+    const slowInterval = 200;
+    const revealSteps = 4;
+
+    for (let i = 0; i < revealSteps; i++) {
+      const prevChar =
+        this.chars[Math.floor(Math.random() * this.chars.length)];
+      const currentChar =
+        this.chars[Math.floor(Math.random() * this.chars.length)];
+      const nextChar =
+        this.chars[Math.floor(Math.random() * this.chars.length)];
+
+      this.element.innerText = currentChar;
+      this.element.style.setProperty('--char-before', `"${prevChar}"`);
+      this.element.style.setProperty('--char-after', `"${nextChar}"`);
+
+      // Czekamy na następny krok
+      await new Promise((res) => setTimeout(res, slowInterval + i * 20));
+    }
+
+    // Ostateczne ustawienie
+    this.element.innerText = this.finalChar;
+    this.element.classList.add('is-final');
+    this.element.style.setProperty('--char-before', '""');
+    this.element.style.setProperty('--char-after', '""');
   }
 
-  public start(duration: number): Promise<void> {
-    return new Promise((resolve) => {
+  // Główna funkcja startująca, teraz jest typu async
+  public async start(duration: number): Promise<void> {
+    const finalRevealDuration = 1100;
+    const fastSpinDuration = duration - finalRevealDuration;
+
+    // FAZA 1: Szybkie kręcenie
+    await new Promise<void>((resolve) => {
       const startTime = Date.now();
-      const initialInterval = 40; // Startowe tempo (ms)
-      const finalInterval = 250; // Końcowe tempo (ms)
+      const spinInterval = 100;
       let lastUpdateTime = 0;
 
       const animate = () => {
         const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        if (elapsed >= fastSpinDuration) {
+          resolve();
+          return;
+        }
 
-        // Używamy funkcji "ease-out", aby animacja zwalniała
-        const easedProgress = this.easeOutCubic(progress);
-        const currentInterval =
-          initialInterval + (finalInterval - initialInterval) * easedProgress;
-
-        if (Date.now() - lastUpdateTime > currentInterval) {
-          const randomChar =
+        if (Date.now() - lastUpdateTime > spinInterval) {
+          const prevChar =
             this.chars[Math.floor(Math.random() * this.chars.length)];
-          this.element.innerText = randomChar;
+          const currentChar =
+            this.chars[Math.floor(Math.random() * this.chars.length)];
+          const nextChar =
+            this.chars[Math.floor(Math.random() * this.chars.length)];
+
+          this.element.innerText = currentChar;
+          this.element.style.setProperty('--char-before', `"${prevChar}"`);
+          this.element.style.setProperty('--char-after', `"${nextChar}"`);
           lastUpdateTime = Date.now();
         }
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          this.element.innerText = this.finalChar;
-          resolve();
-        }
+        requestAnimationFrame(animate);
       };
       requestAnimationFrame(animate);
     });
+
+    // FAZA 2: Wolny, dramatyczny finał
+    await this.finalReveal();
   }
 }
 
-// --- ScrambleManager bez większych zmian, ale dostosowany do async/await ---
+// ScrambleManager - bez zmian
 class ScrambleManager {
-  // ... (skopiuj tutaj całą klasę ScrambleManager z poprzedniej wersji)
   private readonly chars = '!<>-_\\/[]{}—=+*^?#_';
   private elements: HTMLElement[];
   private originalTexts: string[] = [];
@@ -78,7 +103,7 @@ class ScrambleManager {
   private scramble(index: number) {
     const element = this.elements[index];
     const originalLength = this.originalTexts[index].length || 1;
-    const SCRAMBLE_INTERVAL = 50;
+    const SCRAMBLE_INTERVAL = 75;
     let lastUpdateTime = 0;
 
     const update = (currentTime: number) => {
@@ -104,14 +129,12 @@ class ScrambleManager {
     this.elements[index].innerHTML = this.originalTexts[index];
   }
 
-  // Nowa metoda do sterowania całą sekwencją odsłaniania
   public revealSequentially(delayPerChar: number): Promise<void> {
     return new Promise((resolve) => {
       this.startAll();
       this.elements.forEach((_, i) => {
         setTimeout(() => this.reveal(i), (i + 1) * delayPerChar);
       });
-      // Rozwiązujemy obietnicę po zakończeniu odsłaniania ostatniej litery
       setTimeout(resolve, this.elements.length * delayPerChar);
     });
   }
@@ -129,20 +152,17 @@ export function initPreloader(): void {
     }
   };
 
-  if (!preloader || !pageContent || !loaderLogo) {
+  if (!preloader || !loaderLogo || !pageContent) {
     showPageContent();
     return;
   }
-
   if (sessionStorage.getItem('preloaderShown') === 'true') {
     preloader.style.display = 'none';
     showPageContent();
     return;
   }
 
-  // --- NOWA SEKWENCJA Z ASYNC/AWAIT ---
   const startPreloaderSequence = async () => {
-    // 1. Podział elementów i ustawienia
     const allSpans = Array.from(
       loaderLogo.querySelectorAll<HTMLElement>(':scope > span')
     );
@@ -150,34 +170,27 @@ export function initPreloader(): void {
     const scrambleSpans = allSpans.slice(1);
 
     const SCRAMBLE_REVEAL_DELAY = 200;
-    const SLOT_MACHINE_DURATION = 3000; // Wydłużamy, by efekt był bardziej widoczny
-    const FADE_OUT_DURATION = 1000;
+    const SLOT_MACHINE_DURATION = 1800;
+    const FADE_OUT_DURATION = 800;
     const scrambleTotalTime = scrambleSpans.length * SCRAMBLE_REVEAL_DELAY;
     const TOTAL_DURATION =
       scrambleTotalTime + SLOT_MACHINE_DURATION + FADE_OUT_DURATION;
 
-    // 2. Start animacji tła
     loaderLogo.style.animation = `shrinkAndFade ${
       TOTAL_DURATION / 1000
     }s ease-in-out forwards`;
 
-    // 3. Inicjalizacja managerów
     const scrambleManager = new ScrambleManager(scrambleSpans);
     const slotMachineManager = new SlotMachineManager(slotMachineSpan);
 
-    // 4. Uruchomienie sekwencji
-    // Najpierw odsłaniamy nazwisko...
     await scrambleManager.revealSequentially(SCRAMBLE_REVEAL_DELAY);
-
-    // ...a zaraz potem uruchamiamy maszynę losującą dla imienia
     await slotMachineManager.start(SLOT_MACHINE_DURATION);
 
-    // 5. Krótka pauza na podziwianie efektu i płynne zniknięcie
     setTimeout(() => {
       preloader.classList.add('loaded');
       showPageContent();
       sessionStorage.setItem('preloaderShown', 'true');
-    }, 500); // Stała, krótka pauza na koniec
+    }, 500);
   };
 
   window.addEventListener('load', startPreloaderSequence);
