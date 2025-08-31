@@ -11,6 +11,7 @@ import { initDodgingButtons } from './dodgingButton';
 import { initContactDrawer } from './contactDrawer';
 import { initClickableCards } from './clickableCards';
 import { initLanguageSwitcher } from './languageSwitcher';
+import { initContactForm } from './contactForm';
 
 // 3. Główny punkt startowy aplikacji
 function main() {
@@ -23,6 +24,7 @@ function main() {
   initClickableCards();
   initContactDrawer();
   initLanguageSwitcher();
+  initContactForm();
 }
 
 // Uruchom główną funkcję, gdy dokument jest gotowy
