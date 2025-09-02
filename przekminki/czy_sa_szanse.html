@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Eseje | Adrian Domagała - Analityk Danych & Python Developer</title>
+
+    <meta
+      name="description"
+      content="Zbiór esejów i przemyśleń Adriana Domagały na tematy związane z analizą danych, technologią, AI i rozwojem w branży IT."
+    />
+    <meta name="author" content="Adrian Domagała" />
+    <meta
+      name="keywords"
+      content="eseje, blog, analiza danych, AI, machine learning, technologia, rozwój kariery, Adrian Domagała"
+    />
+
+    <link rel="canonical" href="https://adomagala1.github.io/esseys.html" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:title" content="Eseje | Adrian Domagała" />
+    <meta
+      property="og:description"
+      content="Przemyślenia na tematy zwiazane z
+    IT ale glownie to moje przekminy"
+    />
+    <meta
+      property="og:url"
+      content="https://adomagala1.github.io/esseys.html"
+    />
+    <meta
+      property="og:image"
+      content="https://adomagala1.github.io/assets/images/social-preview.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/esseys.css" />
+
+    <script>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+
+    <style>
+      #text {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        font-weight: 400;
+        text-align: justify;
+
+        opacity: 0;
+        animation: fadeInContent 1.2s ease-out 0.5s forwards;
+      }
+      .light-mode body {
+        background-color: #ffffff;
+      }
+
+      .light-mode #text {
+        color: #212121;
+      }
+
+      @keyframes fadeInContent {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        #text {
+          margin: 2rem auto;
+          padding: 0 1rem;
+          font-size: 1rem;
+          line-height: 1.7;
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page-content" class="visible">
+      <header>
+        <div class="container">
+          <a href="../index.html" class="logo">adomagala</a>
+
+          <div class="header-controls">
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <button class="theme-toggle" aria-label="Przełącz motyw"></button>
+            <button
+              class="hamburger"
+              id="hamburger-menu"
+              aria-label="Otwórz menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <div id="overlay-menu" class="overlay-nav"></div>
+
+      <div id="drawer-overlay" class="drawer-overlay"></div>
+      <div id="contact-drawer" class="contact-drawer"></div>
+    </div>
+
+    <div id="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, itaque,
+      sint illum voluptas libero iste, atque et animi minima eligendi non odit
+      sequi tempore optio expedita dolore! Fuga nisi totam, maxime dolorum unde
+      quisquam rem dolore quis. Voluptate molestiae ducimus placeat provident
+      inventore sint nobis vitae ut magnam odit. Voluptates?
+    </div>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

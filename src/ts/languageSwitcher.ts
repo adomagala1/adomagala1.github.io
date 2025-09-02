@@ -91,15 +91,16 @@ const translations = {
     pl: 'Jeśli jesteś osobą zainteresowaną tym co mam w głowie, poczytać o przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj',
     en: "If you are interested in what's on my mind, to read about the thoughts of a newcomer to the job market then I invite you here"
   },
-  footerEssayButton: { pl: 'Esseje', en: 'Essays' },
+  footerEssayButton: { pl: 'Wpisy', en: 'Essays' },
 
   // === STRONA ESEJÓW (esseys.html) ===
-  essaysHeroTitle: { pl: 'Eseje i Przekminki', en: 'Essays and Musings' },
+  essaysHeroTitle: { pl: 'Wpisy i Przekminki', en: 'Essays and Musings' },
   essaysHeroSubtitle: {
     pl: 'Szczerze - chciałbym powiedzieć, że to będą ciekawe przemyślenia, ale to wszystko zależy od nastawienia czytelnika.',
     en: "Honestly - I would like to say that these will be interesting thoughts, but it all depends on the reader's attitude."
   },
-  essaysSectionTitle: { pl: 'Wszystkie Wpisy', en: 'All Posts' },
+  esseyAvaiable: { pl: 'Więcej', en: 'More' },
+  essaysSectionTitle: { pl: 'Wpisy', en: 'All Posts' },
   essayPublished: { pl: 'Opublikowano', en: 'Published' },
   essayButtonSoon: { pl: 'Wkrótce', en: 'Soon' },
 
