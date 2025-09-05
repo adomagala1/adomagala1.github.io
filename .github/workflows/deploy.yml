@@ -29,22 +29,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # Zaktualizowane z v3 na v4
+        uses: actions/checkout@v4
       - name: Set up Node
         uses: actions/setup-node@v4 # Zaktualizowane z v3 na v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
       - name: Install dependencies
         run: npm install
       - name: Build
         run: npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v5 # Zaktualizowane z v3 na v5
+        uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Zaktualizowane z v2 na v3 (NAJWAŻNIEJSZA ZMIANA)
+        uses: actions/upload-pages-artifact@v3
         with:
-          # Wrzuć wszystko z folderu dist
           path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
