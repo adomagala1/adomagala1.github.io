@@ -26,7 +26,7 @@ const translations = {
   langOptionPl: { pl: 'Polski', en: 'Polish' },
   langOptionEn: { pl: 'Angielski', en: 'English' },
 
-  // === STRONA GŁÓWNA (index.html) ===
+  // === STRONA GŁÓWNA ===
   heroTitle: { pl: 'Analityk Danych & Python', en: 'Data Analyst & Python' },
   heroSubtitle: {
     pl: 'Posiadam umiejętności i podejście, które twojej firmie się spodobają',
@@ -54,24 +54,16 @@ const translations = {
     pl: 'Analizuję. Przewiduję. Wygrywam.',
     en: 'I analyze. I predict. I win.'
   },
-  skillsSectionTitle: {
-    pl: 'Technologie i Narzędzia',
-    en: 'Technologies and Tools'
-  },
-  skillsLegendDB: { pl: 'Bazy Danych', en: 'Databases' },
-  skillsLegendAnalysis: { pl: 'Analiza Danych', en: 'Data Analysis' },
-  skillsLegendML: { pl: 'Machine Learning', en: 'Machine Learning' },
-  skillsLegendViz: { pl: 'Wizualizacja', en: 'Visualization' },
+
+  // === Projekty ===
   projectsSectionTitle: { pl: 'Wybrane Projekty', en: 'Selected Projects' },
-  project1Title: {
-    pl: 'Interaktywny Dashboard Sprzedażowy',
-    en: 'Interactive Sales Dashboard'
-  },
+  project1Title: { pl: 'Program do Analizy Spólek GPW', en: 'Stock analyzer' },
   project1Desc: {
-    pl: 'Stworzenie dashboardu do monitorowania kluczowych wskaźników (KPI) dla firmy e-commerce, co pozwoliło na optymalizację strategii.',
-    en: 'Creation of a dashboard to monitor key performance indicators (KPIs) for an e-commerce company, which allowed for strategy optimization.'
+    pl: 'Program pobiera dane o wszystkich spółkach na GPW, analizuje ich wyniki, ocenia pod kątem inwestycyjnym, zbiera wiadomości pojawiające się w internecie i zapisuje do lokalnej bazy danych SQLite. Program jest w trakcie tworzenia.',
+    en: 'The program collects data on all companies listed on the Warsaw Stock Exchange, analyzes their results, evaluates them from an investment perspective, collects news appearing on the Internet, and saves it to a local SQLite database. The program is under development.'
   },
   project1Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
+
   project2Title: {
     pl: 'Analiza Sentymentu Recenzji',
     en: 'Sentiment Analysis of Reviews'
@@ -81,91 +73,60 @@ const translations = {
     en: 'An NLP model for automatic categorization of customer reviews. I used Scikit-learn to train the classifier.'
   },
   project2Button: { pl: 'Case Study wkrótce', en: 'Case Study soon' },
+
+  // === Kontakt ===
   contactSectionTitle: { pl: 'Nawiążmy Kontakt', en: "Let's Get in Touch" },
   contactSubtitle: {
     pl: 'Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.',
     en: 'Have a data problem or looking for a team member? I am open to interesting challenges. <br />Write to me, and I will definitely reply.'
   },
   contactButton: { pl: 'Napisz Wiadomość', en: 'Send a Message' },
-  footerEssayText: {
-    pl: 'Jeśli jesteś osobą zainteresowaną tym co mam w głowie, poczytać o przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj',
-    en: "If you are interested in what's on my mind, to read about the thoughts of a newcomer to the job market then I invite you here"
-  },
-  footerEssayButton: { pl: 'Wpisy', en: 'Essays' },
 
-  // === STRONA ESEJÓW (esseys.html) ===
-  essaysHeroTitle: { pl: 'Wpisy i Przekminki', en: 'Essays and Musings' },
-  essaysHeroSubtitle: {
-    pl: 'Szczerze - chciałbym powiedzieć, że to będą ciekawe przemyślenia, ale to wszystko zależy od nastawienia czytelnika.',
-    en: "Honestly - I would like to say that these will be interesting thoughts, but it all depends on the reader's attitude."
-  },
-  esseyAvaiable: { pl: 'Więcej', en: 'More' },
-  essaysSectionTitle: { pl: 'Wpisy', en: 'All Posts' },
-  essayPublished: { pl: 'Opublikowano', en: 'Published' },
-  essayButtonSoon: { pl: 'Wkrótce', en: 'Soon' },
-
-  // === STRONA BŁĘDU (404.html) ===
-  errorTitle: { pl: '404', en: '404' },
-  errorSubtitle: { pl: 'Strona nie została znaleziona', en: 'Page Not Found' },
-  errorMessage: {
-    pl: 'Chyba wygląda na to, że taka strona nie została znaleziona,<br />no cóż',
-    en: 'It seems that this page was not found,<br />oh well'
-  },
-  errorButtonBack: { pl: 'Wróć na stronę główną', en: 'Back to Homepage' },
-
-  // === STRONA PROJEKTU (projekt-dashboard.html) ===
+  // === Strona Projektu GPW ===
   projectDetailHeroTitle: {
-    pl: 'Interaktywny Dashboard Sprzedażowy',
-    en: 'Interactive Sales Dashboard'
+    pl: 'Analiza Rynku GPW',
+    en: 'Stock Market Analyzer'
   },
   projectDetailHeroSubtitle: {
-    pl: 'Analiza i wizualizacja wskaźników KPI dla sektora e-commerce w czasie rzeczywistym.',
-    en: 'Real-time analysis and visualization of KPIs for the e-commerce sector.'
+    pl: 'Narzędzie w trakcie tworzenia do analizy i wizualizacji wskaźników fundamentalnych oraz sentymentu dla spółek notowanych na GPW.',
+    en: 'A tool under development for analyzing and visualizing fundamental indicators and sentiment for companies listed on the Warsaw Stock Exchange.'
   },
   projectMetaGoal: { pl: 'Cel Projektu', en: 'Project Goal' },
   projectMetaGoalDesc: {
-    pl: 'Stworzenie narzędzia, które pozwoli działowi marketingu i sprzedaży na bieżąco śledzić efektywność kampanii, konwersję i zachowania klientów.',
-    en: 'To create a tool that allows the marketing and sales department to track campaign effectiveness, conversion, and customer behavior in real-time.'
+    pl: 'Celem projektu jest stworzenie programu, który automatycznie zbiera dane rynkowe, raporty finansowe i newsy, analizuje fundamenty spółek oraz ich sentyment rynkowy, aby pomagać inwestorom w wyborze najlepszych spółek pod różne strategie inwestycyjne. Program jest obecnie w fazie tworzenia.',
+    en: 'The goal of the project is to develop a program that automatically collects market data, financial reports, and news, analyzes company fundamentals and market sentiment, and assists investors in selecting the best companies for various investment strategies. The program is currently under development.'
   },
-  projectMetaTech: { pl: 'Użyte Technologie', en: 'Technologies Used' },
-  projectMetaLinks: { pl: 'Linki', en: 'Links' },
-  projectLinksDemo: { pl: 'Zobacz Live Demo', en: 'View Live Demo' },
-  projectLinksCode: { pl: 'Kod na GitHub', en: 'Code on GitHub' },
   projectArticleTitle: {
     pl: 'Proces i Wyzwania',
     en: 'Process and Challenges'
   },
   projectArticleP1: {
-    pl: 'Projekt rozpoczął się od zdefiniowania kluczowych metryk biznesowych (KPI) wspólnie z zespołem klienta. Największym wyzwaniem było połączenie danych z wielu źródeł: bazy danych PostgreSQL, plików CSV z systemów reklamowych oraz API Google Analytics.',
-    en: "The project began by defining key business metrics (KPIs) together with the client's team. The biggest challenge was combining data from multiple sources: a PostgreSQL database, CSV files from advertising systems, and the Google Analytics API."
+    pl: 'Projekt jest w fazie tworzenia. Rozpoczęto od określenia kluczowych funkcjonalności: automatycznego pobierania danych rynkowych, raportów finansowych spółek, analizy fundamentalnej, technicznej oraz sentymentu z newsów i komunikatów. Największym wyzwaniem będzie integracja danych z różnych źródeł oraz zapewnienie spójności historycznych rekordów spółek.',
+    en: 'The project is currently under development. The key functionalities identified include automatic collection of market data, company financial reports, fundamental and technical analysis, as well as sentiment analysis from news and announcements. The biggest challenge will be integrating data from various sources and ensuring consistency of historical company records.'
   },
   projectArticleH1: {
-    pl: '1. Czyszczenie i Przygotowanie Danych',
-    en: '1. Data Cleaning and Preparation'
+    pl: '1. Zbieranie i Przygotowanie Danych',
+    en: '1. Data Collection and Preparation'
   },
   projectArticleP2: {
-    pl: 'Surowe dane zawierały wiele niespójności, braków i duplikatów. Użyłem biblioteki <strong>Pandas</strong> do zautomatyzowania procesu czyszczenia, co pozwoliło na ustandaryzowanie formatów i przygotowanie spójnego zbioru danych do analizy.',
-    en: 'The raw data contained many inconsistencies, missing values, and duplicates. I used the <strong>Pandas</strong> library to automate the cleaning process, which allowed for standardizing formats and preparing a consistent dataset for analysis.'
-  },
-  projectArticleFigcaption: {
-    pl: 'Porównanie dystrybucji danych przed i po procesie czyszczenia.',
-    en: 'Comparison of data distribution before and after the cleaning process.'
+    pl: 'Surowe dane rynkowe i finansowe wymagają standaryzacji. Planowane jest użycie bibliotek Pythonowych (np. Pandas, BeautifulSoup) do automatyzacji procesu pobierania i czyszczenia danych oraz przygotowania spójnego zbioru do dalszej analizy.',
+    en: 'Raw market and financial data need standardization. Python libraries (e.g., Pandas, BeautifulSoup) will be used to automate the process of data collection and cleaning and to prepare a consistent dataset for further analysis.'
   },
   projectArticleH2: {
-    pl: '2. Tworzenie Interaktywnych Wizualizacji',
-    en: '2. Creating Interactive Visualizations'
+    pl: '2. Analiza Fundamentalna i Sentymentu',
+    en: '2. Fundamental and Sentiment Analysis'
   },
   projectArticleP3: {
-    pl: 'Kluczowe było stworzenie wizualizacji, które są nie tylko estetyczne, ale przede wszystkim czytelne i pozwalają na łatwe filtrowanie danych. Wykorzystałem <strong>Plotly & Dash</strong>, aby zbudować aplikację webową umożliwiającą dynamiczną interakcję z wykresami.',
-    en: 'The key was to create visualizations that are not only aesthetic but, above all, readable and allow for easy data filtering. I used <strong>Plotly & Dash</strong> to build a web application that enables dynamic interaction with the charts.'
+    pl: 'Program będzie automatycznie oceniać spółki pod kątem regularnego wzrostu przychodów, zysku operacyjnego, branży, skuteczności zarządu oraz prognoz rozwoju. Dodatkowo analizowany będzie sentyment z newsów, komunikatów ESPI/EBI i artykułów branżowych w celu wykrywania sygnałów przyspieszenia wzrostu.',
+    en: 'The program will automatically evaluate companies based on regular revenue growth, operating profit, industry, management effectiveness, and growth forecasts. Additionally, sentiment from news, ESPI/EBI announcements, and industry articles will be analyzed to detect signals of accelerated growth.'
   },
   projectArticleH3: {
     pl: 'Wyniki i Wpływ na Biznes',
     en: 'Results and Business Impact'
   },
   projectArticleP4: {
-    pl: 'Wdrożenie dashboardu pozwoliło na skrócenie czasu potrzebnego na przygotowanie tygodniowych raportów o <strong>75%</strong>. Zespół marketingowy, dzięki szybszemu dostępowi do danych, mógł efektywniej optymalizować kampanie, co przełożyło się na <strong>oszczędności rzędu 15%</strong> miesięcznego budżetu reklamowego przy zachowaniu tej samej skali sprzedaży.',
-    en: 'The implementation of the dashboard reduced the time needed to prepare weekly reports by <strong>75%</strong>. The marketing team, with faster access to data, could more effectively optimize campaigns, which translated into <strong>savings of 15%</strong> of the monthly advertising budget while maintaining the same sales volume.'
+    pl: 'Program jest w trakcie tworzenia, więc nie ma jeszcze gotowych wyników. Docelowo wdrożenie pozwoli inwestorom szybciej identyfikować spółki o wysokim potencjale wzrostu, co usprawni podejmowanie decyzji inwestycyjnych i może przyczynić się do zwiększenia efektywności portfela inwestycyjnego.',
+    en: 'The program is under development, so there are no results yet. Ultimately, the implementation will allow investors to quickly identify high-potential growth companies, facilitating investment decisions and potentially increasing portfolio efficiency.'
   },
   projectNavBack: { pl: 'Wszystkie Projekty', en: 'All Projects' }
 };
