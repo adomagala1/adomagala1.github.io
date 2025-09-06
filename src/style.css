@@ -1240,15 +1240,9 @@ footer .copyright {
   font-size: 0.9rem;
   color: var(--text-secondary-color);
 }
-
 #more-about-me .btn.btn-fancy {
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(
-    45deg,
-    var(--btn-gradient-start),
-    var(--btn-gradient-end)
-  );
   border: none;
   color: var(--btn-text-color);
   font-size: 0.9rem;
@@ -1258,6 +1252,16 @@ footer .copyright {
   letter-spacing: 0.5px;
   transform: perspective(1px) translateZ(0);
   transition: all 0.3s ease-out;
+
+  background: linear-gradient(
+    270deg,
+    var(--btn-gradient-start),
+    var(--btn-gradient-end),
+    #2056e9,
+    #1ca1df
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
 }
 
 #more-about-me .btn.btn-fancy::after {
@@ -1273,7 +1277,6 @@ footer .copyright {
 }
 
 #more-about-me .btn.btn-fancy:hover {
-  transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(var(--btn-shadow-rgb), 0.35);
   padding-right: 3rem;
 }
@@ -1291,6 +1294,18 @@ footer .copyright {
 #more-about-me .btn.btn-fancy:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ==========================================================================
