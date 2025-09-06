@@ -1019,6 +1019,11 @@ section {
 .skill-item[data-category='web']:hover {
   background-color: var(--color-web-hover);
 }
+.skill-item.is-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
 .projects-grid {
   display: grid;
