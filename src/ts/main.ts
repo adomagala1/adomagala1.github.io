@@ -12,6 +12,7 @@ import { initContactDrawer } from './contactDrawer';
 import { initClickableCards } from './clickableCards';
 import { initLanguageSwitcher } from './languageSwitcher';
 import { initContactForm } from './contactForm';
+import { initTechModal } from './techModal';
 
 // 3. Główny punkt startowy aplikacji
 function main() {
@@ -20,6 +21,7 @@ function main() {
   initThemeToggle();
   initScrollAnimations();
   initSkillsAnimation();
+  initTechModal();
   initDodgingButtons();
   initClickableCards();
   initContactDrawer();

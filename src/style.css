@@ -2107,3 +2107,201 @@ main.project-detail-page {
 .toast--error .toast__progress-bar {
   background-color: #f44336;
 }
+
+/* 15 SEKCJA MODAL ITP*/
+.tech-modal {
+  --modal-accent-color: var(
+    --color-analysis
+  ); /* Domyślny kolor, na wszelki wypadek */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.tech-modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Bardziej czarne tło */
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  display: flex;
+  width: 90%;
+  max-width: 680px;
+  /* Nowe, mroczne tło */
+  background: rgba(20, 22, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.tech-modal.is-visible .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--text-secondary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.modal-close:hover {
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+/* --- Lewa Kolumna (Sidebar) --- */
+.modal-sidebar {
+  flex: 0 0 180px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* DYNAMICZNY GRADIENT W TLE */
+  background: radial-gradient(
+    circle at 50% 100%,
+    color-mix(in srgb, var(--modal-accent-color) 20%, transparent 70%),
+    rgba(0, 0, 0, 0.3)
+  );
+  transition: background 0.4s ease;
+}
+.modal-tech-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 15px;
+  /* DYNAMICZNA POŚWIATA */
+  filter: drop-shadow(0 0 12px var(--modal-accent-color));
+  transition: filter 0.4s ease;
+}
+#modal-title {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+/* --- Prawa Kolumna (Statystyki) --- */
+.modal-main {
+  flex-grow: 1;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.stat-item {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.tech-modal.is-visible .stat-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+.tech-modal.is-visible .stat-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.tech-modal.is-visible .stat-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.tech-modal.is-visible .stat-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stat-value {
+  margin: 0;
+  font-size: 18px;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+/* --- Pasek z dynamicznym kolorem --- */
+.skill-level-bar {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+.skill-level-segment {
+  flex: 1;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+.skill-level-segment.is-active {
+  /* DYNAMICZNY KOLOR I POŚWIATA */
+  background-color: var(--modal-accent-color);
+  box-shadow: 0 0 10px var(--modal-accent-color);
+}
+.skill-level-segment:nth-child(2).is-active {
+  transition-delay: 50ms;
+}
+/* ... reszta transition-delay bez zmian ... */
+.skill-level-segment:nth-child(3).is-active {
+  transition-delay: 100ms;
+}
+.skill-level-segment:nth-child(4).is-active {
+  transition-delay: 150ms;
+}
+.skill-level-segment:nth-child(5).is-active {
+  transition-delay: 200ms;
+}
+.skill-level-segment:nth-child(6).is-active {
+  transition-delay: 250ms;
+}
+.skill-level-segment:nth-child(7).is-active {
+  transition-delay: 300ms;
+}
+.skill-level-segment:nth-child(8).is-active {
+  transition-delay: 350ms;
+}
+.skill-level-segment:nth-child(9).is-active {
+  transition-delay: 400ms;
+}
+.skill-level-segment:nth-child(10).is-active {
+  transition-delay: 450ms;
+}
