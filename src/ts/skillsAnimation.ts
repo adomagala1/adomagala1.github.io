@@ -105,25 +105,7 @@ export function initSkillsAnimation(): void {
     animationFrameId = requestAnimationFrame(animate);
   };
 
-  const skillsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!animationFrameId) {
-            init();
-          }
-        } else {
-          if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-          }
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  skillsObserver.observe(skillsBox);
+  init();
 
   let resizeTimeout: number;
   window.addEventListener('resize', () => {
