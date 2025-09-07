@@ -280,9 +280,10 @@
             <h2 class="section-title" data-translate-key="skillsSectionTitle">
               Technologie i Narzędzia
             </h2>
+            <p class="skills-prompt" data-translate-key="skillsPrompt">
+              Kliknij w technologię, aby zobaczyć szczegóły
+            </p>
 
-            <!-- LEGENDA KATEGORII -->
-            <!-- ZAKTUALIZOWANA LEGENDA Z FILTRAMI -->
             <div class="skills-legend">
               <div class="legend-item is-active" data-filter="all">
                 <span
@@ -306,6 +307,13 @@
                 <span data-translate-key="skillsLegendAnalysis"
                   >Analiza Danych</span
                 >
+              </div>
+              <div class="legend-item" data-filter="devops">
+                <span
+                  class="legend-dot"
+                  style="background-color: #dfdb20"
+                ></span>
+                <span data-translate-key="skillsLegendML">DevOps</span>
               </div>
               <div class="legend-item" data-filter="ml">
                 <span
@@ -697,13 +705,12 @@
         </section>
       </main>
       <div id="drawer-overlay" class="drawer-overlay"></div>
-      <!-- TOTALNIE NOWY MODAL - wklej przed </body> -->
       <div id="tech-modal" class="tech-modal">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
           <button class="modal-close" aria-label="Zamknij">&times;</button>
 
-          <div class="modal-sidebar">
+          <div class="modal-header">
             <img id="modal-icon" src="" alt="" class="modal-tech-icon" />
             <h3 id="modal-title"></h3>
           </div>
@@ -717,9 +724,16 @@
               <span class="stat-label">Główne Zastosowanie</span>
               <p id="modal-where-used" class="stat-value"></p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item stat-item-full">
               <span class="stat-label">Poziom Zaawansowania</span>
               <div id="skill-level-bar" class="skill-level-bar"></div>
+            </div>
+
+            <div id="modal-projects-container" class="stat-item stat-item-full">
+              <span class="stat-label">Użyte w projektach</span>
+              <div id="modal-projects-list" class="modal-projects-list">
+                <!-- Linki będą generowane  wstawiane  przez JavaScript -->
+              </div>
             </div>
           </div>
         </div>

@@ -915,6 +915,7 @@ section {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  cursor: pointer;
   margin-bottom: 30px;
   font-size: var(--font-size-sm);
   color: var(--text-secondary-color);
@@ -964,6 +965,7 @@ section {
   cursor: grab;
   will-change: transform;
   white-space: nowrap;
+  cursor: pointer;
 }
 .skill-item svg {
   width: 16px;
@@ -2109,11 +2111,22 @@ main.project-detail-page {
 }
 
 /* 15 SEKCJA MODAL ITP*/
-.tech-modal {
-  --modal-accent-color: var(
-    --color-analysis
-  ); /* Domyślny kolor, na wszelki wypadek */
+/* 
 
+ */
+.skills-prompt {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* 2 */
+/*2  */
+/* 2 */
+.tech-modal {
+  --modal-accent-color: var(--color-analysis);
   position: fixed;
   top: 0;
   left: 0;
@@ -2137,22 +2150,20 @@ main.project-detail-page {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Bardziej czarne tło */
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
 }
 
 .modal-content {
-  display: flex;
+  position: relative;
   width: 90%;
-  max-width: 680px;
-  /* Nowe, mroczne tło */
-  background: rgba(20, 22, 28, 0.85);
+  max-width: 550px;
+  background: #101114;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
   transform: translateY(20px) scale(0.98);
-  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   opacity: 0;
 }
 .tech-modal.is-visible .modal-content {
@@ -2162,17 +2173,17 @@ main.project-detail-page {
 
 .modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255, 255, 255, 0.05);
+  top: 12px;
+  right: 12px;
+  background: transparent;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 28px;
   color: var(--text-secondary-color);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -2180,67 +2191,72 @@ main.project-detail-page {
 }
 .modal-close:hover {
   color: var(--text-color);
-  background: rgba(255, 255, 255, 0.1);
   transform: rotate(90deg);
 }
 
-/* --- Lewa Kolumna (Sidebar) --- */
-.modal-sidebar {
-  flex: 0 0 180px;
+.modal-header {
   padding: 30px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* DYNAMICZNY GRADIENT W TLE */
-  background: radial-gradient(
-    circle at 50% 100%,
-    color-mix(in srgb, var(--modal-accent-color) 20%, transparent 70%),
-    rgba(0, 0, 0, 0.3)
-  );
-  transition: background 0.4s ease;
+  gap: 20px;
 }
 .modal-tech-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 15px;
-  /* DYNAMICZNA POŚWIATA */
-  filter: drop-shadow(0 0 12px var(--modal-accent-color));
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  /* SUBTELNY AKCENT: poświata w kolorze tech */
+  filter: drop-shadow(
+    0 0 12px color-mix(in srgb, var(--modal-accent-color) 70%, transparent)
+  );
   transition: filter 0.4s ease;
 }
 #modal-title {
   margin: 0;
-  font-size: 24px;
-  color: var(--text-color);
-  line-height: 1.2;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  padding-bottom: 5px;
+}
+/* SUBTELNY AKCENT: cienka linia pod tytułem */
+#modal-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--modal-accent-color);
+  transition: background 0.4s ease;
 }
 
-/* --- Prawa Kolumna (Statystyki) --- */
 .modal-main {
-  flex-grow: 1;
-  padding: 30px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  padding: 0 30px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 30px;
 }
 .stat-item {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(15px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+.stat-item-full {
+  grid-column: 1 / -1;
+}
+/* ... animacje wjazdu statystyk bez zmian ... */
 .tech-modal.is-visible .stat-item {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 .tech-modal.is-visible .stat-item:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.tech-modal.is-visible .stat-item:nth-child(2) {
   transition-delay: 0.2s;
 }
-.tech-modal.is-visible .stat-item:nth-child(3) {
+.tech-modal.is-visible .stat-item:nth-child(2) {
   transition-delay: 0.3s;
+}
+.tech-modal.is-visible .stat-item:nth-child(3) {
+  transition-delay: 0.4s;
 }
 
 .stat-label {
@@ -2248,9 +2264,9 @@ main.project-detail-page {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-secondary-color);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 .stat-value {
   margin: 0;
@@ -2259,7 +2275,7 @@ main.project-detail-page {
   font-weight: 500;
 }
 
-/* --- Pasek z dynamicznym kolorem --- */
+/* --- Pasek postępu - jedyny mocny akcent koloru --- */
 .skill-level-bar {
   display: flex;
   gap: 4px;
@@ -2268,19 +2284,18 @@ main.project-detail-page {
 .skill-level-segment {
   flex: 1;
   height: 12px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 .skill-level-segment.is-active {
-  /* DYNAMICZNY KOLOR I POŚWIATA */
   background-color: var(--modal-accent-color);
   box-shadow: 0 0 10px var(--modal-accent-color);
 }
+/* ... reszta delayów paska ... */
 .skill-level-segment:nth-child(2).is-active {
   transition-delay: 50ms;
 }
-/* ... reszta transition-delay bez zmian ... */
 .skill-level-segment:nth-child(3).is-active {
   transition-delay: 100ms;
 }
@@ -2305,34 +2320,43 @@ main.project-detail-page {
 .skill-level-segment:nth-child(10).is-active {
   transition-delay: 450ms;
 }
-.legend-item {
-  cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
 
-.legend-item:hover {
+/* --- NOWE STYLE DLA LINKÓW DO PROJEKTÓW --- */
+.modal-projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.project-link-tag {
+  display: inline-block;
+  padding: 6px 12px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: var(--text-secondary-color);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.project-link-tag:hover {
+  background-color: var(--modal-accent-color);
+  color: #fff;
+  box-shadow: 0 0 10px -2px var(--modal-accent-color);
 }
 
-.legend-item.is-active {
-  background-color: var(--card-bg-color);
-  border-color: var(--border-color);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  color: var(--text-color);
+/* --- ANIMACJA PODŚWIETLENIA KARTY PROJEKTU --- */
+@keyframes highlight-project {
+  0% {
+    box-shadow: 0 0 0 0px var(--color-analysis);
+  } /* Domyślny kolor */
+  50% {
+    box-shadow: 0 0 25px 5px var(--color-analysis);
+  }
+  100% {
+    box-shadow: 0 0 0 0px var(--color-analysis);
+  }
 }
 
-.skill-item {
-  /* Dodajemy transition dla płynnego znikania/pojawiania się */
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.skill-item.is-hidden {
-  opacity: 0;
-  transform: scale(0.5);
-  pointer-events: none; /* Ważne, żeby nie dało się kliknąć ukrytego elementu */
+.project-card.is-highlighted {
+  /* Użyj tutaj selektora swojej karty projektu */
+  animation: highlight-project 2.5s ease-in-out;
 }
