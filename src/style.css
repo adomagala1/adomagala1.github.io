@@ -172,6 +172,8 @@
   --font-size-md: clamp(1rem, 0.34vw + 0.91rem, 1.25rem);
   --font-size-lg: clamp(1.5rem, 1vw + 1rem, 2.5rem);
   --font-size-xl: clamp(2.5rem, 2.5vw + 1.5rem, 4.5rem);
+
+  --legend-active-bar-color: rgb(42, 53, 211);
 }
 
 html.light-mode {
@@ -190,6 +192,7 @@ html.light-mode {
   --glitch-red: #dc3545;
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
+  --legend-active-bar-color: #372dc4;
 
   --btn-gradient-start: #007bff;
   --btn-gradient-end: #0056b3;
@@ -2292,9 +2295,7 @@ main.project-detail-page {
   transition: all 0.2s ease;
 }
 .project-link-tag:hover {
-  background-color: var(--modal-accent-color);
   color: #fff;
-  box-shadow: 0 0 10px -2px var(--modal-accent-color);
 }
 
 /* --- ANIMACJA PODŚWIETLENIA KARTY PROJEKTU --- */
@@ -2311,7 +2312,6 @@ main.project-detail-page {
 }
 
 .project-card.is-highlighted {
-  /* Użyj tutaj selektora swojej karty projektu */
   animation: highlight-project 2.5s ease-in-out;
 }
 .skills-prompt {
@@ -2322,17 +2322,18 @@ main.project-detail-page {
   font-style: italic;
 }
 
-/* --- LEGENDA Z FILTRAMI --- */
 .legend-item {
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
 
 .legend-item:hover {
@@ -2345,6 +2346,25 @@ main.project-detail-page {
   border-color: var(--border-color);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   color: var(--text-color);
+}
+.legend-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 100%;
+  background-color: var(--legend-active-bar-color);
+  border-radius: 2px;
+  transform: translateY(-50%) scaleY(0);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s ease;
+}
+
+.legend-item.is-active::after {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
 }
 .legend-dot {
   display: inline-block;

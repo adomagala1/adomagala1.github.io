@@ -1,5 +1,7 @@
 // src/ts/nav.ts
 
+import arrowIcon from '../assets/arrow.svg';
+
 export function initMobileNav(): void {
   const hamburgerBtn = document.getElementById(
     'hamburger-menu'
@@ -19,9 +21,7 @@ export function initMobileNav(): void {
       <div class="nav-item has-submenu">
         <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu" data-translate-key="navProjects">
           Projekty
-          <svg class="submenu-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+          <img class="arrow" src="${arrowIcon}" alt="Rozwiń menu projektów" aria-hidden="true">
         </button>
         <div class="submenu" id="projects-submenu">
           <a href="/projekt-dashboard.html" data-translate-key="navProjectDashboard">Analiza Danych Sprzedażowych</a>
