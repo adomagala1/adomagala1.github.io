@@ -4,6 +4,7 @@ import { show as showTechModal } from './techModal';
 
 interface Skill {
   element: HTMLElement;
+  categorySlug: string; // Potrzebujemy tego do filtrowania
   x: number;
   y: number;
   vx: number;
@@ -18,19 +19,24 @@ export function initSkillsAnimation(): void {
   const skillsBox = document.getElementById(
     'skills-box'
   ) as HTMLDivElement | null;
-  if (!skillsBox) return;
+  const filterButtons = document.querySelectorAll<HTMLElement>('.legend-item');
+  if (!skillsBox || filterButtons.length === 0) return;
 
-  const skillItems = skillsBox.querySelectorAll<HTMLElement>('.skill-item');
-  let skills: Skill[] = [];
+  const allSkillElements =
+    skillsBox.querySelectorAll<HTMLElement>('.skill-item');
+
+  let allSkills: Skill[] = [];
+  let visibleSkills: Skill[] = [];
+
   let animationFrameId: number | null = null;
 
-  // --- FIZYKA - TUTAJ SĄ ZMIANY ---
-  const bounce = -0.2;
-  const friction = 0.99;
-  const driftFactor = 0.03;
-  const throwMultiplier = 25;
-  const maxVelocity = 10;
-  const speedFactor = 0.7;
+  // Fizyka bez zmian
+  const bounce = -0.4,
+    friction = 0.99,
+    driftFactor = 0.02;
+  const throwMultiplier = 25,
+    maxVelocity = 15,
+    speedFactor = 0.5;
 
   let draggedSkill: Skill | null = null;
   let offsetX = 0,
@@ -42,17 +48,18 @@ export function initSkillsAnimation(): void {
     throwVelocityY = 0;
 
   const init = () => {
-    //
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
     const boxRect = skillsBox.getBoundingClientRect();
-    skills = [];
-    skillItems.forEach((item) => {
+    allSkills = [];
+
+    allSkillElements.forEach((item) => {
       const itemRect = item.getBoundingClientRect();
       const radius = Math.max(itemRect.width, itemRect.height) / 2;
       let x = radius + Math.random() * (boxRect.width - 2 * radius);
       let y = radius + Math.random() * (boxRect.height - 2 * radius);
       const skill: Skill = {
         element: item,
+        categorySlug: item.dataset.category || '',
         x,
         y,
         radius,
@@ -62,33 +69,46 @@ export function initSkillsAnimation(): void {
         vy: (Math.random() - 0.5) * 2 * speedFactor,
         isBeingDragged: false
       };
-      skills.push(skill);
+      allSkills.push(skill);
       item.addEventListener('mousedown', (e) => handleDragStart(e, skill));
       item.addEventListener('touchstart', (e) => handleDragStart(e, skill), {
         passive: false
       });
     });
+
+    applyFilter('all');
     animate();
+  };
+
+  const applyFilter = (filter: string) => {
+    filterButtons.forEach((btn) => {
+      btn.classList.toggle('is-active', btn.dataset.filter === filter);
+    });
+
+    // Filtruj skille
+    visibleSkills = [];
+    allSkills.forEach((skill) => {
+      const matchesFilter = filter === 'all' || skill.categorySlug === filter;
+      skill.element.classList.toggle('is-hidden', !matchesFilter);
+      if (matchesFilter) {
+        visibleSkills.push(skill);
+      }
+    });
   };
 
   const animate = () => {
     const boxRect = skillsBox.getBoundingClientRect();
-    skills.forEach((skill, index) => {
+
+    visibleSkills.forEach((skill, index) => {
       if (skill === draggedSkill) return;
 
-      //  Zastosuj stały, subtelny ruch (pływanie)
-      skill.vx += (Math.random() - 0.5) * driftFactor; // *** ZMIANA ***
-      skill.vy += (Math.random() - 0.5) * driftFactor; // *** ZMIANA ***
-
-      //  Zastosuj tarcie
+      skill.vx += (Math.random() - 0.5) * driftFactor;
+      skill.vy += (Math.random() - 0.5) * driftFactor;
       skill.vx *= friction;
       skill.vy *= friction;
-
-      //  Zaktualizuj pozycję
       skill.x += skill.vx;
       skill.y += skill.vy;
 
-      //Sprawdź kolizje ze ścianami (teraz z mniejszym odbiciem)
       const left = skill.x - skill.width / 2,
         right = skill.x + skill.width / 2;
       const top = skill.y - skill.height / 2,
@@ -108,9 +128,9 @@ export function initSkillsAnimation(): void {
         skill.vy *= bounce;
       }
 
-      //Sprawdź kolizje z innymi elementami
-      for (let j = index + 1; j < skills.length; j++) {
-        const otherSkill = skills[j];
+      // Kolizje sprawdzamy tylko między widocznymi elementami
+      for (let j = index + 1; j < visibleSkills.length; j++) {
+        const otherSkill = visibleSkills[j];
         if (otherSkill === draggedSkill) continue;
         const dx = otherSkill.x - skill.x,
           dy = otherSkill.y - skill.y;
@@ -133,20 +153,24 @@ export function initSkillsAnimation(): void {
       }
     });
 
-    //  Renderuj
-    skills.forEach((skill) => {
+    allSkills.forEach((skill) => {
       let transform = `translate(${skill.x - skill.width / 2}px, ${
         skill.y - skill.height / 2
       }px)`;
-      if (skill === draggedSkill) transform += ' scale(1.15)';
+      if (skill.element.classList.contains('is-hidden')) {
+        transform += ' scale(0.5)';
+      }
+      if (skill === draggedSkill) {
+        transform += ' scale(1.15)';
+      }
       skill.element.style.transform = transform;
     });
+
     animationFrameId = requestAnimationFrame(animate);
   };
 
   const getPointerPosition = (e: MouseEvent | TouchEvent) =>
     'touches' in e ? e.touches[0] : e;
-
   const handleDragStart = (e: MouseEvent | TouchEvent, skill: Skill) => {
     e.preventDefault();
     draggedSkill = skill;
@@ -167,7 +191,6 @@ export function initSkillsAnimation(): void {
     window.addEventListener('mouseup', handleDragEnd);
     window.addEventListener('touchend', handleDragEnd);
   };
-
   const handleDragMove = (e: MouseEvent | TouchEvent) => {
     if (!draggedSkill) return;
     draggedSkill.isBeingDragged = true;
@@ -197,7 +220,6 @@ export function initSkillsAnimation(): void {
     lastMouseY = pointer.clientY;
     lastTimestamp = now;
   };
-
   const handleDragEnd = () => {
     if (!draggedSkill) return;
     const releasedSkill = draggedSkill;
@@ -207,7 +229,8 @@ export function initSkillsAnimation(): void {
       showTechModal(skillName);
     } else {
       releasedSkill.element.classList.remove('is-dragging');
-      for (const otherSkill of skills) {
+      for (const otherSkill of visibleSkills) {
+        // Sprawdzamy kolizje tylko z widocznymi
         if (otherSkill === releasedSkill) continue;
         const dx = otherSkill.x - releasedSkill.x,
           dy = otherSkill.y - releasedSkill.y;
@@ -238,6 +261,15 @@ export function initSkillsAnimation(): void {
 
   init();
 
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      if (filter) {
+        applyFilter(filter);
+      }
+    });
+  });
+
   let resizeTimeout: number;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
@@ -248,9 +280,9 @@ export function initSkillsAnimation(): void {
 
   const nudgeForce = 4;
   setInterval(() => {
-    if (skills.length === 0 || draggedSkill) return;
-    const randomIndex = Math.floor(Math.random() * skills.length);
-    const randomSkill = skills[randomIndex];
+    if (visibleSkills.length === 0 || draggedSkill) return;
+    const randomIndex = Math.floor(Math.random() * visibleSkills.length);
+    const randomSkill = visibleSkills[randomIndex];
     randomSkill.vx += (Math.random() - 0.5) * nudgeForce;
     randomSkill.vy += (Math.random() - 0.5) * nudgeForce;
   }, 3000);

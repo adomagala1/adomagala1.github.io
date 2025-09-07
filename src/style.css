@@ -2305,3 +2305,34 @@ main.project-detail-page {
 .skill-level-segment:nth-child(10).is-active {
   transition-delay: 450ms;
 }
+.legend-item {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.legend-item.is-active {
+  background-color: var(--card-bg-color);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+
+.skill-item {
+  /* Dodajemy transition dla płynnego znikania/pojawiania się */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.skill-item.is-hidden {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none; /* Ważne, żeby nie dało się kliknąć ukrytego elementu */
+}
