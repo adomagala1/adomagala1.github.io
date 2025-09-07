@@ -154,15 +154,17 @@
 
   --color-database: #9c27b0;
   --color-analysis: #2196f3;
-  --color-ml: #ff9800;
+  --color-ml: #ff9900cb;
   --color-visualization: #4caf50;
-  --color-web: #f44336;
+  --color-web: #d9ec2b;
+  --color-devops: #eb260b;
 
   --color-database-hover: rgba(156, 39, 176, 0.15);
   --color-analysis-hover: rgba(33, 150, 243, 0.15);
   --color-ml-hover: rgba(255, 152, 0, 0.15);
   --color-visualization-hover: rgba(76, 175, 80, 0.15);
-  --color-web-browser: rgba(244, 67, 54, 0.15);
+  --color-web-hover: rgba(187, 204, 32, 0.15);
+  --color-devops-hover: rgba(235, 38, 11, 0.15);
 
   --header-height: 81px;
   --font-size-base: 16px;
@@ -2482,7 +2484,6 @@ main.project-detail-page {
   pointer-events: none;
 }
 
-/* Kolorowe ramki w Dark Mode */
 .skill-item[data-category='database'] {
   border-color: var(--color-database);
 }
@@ -2498,7 +2499,9 @@ main.project-detail-page {
 .skill-item[data-category='web'] {
   border-color: var(--color-web);
 }
-
+.skill-item[data-category='devops'] {
+  border-color: var(--color-devops);
+}
 .skill-item:hover {
   z-index: 10;
   color: var(--text-color);
@@ -2516,7 +2519,10 @@ main.project-detail-page {
   background-color: var(--color-visualization-hover);
 }
 .skill-item[data-category='web']:hover {
-  background-color: var(--color-web-browser);
+  background-color: var(--color-web-hover);
+}
+.skill-item[data-category='devops']:hover {
+  background-color: var(--color-devops-hover);
 }
 
 /* ==========================================================================
@@ -2578,8 +2584,12 @@ html.light-mode .skill-item[data-category='visualization'] {
   border-color: var(--color-visualization);
 }
 html.light-mode .skill-item[data-category='web'] {
-  background-color: var(--color-web-browser);
+  background-color: var(--color-web-hover);
   border-color: var(--color-web);
+}
+html.light-mode .skill-item[data-category='devops'] {
+  background-color: var(--color-devops-hover);
+  border-color: var(--color-devops);
 }
 html.light-mode .skill-item:hover {
   filter: brightness(0.95);
