@@ -34,6 +34,7 @@ const techDescriptions: { [key: string]: TechInfo } = {
     categorySlug: 'web',
     linkedProjects: ['projekt-api-sklepu']
   }
+  // ...
 };
 
 let modal: HTMLElement | null,
@@ -125,7 +126,7 @@ export function show(skillName: string): void {
           projectElement.classList.add('is-highlighted');
           setTimeout(() => {
             projectElement.classList.remove('is-highlighted');
-          }, 2500);
+          }, 2500); // Podświetlenie na 2.5 sekundy
         }
       });
       modalProjectsList!.appendChild(link);
