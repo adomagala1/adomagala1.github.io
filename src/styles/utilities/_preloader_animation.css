@@ -1,0 +1,34 @@
+#loader-logo > span:first-child {
+  position: relative;
+  margin: 0.2em 0;
+}
+
+#loader-logo > span:first-child::before,
+#loader-logo > span:first-child::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0.4;
+  transform: scale(0.8);
+  color: var(--text-secondary-color);
+}
+
+/* Litera nad */
+#loader-logo > span:first-child::before {
+  content: var(--char-before, '');
+  bottom: 100%;
+}
+
+/* Litera pod */
+#loader-logo > span:first-child::after {
+  content: var(--char-after, '');
+  top: 100%;
+}
+
+/* koncowa literka */
+#loader-logo > span:first-child.is-final {
+  color: #b42222;
+  transform: scale(1.15);
+  transition: all 0.3s ease-out;
+}

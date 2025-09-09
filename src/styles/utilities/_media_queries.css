@@ -1,0 +1,80 @@
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-content,
+  .project-grid-layout {
+    gap: 30px;
+  }
+  .project-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .project-meta {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .meta-block {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+  }
+  .header-controls {
+    gap: 20px;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-image {
+    margin-bottom: 30px;
+    max-width: 250px;
+  }
+  .skill-item {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .loader-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 0;
+    gap: clamp(0px, 1.5vh, 10px);
+    white-space: normal;
+  }
+  #loader-logo > span:first-child {
+    margin: 0;
+  }
+  #loader-logo > span:first-child::before,
+  #loader-logo > span:first-child::after {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .drawer-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-drawer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-item.is-open .submenu {
+    gap: 15px;
+  }
+}

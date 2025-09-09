@@ -1,0 +1,82 @@
+.hero {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) 20px;
+  position: relative;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(
+      to right,
+      var(--border-color) 0,
+      var(--border-color) 1px,
+      transparent 1px,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--border-color) 0,
+      var(--border-color) 1px,
+      transparent 1px,
+      transparent 50px
+    );
+  animation: moveGrid 10s linear infinite;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  position: relative;
+}
+
+.hero h1 span {
+  position: relative;
+}
+
+.hero h1::before,
+.hero h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  overflow: hidden;
+}
+
+.hero h1::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--glitch-red);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.hero h1::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--glitch-cyan), 2px 2px var(--glitch-red);
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+.hero h1 span::after {
+  content: '_';
+  margin-left: 0.2em;
+  font-weight: 700;
+  animation: blink-cursor 1s step-end infinite;
+  color: var(--text-color);
+}
+
+.hero .subtitle {
+  font-size: var(--font-size-md);
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+  font-weight: 400;
+  color: var(--text-secondary-color);
+}

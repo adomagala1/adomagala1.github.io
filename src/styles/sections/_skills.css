@@ -1,0 +1,462 @@
+/* --- 15.1 Legend / Filters --- */
+.skills-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.legend-item {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary-color);
+}
+.legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.legend-item.is-active {
+  background-color: var(--card-bg-color);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* --- 15.2 Skills Container ("The Vault") --- */
+.skills-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-box {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: clamp(400px, 60vh, 550px);
+  user-select: none;
+  overflow: hidden;
+  background: #0a0a0a;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  isolation: isolate; /* Potrzebne dla pseudo-elementu tła */
+}
+.skills-box::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 5px 100%;
+  transition: border 0.3s ease, background-image 0.3s ease;
+  z-index: 1;
+}
+.skills-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: transparent; /* Domyślnie przezroczyste */
+  transition: background-color 0.4s ease;
+  z-index: 0;
+}
+.skills-box.is-filtered::after {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Przyciemnienie tła przy filtrowaniu */
+}
+
+/* --- 15.3 Skill Items --- */
+.skill-item {
+  position: absolute;
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--border-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+  z-index: 2; /* Musi być nad tłem ::after */
+}
+.skill-item:active {
+  cursor: grabbing;
+}
+.skill-item.is-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Styl przygaszonych skilli */
+.skill-item.is-hidden {
+  transform: scale(0.7);
+  filter: grayscale(1) opacity(0.4);
+  z-index: 1; /* Za aktywnymi, ale nad tłem */
+  pointer-events: none;
+}
+
+.skill-item[data-category='database'] {
+  border-color: var(--color-database);
+}
+.skill-item[data-category='analysis'] {
+  border-color: var(--color-analysis);
+}
+.skill-item[data-category='ml'] {
+  border-color: var(--color-ml);
+}
+.skill-item[data-category='visualization'] {
+  border-color: var(--color-visualization);
+}
+.skill-item[data-category='web'] {
+  border-color: var(--color-web);
+}
+.skill-item[data-category='devops'] {
+  border-color: var(--color-devops);
+}
+.skill-item:hover {
+  z-index: 10;
+  color: var(--text-color);
+}
+.skill-item[data-category='database']:hover {
+  background-color: var(--color-database-hover);
+}
+.skill-item[data-category='analysis']:hover {
+  background-color: var(--color-analysis-hover);
+}
+.skill-item[data-category='ml']:hover {
+  background-color: var(--color-ml-hover);
+}
+.skill-item[data-category='visualization']:hover {
+  background-color: var(--color-visualization-hover);
+}
+.skill-item[data-category='web']:hover {
+  background-color: var(--color-web-hover);
+}
+.skill-item[data-category='devops']:hover {
+  background-color: var(--color-devops-hover);
+}
+.skills-prompt {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+.tech-modal {
+  --modal-accent-color: var(--color-analysis);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.tech-modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 550px;
+  background: #101114;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  opacity: 0;
+}
+.tech-modal.is-visible .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--text-secondary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.modal-close:hover {
+  color: var(--text-color);
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.modal-tech-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  transition: filter 0.4s ease;
+}
+#modal-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  padding-bottom: 5px;
+}
+#modal-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--modal-accent-color);
+  transition: background 0.4s ease;
+}
+
+.modal-main {
+  padding: 0 30px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 30px;
+}
+.stat-item {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.stat-item-full {
+  grid-column: 1 / -1;
+}
+/* ... animacje wjazdu statystyk bez zmian ... */
+.tech-modal.is-visible .stat-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tech-modal.is-visible .stat-item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.tech-modal.is-visible .stat-item:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.tech-modal.is-visible .stat-item:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+.stat-value {
+  margin: 0;
+  font-size: 18px;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+/* --- Pasek postępu - jedyny mocny akcent koloru --- */
+.skill-level-bar {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.skill-level-segment {
+  flex: 1;
+  height: 12px;
+  border-radius: 3px;
+  background-color: color-mix(
+    in srgb,
+    var(--modal-accent-color) 15%,
+    transparent
+  );
+
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.skill-level-segment.is-active {
+  background-color: var(--modal-accent-color);
+  box-shadow: 0 0 10px
+    color-mix(in srgb, var(--modal-accent-color) 70%, transparent);
+}
+
+/* Staggered animation dla segmentów (opcjonalne, ale fajny efekt) */
+.skill-level-segment:nth-child(2).is-active {
+  transition-delay: 50ms;
+}
+.skill-level-segment:nth-child(3).is-active {
+  transition-delay: 100ms;
+}
+.skill-level-segment:nth-child(4).is-active {
+  transition-delay: 150ms;
+}
+.skill-level-segment:nth-child(5).is-active {
+  transition-delay: 200ms;
+}
+.skill-level-segment:nth-child(6).is-active {
+  transition-delay: 250ms;
+}
+.skill-level-segment:nth-child(7).is-active {
+  transition-delay: 300ms;
+}
+.skill-level-segment:nth-child(8).is-active {
+  transition-delay: 350ms;
+}
+.skill-level-segment:nth-child(9).is-active {
+  transition-delay: 400ms;
+}
+.skill-level-segment:nth-child(10).is-active {
+  transition-delay: 450ms;
+}
+
+/* --- NOWE STYLE DLA LINKÓW DO PROJEKTÓW --- */
+.modal-projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.project-link-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--text-secondary-color);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.project-link-tag:hover {
+  color: #fff;
+}
+
+/* --- ANIMACJA PODŚWIETLENIA KARTY PROJEKTU --- */
+
+.project-card.is-highlighted {
+  animation: highlight-project 2.5s ease-in-out;
+}
+.skills-prompt {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+.legend-item {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.legend-item.is-active {
+  background-color: var(--card-bg-color);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+.legend-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 100%;
+  background-color: var(--legend-active-bar-color);
+  border-radius: 2px;
+  transform: translateY(-50%) scaleY(0);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s ease;
+}
+
+.legend-item.is-active::after {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
+}
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.skills-prompt {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}

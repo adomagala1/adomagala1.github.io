@@ -1,0 +1,92 @@
+html.light-mode .skills-box {
+  background: #e9ebf0;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+html.light-mode .skills-box::before {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px
+  );
+}
+html.light-mode .skills-box.is-filtered::after {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+html.light-mode .legend-item {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+html.light-mode .legend-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+html.light-mode .legend-item.is-active {
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .skill-item {
+  color: var(--text-color);
+  background-color: var(--card-bg-color);
+  border-width: 2px;
+  border-style: solid;
+}
+html.light-mode .skill-item[data-category='database'] {
+  background-color: var(--color-database-hover);
+  border-color: var(--color-database);
+}
+html.light-mode .skill-item[data-category='analysis'] {
+  background-color: var(--color-analysis-hover);
+  border-color: var(--color-analysis);
+}
+html.light-mode .skill-item[data-category='ml'] {
+  background-color: var(--color-ml-hover);
+  border-color: var(--color-ml);
+}
+html.light-mode .skill-item[data-category='visualization'] {
+  background-color: var(--color-visualization-hover);
+  border-color: var(--color-visualization);
+}
+html.light-mode .skill-item[data-category='web'] {
+  background-color: var(--color-web-hover);
+  border-color: var(--color-web);
+}
+html.light-mode .skill-item[data-category='devops'] {
+  background-color: var(--color-devops-hover);
+  border-color: var(--color-devops);
+}
+html.light-mode .skill-item:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .modal-content {
+  background: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+html.light-mode #modal-title {
+  color: var(--text-color);
+}
+html.light-mode .stat-value {
+  color: var(--text-color);
+}
+html.light-mode .project-link-tag {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary-color);
+}
+html.light-mode .project-link-tag:hover {
+  background-color: var(--modal-accent-color);
+  color: #fff;
+  box-shadow: 0 0 10px -2px var(--modal-accent-color);
+}
+html.light-mode .project-tech span {
+  background-color: rgba(165, 164, 217, 0.1);
+  border: 1px solid rgba(177, 177, 211, 0.2);
+  color: var(--primary-color);
+}

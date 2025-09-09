@@ -1,0 +1,226 @@
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.drawer-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.contact-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  color: #e0e0e0;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 1rem 1.5rem 1.5rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+}
+
+.contact-drawer.is-open {
+  transform: translateY(0);
+}
+
+.drawer-handle-wrapper {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.drawer-handle {
+  width: 40px;
+  height: 5px;
+  background-color: #444;
+  border-radius: 3px;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.drawer-socials {
+  display: flex;
+  gap: 2rem;
+}
+
+.drawer-socials a {
+  color: #888;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.drawer-socials a:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.drawer-tabs {
+  display: flex;
+  background-color: #222;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 2rem;
+}
+
+.drawer-tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.drawer-tab.active {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.drawer-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.drawer-card {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: transform 0.2s ease-out, border-color 0.2s, box-shadow 0.2s;
+}
+
+.drawer-card:hover {
+  transform: translateY(-5px);
+  border-color: #555;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon-wrapper {
+  margin-bottom: 1rem;
+}
+.card-icon-wrapper.email svg {
+  color: #2196f3;
+}
+.card-icon-wrapper.call svg {
+  color: #9c27b0;
+}
+
+.drawer-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.drawer-card .card-main-text {
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+  color: #fff;
+  word-break: break-all;
+}
+.drawer-card .card-sub-text {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.availability-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.availability-status p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.form-submit-btn {
+  width: 100%;
+  padding: 1rem;
+}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ==========================================================================
+   1.  Imports & Font Declarations
+   2.  CSS Custom Properties (Variables)
+   3.  Keyframe Animations
+   4.  Base Styles & Reset
+   5.  Typography
+   6.  Layout Components
+   7.  UI Components
+       7.1 Buttons
+       7.2 Forms | Toats
+            7.2.1 Forms 
+            7.2.2 Toasts
+       7.3 Cards
+       7.4 Modals
+   8.  Preloader & Page Transition
+   9.  Page Sections
+       9.1 Hero Section
+       9.2 About Section
+       9.3 Skills | Tech Modal
+       9.4 Projects Section
+       9.5 Contact Section
+   10. Drawer
+   11. Utilities & Helpers
+   12. Media Queries
+   13. Light Mode adaptions
+================================================================================ */
+
+/* 1 */
+@import './styles/base/_imports_and_fonts.css';
+
+/* 2 */
+@import './styles/base/_variables.css';
+
+/* 3 */
+@import './styles/base/_keyframe.css';
+
+/* 4 */
+@import './styles/base/_base.css';
+
+/* 5 */
+@import './styles/base/_typography.css';
+
+/* 6 */
+/* TUTAJ SA WSZYSTKIE TAM W SRODKU */
+@import './styles/layout/_layout.css';
+
+/* 7.1 */
+@import './styles/ui/_buttons.css';
+
+/* 7.2.1 */
+@import './styles/ui/_form.css';
+
+/* 7.2.2 */
+@import './styles/ui/_toasts.css';
+
+/* 8.0 */
+@import './styles/base/_preloader.css';
+@import './styles/utilities/_preloader_animation.css';
+
+/* 9.1 */
+@import './styles/sections/_hero.css';
+
+/* 9.2 */
+@import './styles/sections/_about.css';
+
+/* 9.3 */
+@import './styles/sections/_skills.css';
+
+/* 9.4 */
+@import './styles/sections/_projects.css';
+
+/* 9.5 */
+@import './styles/sections/_contact.css';
+
+/* 10 */
+@import './styles/layout/_drawer.css';
+
+/* 11 */
+@import './styles/utilities/_animations_helpers.css';
+
+/* 12 */
+@import './styles/utilities/_media_queries.css';
+
+/* 13 */
+@import './styles/utilities/_light_mode.css';
+
+/* project 1 */
+@import './styles/pages/_project1.css';

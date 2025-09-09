@@ -1,5 +1,5 @@
 // 1. Import CSS
-import '../style.css';
+import '../main.css';
 
 // 2. Import modułów z logiką
 import { initPreloader } from './preloader';

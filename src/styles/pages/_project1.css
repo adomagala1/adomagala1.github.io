@@ -1,0 +1,150 @@
+main.project-detail-page {
+  padding-top: 0;
+}
+
+.project-hero {
+  padding: 80px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary-color);
+}
+
+.project-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.project-subtitle {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--text-secondary-color);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.project-main-image {
+  margin-top: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+.project-main-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-content {
+  padding: 100px 0;
+}
+
+.project-grid-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+}
+
+.project-meta {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.meta-block {
+  margin-bottom: 40px;
+}
+
+.meta-block h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.meta-block p {
+  color: var(--text-secondary-color);
+}
+
+.project-links-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project-description h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.project-description h2:first-of-type {
+  margin-top: 0;
+}
+
+.project-description h3 {
+  font-size: 1.5rem;
+  margin: 30px 0 15px;
+  color: var(--primary-color);
+}
+
+.project-description p {
+  color: var(--text-secondary-color);
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.project-description strong {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.project-description figure {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.project-description figure img {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.project-description figcaption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary-color);
+  font-style: italic;
+}
+
+.back-to-projects {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: var(--text-secondary-color);
+  font-weight: 700;
+  transition: color var(--transition-speed) ease;
+  padding: 20px;
+  margin: 10px;
+}
+
+.back-to-projects svg {
+  width: 60px;
+  height: 60px;
+  color: var(--primary-color);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+  animation: pulse-arrow-firework 2.5s infinite;
+}
+
+.back-to-projects:hover {
+  color: #fff;
+}
+
+.back-to-projects:hover svg {
+  transform: translateX(-50px) scale(1.6) rotate(-5deg);
+  filter: drop-shadow(0 0 50px var(--primary-color))
+    drop-shadow(0 0 25px #ffd700) drop-shadow(0 0 8px #ffffff);
+}

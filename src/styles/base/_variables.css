@@ -1,0 +1,82 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --bg-color: #050505;
+  --font-sans: 'Inter', sans-serif;
+  --bg-secondary-color: #0a0a0a;
+  --card-bg-color: #121212;
+  --text-color: #e0e0e0;
+  --text-secondary-color: #a0a0a0;
+  --nav-color: #3946be;
+  --border-color: rgba(230, 230, 230, 0.1);
+  --primary-color: #e7e7e7;
+  --main-button: #961f4c;
+  --secondary-color: #ff00ff;
+  --glitch-cyan: #270cc0;
+  --lang-option-bg: #104c9b;
+  --glitch-red: #ff0055;
+  --shadow-color: rgba(207, 200, 200, 0.2);
+  --shadow-color2: #051d49d0;
+  --transition-speed: 0.3s;
+  --project-techs: #ffffff;
+  --photo-shadow: #ffffff8a;
+  --primary-color-rgb: 76, 175, 80;
+  --projects-border: #1a3f91;
+  --most-important-p: #8380ac;
+
+  --btn-gradient-start: #961f4c;
+  --btn-gradient-end: #c93a70;
+  --btn-shadow-rgb: 150, 31, 76;
+  --btn-text-color: #ffffff;
+
+  --color-database: #9c27b0;
+  --color-analysis: #2196f3;
+  --color-ml: #ff9900cb;
+  --color-visualization: #4caf50;
+  --color-web: #d9ec2b;
+  --color-devops: #eb260b;
+
+  --color-database-hover: rgba(156, 39, 176, 0.15);
+  --color-analysis-hover: rgba(33, 150, 243, 0.15);
+  --color-ml-hover: rgba(255, 152, 0, 0.15);
+  --color-visualization-hover: rgba(76, 175, 80, 0.15);
+  --color-web-hover: rgba(187, 204, 32, 0.15);
+  --color-devops-hover: rgba(235, 38, 11, 0.15);
+
+  --header-height: 81px;
+  --font-size-base: 16px;
+  --font-size-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.94rem);
+  --font-size-md: clamp(1rem, 0.34vw + 0.91rem, 1.25rem);
+  --font-size-lg: clamp(1.5rem, 1vw + 1rem, 2.5rem);
+  --font-size-xl: clamp(2.5rem, 2.5vw + 1.5rem, 4.5rem);
+
+  --legend-active-bar-color: rgb(42, 53, 211);
+}
+
+html.light-mode {
+  --most-important-p: #5f5d83;
+  --projects-border: #1a3f91;
+  --bg-color: #f0f2f5;
+  --bg-secondary-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --text-color: #333333;
+  --photo-shadow: #0055f1d0;
+  --text-secondary-color: #666666;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --primary-color: #007bff;
+  --secondary-color: #e83e8c;
+  --glitch-cyan: #007bff;
+  --glitch-red: #dc3545;
+  --shadow-color: #051d49d0;
+  --nav-color: #3946be;
+  --legend-active-bar-color: #372dc4;
+
+  --btn-gradient-start: #007bff;
+  --btn-gradient-end: #0056b3;
+  --btn-shadow-rgb: 0, 123, 255;
+  --btn-text-color: #ffffff;
+}

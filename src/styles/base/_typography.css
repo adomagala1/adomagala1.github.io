@@ -1,0 +1,16 @@
+/* src/styles/base/_typography.css */
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+
+body.nav-is-active,
+body.drawer-open {
+  overflow: hidden;
+}

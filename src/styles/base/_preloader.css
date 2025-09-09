@@ -1,0 +1,42 @@
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #050505;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-out;
+}
+
+#preloader.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-logo {
+  font-size: clamp(1.8rem, 9vw, 5rem);
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: clamp(2px, 2vw, 10px);
+  text-shadow: 0 0 15px var(--shadow-color);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.loader-logo span {
+  display: inline-block;
+}
+
+#page-content.hidden {
+  visibility: hidden;
+}
+
+#page-content.visible {
+  visibility: visible;
+  animation: fadeInPage 0.5s ease-in;
+}
