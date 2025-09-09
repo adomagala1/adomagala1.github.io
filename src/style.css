@@ -1,9 +1,38 @@
 /* ==========================================================================
-   1. IMPORTS, PROPERTIES & KEYFRAMES
+   TABLE OF CONTENTS
+   ==========================================================================
+   1.  Imports & Font Declarations
+   2.  CSS Custom Properties (Variables)
+   3.  Keyframe Animations
+   4.  Base Styles & Reset
+   5.  Typography
+   6.  Layout Components
+   7.  UI Components
+       7.1 Buttons
+       7.2 Forms
+       7.3 Cards
+       7.4 Modals
+   8.  Header & Navigation
+   9.  Page Sections
+       9.1 Hero Section
+       9.2 About Section
+       9.3 Skills Section
+       9.4 Projects Section
+       9.5 Contact Section
+   10. Footer
+   11. Utilities & Helpers
+   12. Media Queries
+================================================================================ */
+
+/* ==========================================================================
+   1. IMPORTS & Font Declarations
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
+/* ==========================================================================
+   2. CSS CUSTOM PROPERTIES (VARIABLES)
+   ========================================================================== */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
