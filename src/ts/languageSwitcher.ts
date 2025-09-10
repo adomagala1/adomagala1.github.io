@@ -65,14 +65,14 @@ const translations = {
   project1Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
   project2Title: {
-    pl: 'Analiza Sentymentu Recenzji',
-    en: 'Sentiment Analysis of Reviews'
+    pl: 'Analiza zachowań użytkowników co robią na komputerze zbieranie danych',
+    en: 'User behavior analysis and data collection, prediction '
   },
   project2Desc: {
-    pl: 'Model NLP do automatycznej kategoryzacji recenzji klientów. Wykorzystałem Scikit-learn do trenowania klasyfikatora.',
-    en: 'An NLP model for automatic categorization of customer reviews. I used Scikit-learn to train the classifier.'
+    pl: 'x ',
+    en: 'x'
   },
-  project2Button: { pl: 'Case Study wkrótce', en: 'Case Study soon' },
+  project2Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
   // === Kontakt ===
   contactSectionTitle: { pl: 'Nawiążmy Kontakt', en: "Let's Get in Touch" },
@@ -128,7 +128,21 @@ const translations = {
     pl: 'Program jest w trakcie tworzenia, więc nie ma jeszcze gotowych wyników. Docelowo wdrożenie pozwoli inwestorom szybciej identyfikować spółki o wysokim potencjale wzrostu, co usprawni podejmowanie decyzji inwestycyjnych i może przyczynić się do zwiększenia efektywności portfela inwestycyjnego.',
     en: 'The program is under development, so there are no results yet. Ultimately, the implementation will allow investors to quickly identify high-potential growth companies, facilitating investment decisions and potentially increasing portfolio efficiency.'
   },
-  projectNavBack: { pl: 'Wszystkie Projekty', en: 'All Projects' }
+  projectNavBack: { pl: 'Wszystkie Projekty', en: 'All Projects' },
+
+  // PROJEKT ANALIZA ZACHOWANIA
+  project2DetailHeroTitle: {
+    pl: 'Analiza Zachowania',
+    en: 'Behaviour Analysis'
+  },
+  project2DetailHeroSubtitle: {
+    pl: ' Analiza Zachowań użytkwoników co robią na komputerze itp, + rozwiązywanie ich problemów ze sprzętem za pomocą zdalnej kontrolii ',
+    en: 'User Behavior Analysis, + solving their problems with remote control'
+  },
+  project2MetaGoalDesc: {
+    pl: 'Program uruchamia połączenie z serwerem poprzez TORA i serwer pobiera dane o urzadzeniu dostaje dostep do zdalnej kontroli',
+    en: 'The program starts a connection to the server via TOR and the server retrieves data on the device. You get access to remote control'
+  }
 };
 
 type Language = 'pl' | 'en';

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/main.css" />
+    <link rel="stylesheet" href="/src/styles/pages/_project1.css">
+    <title>
+      Case Study: Interaktywny Dashboard Sprzedażowy - Adrian Domagała
+    </title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="page-content" class="visible">
+      <!-- NAGŁÓWEK - Teraz spójny ze stroną główną -->
+      <header>
+        <div class="container">
+          <a href="./index.html" class="logo">adomagala</a>
+
+          <div class="header-controls">
+            <div id="lang-switcher" class="lang-switcher">
+              <button
+                id="lang-toggle-btn"
+                class="lang-toggle-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Wybierz język"
+              >
+                <span id="current-lang-text">PL</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <ul id="lang-menu" class="lang-menu">
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="pl"
+                    data-translate-key="langOptionPl"
+                  >
+                    Polski
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="lang-option"
+                    data-lang="en"
+                    data-translate-key="langOptionEn"
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <button class="theme-toggle" aria-label="Przełącz motyw"></button>
+            <button
+              class="hamburger"
+              id="hamburger-menu"
+              aria-label="Otwórz menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Nakładka menu mobilnego (wypełniana przez script.js) -->
+      <div id="overlay-menu" class="overlay-nav"></div>
+
+      <main class="project-detail-page">
+        <section class="project-hero">
+          <div class="container animate-on-scroll">
+            <h1
+              class="project-title"
+              data-translate-key="project2DetailHeroTitle"
+            >
+              Analiza Zachpowań 
+            </h1>
+            <p
+              class="project-subtitle"
+              data-translate-key="project2DetailHeroSubtitle"
+            >
+                Analiza Zachowań użytkwoników co robią na komputerze itp, + rozwiązywanie ich problemów ze sprzętem za pomocą zdalnej kontrolii 
+            </p>
+            <div class="project-main-image">
+              <img
+                src="https://placehold.co/1200x600/0a0a0a/00f7ff?text=GŁÓWNY+OBRAZ+PROJEKTU"
+                alt="Główny widok dashboardu sprzedażowego"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="project-content">
+          <div class="container animate-on-scroll">
+            <div class="project-grid-layout">
+              <aside class="project-meta">
+                <div class="meta-block">
+                  <h3 data-translate-key="projectMetaGoal">Cel Projektu</h3>
+                  <p data-translate-key="project2MetaGoalDesc">
+                    Program uruchamia połączenie z serwerem poprzez TORA i serwer pobiera dane o urzadzeniu dostaje dostep do zdalnej kontroli
+                  </p>
+                </div>
+                <div class="meta-block">
+                  <h3 data-translate-key="projectMetaTech">
+                    Użyte Technologie
+                  </h3>
+                  <div class="project-tech">
+                    <span>Python</span><span>Pandas</span><span>SQL</span
+                    ><span>FastAPI</span><span>NLP</span><span>transformers</span><span>Requests</span>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <h3 data-translate-key="projectMetaLinks">Linki</h3>
+                  <div class="project-links-detail">
+                    <a
+                      href=""
+                      target="_blank"
+                      class="btn btn-primary"
+                      data-translate-key="projectLinksDemo"
+                      >Zobacz Live Demo</a
+                    >
+                    <a
+                      href="https://github.com/adomagala1/investments_analyzer"
+                      target="_blank"
+                      class="btn btn-secondary"
+                      data-translate-key="projectLinksCode"
+                      >Kod na GitHub</a
+                    >
+                  </div>
+                </div>
+              </aside>
+
+              <article class="project-description">
+                <h2 data-translate-key="projectArticleTitle">
+                  Proces i Wyzwania
+                </h2>
+                <p data-translate-key="projectArticleP1">
+                  Projekt jest w fazie tworzenia. Rozpoczęto od określenia kluczowych funkcjonalności: automatycznego pobierania danych rynkowych, raportów finansowych spółek, analizy fundamentalnej, technicznej oraz sentymentu z newsów i komunikatów. Największym wyzwaniem będzie integracja danych z różnych źródeł oraz zapewnienie spójności historycznych rekordów spółek.',
+   
+                </p>
+                <h3 data-translate-key="projectArticleH1">
+                  1. Zbieranie i Przygotowanie Danych
+                </h3>
+                <p data-translate-key="projectArticleP2">
+                  Początkowo, program pobiera dane o spółkach na rynku
+                </p>
+
+                <figure>
+                  <img
+                    src="https://placehold.co/800x450/121212/e0e0e0?text=Wykres+Przed+i+Po+Czyszczeniu"
+                    alt="Wykres pokazujący dane przed i po czyszczeniu"
+                  />
+                  <figcaption data-translate-key="projectArticleFigcaption">
+                    Porównanie dystrybucji danych przed i po procesie
+                    czyszczenia.
+                  </figcaption>
+                </figure>
+
+                <h3 data-translate-key="projectArticleH2">
+                  2. Tworzenie Interaktywnych Wizualizacji
+                </h3>
+                <p data-translate-key="projectArticleP3">
+                  Kluczowe było stworzenie wizualizacji, które są nie tylko
+                  estetyczne, ale przede wszystkim czytelne i pozwalają na łatwe
+                  filtrowanie danych. Wykorzystałem
+                  <strong>Plotly & Dash</strong>, aby zbudować aplikację webową
+                  umożliwiającą dynamiczną interakcję z wykresami.
+                </p>
+
+                <h2 data-translate-key="projectArticleH3">
+                  Wyniki i Wpływ na Biznes
+                </h2>
+                <p data-translate-key="projectArticleP4">
+                  Wdrożenie dashboardu pozwoliło na skrócenie czasu potrzebnego
+                  na przygotowanie tygodniowych raportów o
+                  <strong>75%</strong>. Zespół marketingowy, dzięki szybszemu
+                  dostępowi do danych, mógł efektywniej optymalizować kampanie,
+                  co przełożyło się na
+                  <strong>oszczędności rzędu 15%</strong> miesięcznego budżetu
+                  reklamowego przy zachowaniu tej samej skali sprzedaży.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <nav class="project-navigation">
+          <div class="container">
+            <a href="index.html#projects" class="back-to-projects">
+              <svg ...>...</svg>
+              <span data-translate-key="projectNavBack"
+                >Wszystkie Projekty</span
+              >
+            </a>
+          </div>
+        </nav>
+      </main>
+
+       <section id="contact" class="contact-section">
+          <div class="container animate-an-scroll">
+            <h2 class="section-title" data-translate-key="contactSectionTitle">
+              Nawiążmy Kontakt
+            </h2>
+            <p class="contact-subtitle" data-translate-key="contactSubtitle">
+              Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty
+              na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.
+            </p>
+            <a
+              href="mailto:ad220022work@gmail.pl"
+              class="btn btn-primary contact-button"
+              data-translate-key="contactButton"
+              >Napisz Wiadomość</a
+            >
+
+            <div class="social-links">
+              <a
+                href="https://github.com/adomagala1"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Profil GitHub"
+              >
+                <!-- IKONA GITHUB SVG -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path>
+                </svg>
+                GitHub
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/adrian-domaga%C5%82a-9a09372a1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Profil LinkedIn"
+              >
+                <!-- IKONA LINKEDIN SVG -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div id="drawer-overlay" class="drawer-overlay"></div>
+
+      <div id="contact-drawer" class="contact-drawer">
+        <!-- Uchwyt do zamykania panelu -->
+        <div id="close-drawer-handle" class="drawer-handle-wrapper">
+          <div class="drawer-handle"></div>
+        </div>
+
+        <!-- Nagłówek panelu z ikonami -->
+        <div class="drawer-header">
+          <div class="drawer-socials">
+            <a
+              href="https://github.com/adomagala1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil GitHub"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adrian-domaga%C5%82a-9a09372a1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil LinkedIn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Główna treść panelu -->
+        <div class="drawer-content">
+          <div class="drawer-tabs">
+            <button class="drawer-tab active" data-tab="quick-connect">
+              Quick connect
+            </button>
+            <button class="drawer-tab" data-tab="fill-form">Fill a form</button>
+          </div>
+
+          <!-- Kontener na zawartość zakładek -->
+          <div class="tab-content-wrapper">
+            <!-- Zakładka 1: Szybki kontakt -->
+            <div id="quick-connect-content" class="tab-content active">
+              <div class="drawer-cards-grid">
+                <a href="mailto:ad220022work@gmail.com" class="drawer-card">
+                  <div class="card-icon-wrapper email">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <h3>Email</h3>
+                  <p class="card-main-text">ad220022work@gmail.com</p>
+                  <p class="card-sub-text">Napisz do mnie bezpośrednio</p>
+                </a>
+                <a href="#" class="drawer-card">
+                  <div class="card-icon-wrapper call">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect
+                        x="3"
+                        y="4"
+                        width="18"
+                        height="18"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                  <h3>Book a Call</h3>
+                  <p class="card-main-text">Umów się na rozmowę</p>
+                  <p class="card-sub-text">Zarezerwuj termin w kalendarzu</p>
+                </a>
+              </div>
+              <div class="availability-status">
+                <span class="status-dot"></span>
+                <p>Zawsze dostępny na nowe możliwości</p>
+              </div>
+            </div>
+
+            <!-- Zakładka 2: Formularz -->
+            <div id="fill-form-content" class="tab-content">
+              <form class="contact-form">
+                <div class="form-group">
+                  <label for="name">Imię i nazwisko</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Adres email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="message">Wiadomość</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit-btn">
+                  Wyślij
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="container">
+          <div id="more-about-me">
+            <p data-translate-key="footerEssayText">
+              Jeśli jesteś zainteresowany tym co mam w głowie, poczytać o
+              przemyśleniach nowej osoby na rynku pracy to zapraszam tutaj
+            </p>
+            <a
+              href="esseys.html"
+              id="more-from-me"
+              class="btn btn-fancy"
+              data-translate-key="footerEssayButton"
+              >Esseje</a
+            >
+          </div>
+
+          <p class="copyright" data-translate-key="footerCopyright">
+            &copy; 2025. Adrian Domagała
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>
