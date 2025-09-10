@@ -11,6 +11,8 @@
   --card-bg-color: #121212;
   --text-color: #e0e0e0;
   --text-secondary-color: #a0a0a0;
+  --about-me-text-color: #c7c4c49e;
+  --highligted-text: rgb(197, 190, 190);
   --nav-color: #3946be;
   --border-color: rgba(230, 230, 230, 0.1);
   --primary-color: #e7e7e7;
@@ -26,7 +28,7 @@
   --photo-shadow: #ffffff8a;
   --primary-color-rgb: 76, 175, 80;
   --projects-border: #1a3f91;
-  --most-important-p: #8380ac;
+  --highlight-bg-color: rgba(30, 40, 50, 0.5);
 
   --btn-gradient-start: #961f4c;
   --btn-gradient-end: #c93a70;
@@ -64,7 +66,7 @@ html.light-mode {
   --bg-secondary-color: #ffffff;
   --card-bg-color: #ffffff;
   --text-color: #333333;
-  --photo-shadow: #0055f1d0;
+  --photo-shadow: #0054f1;
   --text-secondary-color: #666666;
   --border-color: rgba(0, 0, 0, 0.1);
   --primary-color: #007bff;
@@ -74,6 +76,9 @@ html.light-mode {
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
   --legend-active-bar-color: #372dc4;
+
+  --about-me-text-color: #222020e1;
+  --highligted-text: rgb(15, 15, 15);
 
   --btn-gradient-start: #007bff;
   --btn-gradient-end: #0056b3;

@@ -13,9 +13,21 @@
 }
 
 .about-image {
+  position: relative;
   width: 100%;
   max-width: 300px;
   aspect-ratio: 1 / 1;
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -23,12 +35,68 @@
   justify-self: center;
 }
 
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* wspólny styl narożnika */
+.about-image::before,
+.about-image::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 3px solid var(--primary-color);
 }
 
+/* lewy górny */
+.about-image::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* prawy dolny */
+.about-image::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* dodatkowe narożniki – lewy dolny i prawy górny */
+.about-image .corner {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 3px solid var(--primary-color);
+}
+
+.about-image .corner.tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.about-image .corner.tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.about-image .corner.bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.about-image .corner.br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
 .about-text h3 {
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 20px;
@@ -36,23 +104,19 @@
 }
 
 .about-text p {
-  color: var(--text-secondary-color);
+  color: var(--about-me-text-color);
   margin-bottom: 15px;
   max-width: 60ch;
 }
 
-#most-important {
-  font-weight: 700;
-  color: var(--most-important-p);
-}
+p.highlight-paragraph {
+  color: var(--highligted-text);
+  max-width: 60ch;
+  font-weight: 500;
 
-.about-motto {
-  text-align: right;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-secondary-color);
-  opacity: 0.7;
-  margin-top: 40px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  background-color: transparent;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 25px;
+  margin: 30px 0;
+  font-style: italic;
 }

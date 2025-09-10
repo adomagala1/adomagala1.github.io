@@ -35,19 +35,19 @@ const translations = {
   heroButton: { pl: 'O mnie', en: 'About Me' },
   aboutSectionTitle: { pl: 'O Mnie', en: 'About Me' },
   aboutGreeting: {
-    pl: 'Cześć, tu Adrian Domagała.<br />Tak właściwie, dlaczego tutaj jesteś? <br />- Już tłaczę',
+    pl: 'Cześć, tu Adrian Domagała.<br /> Dlaczego tutaj jesteś? <br />- Już tłumaczę',
     en: "Hi, I'm Adrian Domagała.<br />So, why are you here? <br />- Let me explain"
   },
   aboutP1: {
-    pl: 'Szczerze - jestem młodą osobą z technikum programistycznego interesującą się analizą danych i rynkiem IT, nie mam dziesięciu lat doświadczenia na rynku ale mam konkretne założenia i cele.',
+    pl: ' Szczerze - młoda osoba patrząca w przyszłość w technikum programistycznym, silnie zmotywowaa. Interesującą się szczególnie analizą danych i rynkiem IT, nie mam dziesięciu lat doświadczenia na rynku ale mam konretne założenia i cele.',
     en: "Honestly - I'm a young person from a programming technical high school interested in data analysis and the IT market. I don't have ten years of market experience, but I have concrete assumptions and goals."
   },
   aboutP2: {
-    pl: 'Aktualnie moim największym celem jest wejście na rynek pracy i zdobywanie realnego doświadczenia - ale, co ważniejsze to <b>zdobycie odpowiedniego miejsca na rozwój</b> swoich pasji i progres w zawodzie.<br /><br />Nakreślę poziom tego wyzwania. Patrząc na aktualny rozwój AI i LLM czy systemów AI mało kto zwróci uwagę na 17-latka bez doświadczenia i medali za olimpiady, więc że tak powiem misja jest troszkę ciężka. Ale z natury jestem uparty więc robię swoje. Aktualnie, nie brzmi to jak odpowiedź na pytanie w nagłówku, więc już wracam do odpowiedzi na temat.',
+    pl: 'Aktualna misja - wejście na rynek pracy i zdobywanie realnego doświadczenia - ale, co ważniejsze to <b>zdobycie odpowiedniego miejsca na rozwój </b> swoich pasji i progres w zawodzie. <br /><br /> Pozwole sobie nakreślić poziom tego wyzwania. Patrząc na aktualny rozwój AI mało kto zwróci uwagę na siedemnastolatka bez doświadczenia i medali za olimpiady, więc że tak powiem misja jest troszkę ciężka. Ale z natury jestem uparty więc robie swoje. Aktualnie, nie brzmi to jak odpowiedź na pytanie w nagłówku, więc już wracam do odpowiedzi na temat.',
     en: "Currently, my biggest goal is to enter the job market and gain real experience - but, more importantly, to <b>find the right place to develop</b> my passions and progress in my profession.<br /><br />Let me outline the level of this challenge. Looking at the current development of AI and LLMs, few will pay attention to a 17-year-old without experience or Olympic medals, so the mission is a bit tough. But I am stubborn by nature, so I do my thing. This doesn't sound like an answer to the header question, so I'll get back to it."
   },
   aboutP3: {
-    pl: 'Szukam firmy, która zauważy a przede wszystkim uwierzy w mój potencjał oraz zapewni mi miejsce na rozwój tak by po powrocie z technikum pracować i tak aby to była sytuacja win-win dla obydwu stron. W co szczerze wierzę.',
+    pl: 'Szukam firmy, która dostrzeże we mnie potencjał a przede wszystkim uwierzy w mój potencjał oraz zapewni mi miejsce na rozwój tak by po powrocie z technikum praców i tak aby to była sytuacja win-win dla obydwu stron. W co szczerze wierzę.',
     en: 'I am looking for a company that will notice and, above all, believe in my potential and provide me with a place for growth, so that after returning from technical school, I can work in a win-win situation for both parties. I sincerely believe in that.'
   },
   aboutMotto: {
