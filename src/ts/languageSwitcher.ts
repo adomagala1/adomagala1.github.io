@@ -35,8 +35,8 @@ const translations = {
   heroButton: { pl: 'O mnie', en: 'About Me' },
   aboutSectionTitle: { pl: 'O Mnie', en: 'About Me' },
   aboutGreeting: {
-    pl: 'Cześć, tu Adrian Domagała.<br /> Dlaczego tutaj jesteś? <br />- Już tłumaczę',
-    en: "Hi, I'm Adrian Domagała.<br />So, why are you here? <br />- Let me explain"
+    pl: 'Cześć, tu Adrian Domagała<br /> Dlaczego tutaj jesteś? <br />- Już tłumaczę',
+    en: "Hi, I'm Adrian Domagała<br />So, why are you here? <br />- Let me explain"
   },
   aboutP1: {
     pl: ' Szczerze - młoda osoba patrząca w przyszłość w technikum programistycznym, silnie zmotywowaa. Interesującą się szczególnie analizą danych i rynkiem IT, nie mam dziesięciu lat doświadczenia na rynku ale mam konretne założenia i cele.',

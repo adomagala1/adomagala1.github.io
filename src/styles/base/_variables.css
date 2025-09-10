@@ -19,7 +19,7 @@
   --main-button: #961f4c;
   --secondary-color: #ff00ff;
   --glitch-cyan: #270cc0;
-  --lang-option-bg: #104c9b;
+
   --glitch-red: #ff0055;
   --shadow-color: rgba(207, 200, 200, 0.2);
   --shadow-color2: #051d49d0;
@@ -29,6 +29,11 @@
   --primary-color-rgb: 76, 175, 80;
   --projects-border: #1a3f91;
   --highlight-bg-color: rgba(30, 40, 50, 0.5);
+
+  --image-corner-color2: rgba(51, 27, 187, 0.793);
+  --lang-button-hover: rgba(5, 5, 5, 0.7);
+  --lang-buttons-text-color: #ffffff;
+  --lang-option-bg: #3731a7;
 
   --btn-gradient-start: #961f4c;
   --btn-gradient-end: #c93a70;
@@ -75,10 +80,15 @@ html.light-mode {
   --glitch-red: #dc3545;
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
+
+  --lang-option-bg: rgb(98, 98, 208);
+  --lang-buttons-text-color: #ffffff;
   --legend-active-bar-color: #372dc4;
 
   --about-me-text-color: #222020e1;
   --highligted-text: rgb(15, 15, 15);
+
+  --image-corner-color: rgba(244, 9, 9, 0.793);
 
   --btn-gradient-start: #007bff;
   --btn-gradient-end: #0056b3;

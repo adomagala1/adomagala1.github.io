@@ -71,8 +71,7 @@ header .container {
 
 .lang-toggle-btn:hover {
   color: var(--text-color);
-  border-color: var(--primary-color);
-  background-color: rgba(var(--primary-color-rgb), 0.1);
+  background-color: rgba(var(--lang-button-hover), 0.1);
 }
 
 /* Strzałka w przycisku */
@@ -132,7 +131,7 @@ header .container {
 
 .lang-option:hover {
   background-color: var(--lang-option-bg);
-  color: var(--text-color);
+  color: var(--lang-buttons-text-color);
 }
 .lang-option.is-scrambling {
   font-family: 'Roboto Mono', monospace;

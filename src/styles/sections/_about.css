@@ -31,7 +31,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  box-shadow: 3px 30px 1440px var(--photo-shadow);
+  box-shadow: 3px 30px 1440px 10px var(--photo-shadow);
   justify-self: center;
 }
 
@@ -61,7 +61,6 @@
   border-top: none;
 }
 
-/* dodatkowe narożniki – lewy dolny i prawy górny */
 .about-image .corner {
   content: '';
   position: absolute;
@@ -97,6 +96,11 @@
   border-left: none;
   border-top: none;
 }
+.about-image .corner.tr,
+.about-image .corner.bl {
+  border-color: var(--image-corner-color2);
+}
+
 .about-text h3 {
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 20px;
