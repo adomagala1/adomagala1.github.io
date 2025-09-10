@@ -11,8 +11,8 @@
   --card-bg-color: #121212;
   --text-color: #e0e0e0;
   --text-secondary-color: #a0a0a0;
-  --about-me-text-color: #c7c4c49e;
-  --highligted-text: rgb(197, 190, 190);
+  --about-me-text-color: #d0cacac6;
+  --highligted-text: rgba(255, 255, 255, 0.816);
   --nav-color: #3946be;
   --border-color: rgba(230, 230, 230, 0.1);
   --primary-color: #e7e7e7;
@@ -62,6 +62,8 @@
   --font-size-xl: clamp(2.5rem, 2.5vw + 1.5rem, 4.5rem);
 
   --legend-active-bar-color: rgb(42, 53, 211);
+  --preloader-color: #e0e0e0;
+  --highlighted-border: rgba(51, 27, 187, 0.793);
 }
 
 html.light-mode {
@@ -81,9 +83,13 @@ html.light-mode {
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
 
+  --preloader-color: #e0e0e0;
+
   --lang-option-bg: rgb(98, 98, 208);
   --lang-buttons-text-color: #ffffff;
   --legend-active-bar-color: #372dc4;
+
+  --highlighted-border: rgba(51, 27, 187, 0.793);
 
   --about-me-text-color: #222020e1;
   --highligted-text: rgb(15, 15, 15);

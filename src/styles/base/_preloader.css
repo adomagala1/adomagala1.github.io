@@ -20,7 +20,7 @@
 .loader-logo {
   font-size: clamp(1.8rem, 9vw, 5rem);
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--preloader-color);
   letter-spacing: clamp(2px, 2vw, 10px);
   text-shadow: 0 0 15px var(--shadow-color);
   white-space: nowrap;

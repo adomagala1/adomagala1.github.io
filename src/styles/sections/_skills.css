@@ -19,6 +19,11 @@
   gap: 8px;
   font-size: var(--font-size-sm);
   color: var(--text-secondary-color);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.legend-item:focus {
+  outline: none;
 }
 .legend-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
