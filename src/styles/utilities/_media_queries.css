@@ -78,3 +78,84 @@
     gap: 15px;
   }
 }
+
+@media (max-width: 768px) {
+  /* --- 16.1 Legend / Filters --- */
+  .skills-legend {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .legend-item {
+    padding: 6px 12px;
+    gap: 6px;
+    /* Zakładając, że masz mniejszy rozmiar fontu w zmiennych, np. --font-size-xs */
+    font-size: 13px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* --- 16.2 Skills Container ("The Vault") --- */
+  .skills-box {
+    /* Dostosowanie wysokości dla niższych ekranów */
+    height: clamp(350px, 65vh, 450px);
+    border-radius: 12px;
+  }
+  .skills-box::before {
+    border-radius: 8px;
+  }
+
+  /* --- 16.3 Skill Items --- */
+  .skill-item {
+    padding: 8px 14px;
+    font-size: 13px; /* Zmniejszenie, aby więcej się zmieściło */
+    font-weight: 500;
+  }
+
+  /* --- 16.4 Tech Modal --- */
+  .modal-content {
+    width: 95%; /* Więcej przestrzeni na małych ekranach */
+    max-height: 90vh; /* Zapobieganie wyjechaniu poza ekran */
+    overflow-y: auto; /* Umożliwienie przewijania, jeśli treść jest długa */
+  }
+  .modal-header {
+    padding: 20px 20px 15px; /* Mniejszy padding */
+    gap: 15px;
+  }
+  .modal-tech-icon {
+    width: 48px;
+    height: 48px;
+  }
+  #modal-title {
+    font-size: 24px; /* Znacząco mniejszy tytuł */
+  }
+  .modal-main {
+    /* KLUCZOWA ZMIANA: Z dwóch kolumn na jedną */
+    grid-template-columns: 1fr;
+    padding: 0 20px 25px;
+    gap: 20px; /* Zmniejszony odstęp między wierszami */
+  }
+  .stat-value {
+    font-size: 16px;
+  }
+  .project-link-tag {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  .modal-close {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Dodatkowe drobne poprawki dla bardzo małych ekranów */
+  #modal-title {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+}
