@@ -108,7 +108,7 @@
 
   /* --- 16.3 Skill Items --- */
   .skill-item {
-    padding: 8px 14px;
+    padding: 4px 8px;
     font-size: 13px; /* Zmniejszenie, aby więcej się zmieściło */
     font-weight: 500;
   }
