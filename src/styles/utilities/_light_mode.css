@@ -60,6 +60,34 @@ html.light-mode .skill-item[data-category='devops'] {
   background-color: var(--color-devops-hover);
   border-color: var(--color-devops);
 }
+@keyframes animated-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+html.light-mode .skill-item[data-category='python'] {
+  border: 2px solid var(--color-python);
+  background-color: transparent;
+}
+
+html.light-mode .skill-item[data-category='python']:hover {
+  background-color: var(--color-python-hover);
+  border-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-yellow-gradient),
+    var(--color-python),
+    var(--color-yellow-gradient)
+  );
+
+  background-size: 200% auto;
+  background-origin: border-box;
+  background-clip: padding-box;
+  animation: animated-border 2s linear infinite;
+}
 html.light-mode .skill-item:hover {
   filter: brightness(0.95);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);

@@ -47,6 +47,15 @@
   --color-web: #d9ec2b;
   --color-devops: #eb260b;
 
+  --color-python: #3b82f6; /* Niebieski */
+  --color-python-hover: rgba(
+    59,
+    130,
+    246,
+    0.1
+  ); /* Lekko niebieskie tło po najechaniu */
+  --color-yellow-gradient: #facc15; /* Żółty */
+
   --color-database-hover: rgba(156, 39, 176, 0.15);
   --color-analysis-hover: rgba(33, 150, 243, 0.15);
   --color-ml-hover: rgba(255, 152, 0, 0.15);
@@ -90,6 +99,9 @@ html.light-mode {
   --legend-active-bar-color: #372dc4;
 
   --highlighted-border: rgba(51, 27, 187, 0.793);
+  --color-python: #3b82f6; /* Niebieski */
+  --color-python-hover: rgba(59, 130, 246, 0.1);
+  --color-yellow-gradient: #facc15;
 
   --about-me-text-color: #222020e1;
   --highligted-text: rgb(15, 15, 15);

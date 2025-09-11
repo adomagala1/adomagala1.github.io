@@ -75,6 +75,16 @@ export function initSkillsAnimation(): void {
       });
     });
 
+    // --- NOWY KOD ---
+    // Nasłuchuj na opuszczenie przez kursor obszaru kontenera
+    skillsBox.addEventListener('mouseleave', () => {
+      // Jeśli jakiś element jest aktualnie przeciągany, zakończ tę operację
+      if (draggedSkill) {
+        handleDragEnd();
+      }
+    });
+    // --- KONIEC NOWEGO KODU ---
+
     applyFilters();
     animate();
   };
@@ -90,8 +100,13 @@ export function initSkillsAnimation(): void {
     });
 
     visibleSkills = allSkills.filter((skill) => {
+      const isPython = skill.categorySlug.includes('python');
+
       const isVisible =
-        activeFilters.size === 0 || activeFilters.has(skill.categorySlug);
+        isPython ||
+        activeFilters.size === 0 ||
+        activeFilters.has(skill.categorySlug);
+
       skill.element.classList.toggle('is-hidden', !isVisible);
       return isVisible;
     });
@@ -163,7 +178,6 @@ export function initSkillsAnimation(): void {
     animationFrameId = requestAnimationFrame(animate);
   };
 
-  // ... handleDrag...() bez zmian ...
   const getPointerPosition = (e: MouseEvent | TouchEvent) =>
     'touches' in e ? e.touches[0] : e;
   const handleDragStart = (e: MouseEvent | TouchEvent, skill: Skill) => {
@@ -274,10 +288,19 @@ export function initSkillsAnimation(): void {
   });
 
   let resizeTimeout: number;
+  let lastBoxWidth = 0;
+  let lastBoxHeight = 0;
+
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      if (animationFrameId) init();
+      if (!skillsBox) return;
+      const boxRect = skillsBox.getBoundingClientRect();
+      if (boxRect.width !== lastBoxWidth || boxRect.height !== lastBoxHeight) {
+        lastBoxWidth = boxRect.width;
+        lastBoxHeight = boxRect.height;
+        if (animationFrameId) init();
+      }
     }, 250);
   });
   const nudgeForce = 4;

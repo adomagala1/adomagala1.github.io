@@ -42,6 +42,12 @@
   border-radius: 50%;
 }
 
+.legend-item span[data-translate-key='skillsLegendPython'] {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* --- 15.2 Skills Container ("The Vault") --- */
 .skills-box-container {
   display: flex;
@@ -107,8 +113,15 @@
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.4s ease;
-  z-index: 2; /* Musi być nad tłem ::after */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
+.skills-box:not(:hover) .skill-item.is-dragging {
+  pointer-events: none;
+}
+
 .skill-item:active {
   cursor: grabbing;
 }
@@ -144,6 +157,10 @@
 .skill-item[data-category='devops'] {
   border-color: var(--color-devops);
 }
+.skill-item[data-category='python'] {
+  border-color: var(--color-python);
+}
+
 .skill-item:hover {
   z-index: 10;
   color: var(--text-color);
@@ -165,6 +182,22 @@
 }
 .skill-item[data-category='devops']:hover {
   background-color: var(--color-devops-hover);
+}
+
+.skill-item[data-category='python']:hover {
+  background-color: var(--color-python-hover);
+  border-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-yellow-gradient),
+    var(--color-python),
+    var(--color-yellow-gradient)
+  );
+
+  background-size: 200% auto;
+  background-origin: border-box;
+  background-clip: padding-box;
+  animation: animated-border 2s linear infinite;
 }
 .skills-prompt {
   text-align: center;
