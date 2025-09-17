@@ -1,3 +1,6 @@
+/* ==========================================================================
+   GŁÓWNY HEADER I KONTROLKI
+   ========================================================================== */
 header {
   position: sticky;
   top: 0;
@@ -29,6 +32,7 @@ header .container {
 .logo {
   grid-column: 2 / 3;
   justify-self: center;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-color);
@@ -38,6 +42,7 @@ header .container {
 
 .logo:hover {
   cursor: pointer;
+  color: var(--primary-color);
 }
 
 .header-controls {
@@ -48,11 +53,13 @@ header .container {
   gap: 15px;
 }
 
+/* ==========================================================================
+   PRZEŁĄCZNIK JĘZYKA
+   ========================================================================== */
 .lang-switcher {
   position: relative;
 }
 
-/* Przycisk otwierający menu języków */
 .lang-toggle-btn {
   display: flex;
   align-items: center;
@@ -63,23 +70,22 @@ header .container {
   cursor: pointer;
   padding: 6px 12px;
   border-radius: 6px;
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.2s ease;
 }
 
 .lang-toggle-btn:hover {
   color: var(--text-color);
-  background-color: rgba(var(--lang-button-hover), 0.1);
+  background-color: var(--hover-bg-color);
+  border-color: var(--primary-color-trans);
 }
 
-/* Strzałka w przycisku */
 .lang-arrow {
   transition: transform 0.2s ease-out;
 }
 
-/* Obrót strzałki, gdy menu jest otwarte */
 .lang-switcher.is-open .lang-arrow {
   transform: rotate(180deg);
 }
@@ -104,7 +110,6 @@ header .container {
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 
-/* Pokazywanie menu */
 .lang-switcher.is-open .lang-menu {
   opacity: 1;
   transform: translateY(0);
@@ -120,19 +125,20 @@ header .container {
   text-align: left;
   width: 100%;
   border-radius: 6px;
-  font-family: inherit;
+  font-family: var(--font-body);
   font-size: 0.9rem;
+  font-weight: 500;
   transition: background-color 0.2s, color 0.2s;
-  /* Kluczowe właściwości dla animacji fali: */
   position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
 .lang-option:hover {
-  background-color: var(--lang-option-bg);
-  color: var(--lang-buttons-text-color);
+  background-color: var(--primary-color-trans);
+  color: var(--primary-color);
 }
+
 .lang-option.is-scrambling {
   font-family: 'Roboto Mono', monospace;
   text-shadow: 0 0 4px var(--glitch-red), 0 0 4px var(--glitch-cyan);
@@ -140,6 +146,10 @@ header .container {
   background-color: transparent !important;
   pointer-events: none;
 }
+
+/* ==========================================================================
+   IKONA HAMBURGERA
+   ========================================================================== */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -175,6 +185,9 @@ header .container {
   transform: translateY(-4px) rotate(-45deg);
 }
 
+/* ==========================================================================
+   PRZEŁĄCZNIK MOTYWU
+   ========================================================================== */
 .theme-toggle {
   background: none;
   border: none;
@@ -209,19 +222,22 @@ html.light-mode .moon-icon {
   display: none;
 }
 
+/* ==========================================================================
+   NAWIGACJA MOBILNA (NAKŁADKA) - SOLIDNA I NIEPRZEZROCZYSTA
+   ========================================================================== */
 .overlay-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--bg-color);
+  background: var(--bg-color); /* JEDNOLITE, NIEPRZEZROCZYSTE TŁO */
   z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
@@ -238,19 +254,24 @@ html.light-mode .moon-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
+  width: 90%;
+  max-width: 500px;
 }
 
+/* GŁÓWNE LINKI */
 .overlay-nav .nav-links a {
-  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  font-weight: 700;
   color: var(--text-color);
   text-decoration: none;
-  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding: 8px 0;
   transform: translateY(10px);
   opacity: 0;
-  position: relative;
-  padding-bottom: 8px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, color 0.3s ease;
 }
 
 .overlay-nav.is-active .nav-links a {
@@ -258,19 +279,7 @@ html.light-mode .moon-icon {
   opacity: 1;
 }
 
-.overlay-nav.is-active .nav-links a:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.overlay-nav.is-active .nav-links a:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.overlay-nav.is-active .nav-links a:nth-child(3) {
-  transition-delay: 0.3s;
-}
-.overlay-nav.is-active .nav-links a:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
+/* EFEKT PODKREŚLENIA PRZY NAJECHANIU - GRADIENTOWY */
 .overlay-nav .nav-links a::after {
   content: '';
   position: absolute;
@@ -278,73 +287,70 @@ html.light-mode .moon-icon {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.overlay-nav .nav-links a:hover {
+  color: var(--primary-color);
 }
 
 .overlay-nav .nav-links a:hover::after {
   transform: scaleX(1);
 }
 
+/* === SEKCJA "PROJEKTY" - WERSJA AKORDEONU === */
 .nav-item.has-submenu {
-  text-align: center;
   width: 100%;
+  background-color: rgba(
+    var(--card-bg-rgb),
+    0.5
+  ); /* Lekkie, ale nieprzezroczyste tło */
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
 }
 
 .submenu-toggle {
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  width: 100%;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  font-family: inherit;
-  font-size: 2rem;
-  color: var(--text-color);
+  padding: 16px 20px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
   font-weight: 700;
-  position: relative;
-  padding-bottom: 8px;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
   transition: color 0.3s ease;
 }
 
-.submenu-toggle::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary-color);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.submenu-toggle:hover::after {
-  transform: scaleX(1);
+.submenu-toggle:hover {
+  color: var(--primary-color);
 }
 
 .submenu-arrow {
   width: 28px;
   height: 28px;
-  color: currentColor;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 0 1px currentColor);
+  color: var(--text-secondary-color);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
 }
 
 .submenu-toggle:hover .submenu-arrow {
-  transform: scale(1.15);
+  color: var(--primary-color);
 }
 
 .nav-item.is-open .submenu-arrow {
   transform: rotate(180deg);
-}
-
-.nav-item.is-open .submenu-toggle:hover .submenu-arrow {
-  transform: rotate(180deg) scale(1.15);
 }
 
 .submenu {
@@ -352,57 +358,264 @@ html.light-mode .moon-icon {
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
-  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out,
-    visibility 0s 0.4s, margin-top 0.4s ease-in-out;
-  margin-top: 0;
-  padding: 0 15px;
+  transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.5s ease;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .nav-item.is-open .submenu {
-  max-height: 250px;
+  max-height: 300px;
   opacity: 1;
   visibility: visible;
-  transition-delay: 0s;
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
+  padding: 0 10px 16px 10px;
 }
 
 .submenu a {
+  font-family: var(--font-body);
   font-size: 1.1rem;
-  background-color: transparent;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text-secondary-color);
-  padding: 12px;
-  border: 2px solid var(--projects-border);
-  border-radius: 25px;
-  text-align: center;
-  transform: translateY(0);
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: left;
+  width: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .submenu a:hover {
+  background-color: var(--primary-color-trans);
+  color: var(--primary-color);
   text-decoration: none;
-  background-color: var(--primary-color);
-  color: var(--bg-color);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.submenu a::after {
-  display: none;
 }
 
 .submenu a.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+/* ANIMACJE WEJŚCIA DLA CAŁEJ LISTY */
+.overlay-nav.is-active .nav-links > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.overlay-nav.is-active .nav-links > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.overlay-nav.is-active .nav-links > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.overlay-nav.is-active .nav-links > *:nth-child(4) {
+  transition-delay: 0.4s;
+}
+/* ZNAJDŹ I ZASTĄP TE BLOKI */
+
+.submenu a {
+  font-family: var(--font-body);
+  font-size: 1rem; /* Zmniejszona czcionka dla lepszej hierarchii */
+  font-weight: 500;
   color: var(--text-secondary-color);
-  border-color: var(--text-secondary-color);
+  background-color: transparent; /* Domyślnie przezroczyste tło */
+  border: 1px solid var(--border-color); /* Delikatna ramka */
+  border-radius: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  text-decoration: none;
+
+  /* Dodajemy miejsce na ikonę strzałki */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.25s ease-out;
+}
+
+/* Ikona strzałki (dodawana dynamicznie) */
+.submenu a::after {
+  content: '→'; /* Prosta strzałka, ale stylowa */
+  font-size: 1.2rem;
+  color: var(--border-color); /* Subtelny kolor */
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.25s ease-out;
+}
+
+.submenu a:hover {
+  background-color: var(--hover-bg-color); /* Subtelne podświetlenie */
+  color: var(--text-color); /* Tekst staje się jaśniejszy */
+  border-color: var(--primary-color-trans);
+  transform: translateY(-2px); /* Lekkie uniesienie */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animacja strzałki przy najechaniu */
+.submenu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary-color);
+}
+
+.submenu a.disabled {
   opacity: 0.5;
   pointer-events: none;
+  background-color: transparent;
   transform: none;
   box-shadow: none;
+  border-color: var(--border-color);
+}
+
+.submenu a.disabled:hover {
+  color: var(--text-secondary-color);
+}
+
+.submenu a.disabled::after {
+  display: none;
+}
+/* ZNAJDŹ I ZASTĄP TE BLOKI */
+
+.submenu a {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.25s ease-out;
+  position: relative; /* Potrzebne do pozycjonowania SVG */
+}
+
+/* === NOWA STRZAŁKA SVG === */
+.submenu a::after {
+  content: '';
+  display: inline-block;
+  width: 18px; /* Rozmiar ikony */
+  height: 18px;
+
+  /* Kod SVG jako tło. Jest w 100% niezawodny. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.25s ease-out;
+}
+
+.submenu a:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--text-color);
+  border-color: var(--primary-color-trans);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  /* Zmiana koloru strzałki przy najechaniu (przez podmianę SVG) */
+  /* Kolor --primary-color musi być zakodowany (np. #007bff -> %23007bff) */
+  /* UWAGA: ZMIEŃ PONIŻEJ KOLOR NA SWÓJ GŁÓWNY, ZAKODOWANY W URL */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2361DAFB'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.submenu a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  background-color: transparent;
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-color);
+}
+
+.submenu a.disabled:hover {
+  color: var(--text-secondary-color);
+}
+
+.submenu a.disabled::after {
+  display: none;
+}
+/* ZNAJDŹ I ZASTĄP TE BLOKI */
+
+.submenu a {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.25s ease-out;
+  position: relative; /* Potrzebne do pozycjonowania SVG */
+}
+
+/* === NOWA STRZAŁKA SVG === */
+.submenu a::after {
+  content: '';
+  display: inline-block;
+  width: 18px; /* Rozmiar ikony */
+  height: 18px;
+
+  /* Kod SVG jako tło. Jest w 100% niezawodny. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.25s ease-out;
+}
+
+.submenu a:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--text-color);
+  border-color: var(--primary-color-trans);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  /* Zmiana koloru strzałki przy najechaniu (przez podmianę SVG) */
+  /* Kolor --primary-color musi być zakodowany (np. #007bff -> %23007bff) */
+  /* UWAGA: ZMIEŃ PONIŻEJ KOLOR NA SWÓJ GŁÓWNY, ZAKODOWANY W URL */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2361DAFB'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.submenu a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  background-color: transparent;
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-color);
+}
+
+.submenu a.disabled:hover {
+  color: var(--text-secondary-color);
+}
+
+.submenu a.disabled::after {
+  display: none;
 }

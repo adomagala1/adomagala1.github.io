@@ -6,6 +6,7 @@
   text-align: center;
   padding: clamp(40px, 8vw, 80px) 20px;
   position: relative;
+  letter-spacing: 2px;
   overflow: hidden;
   background-image: repeating-linear-gradient(
       to right,

@@ -75,15 +75,11 @@ export function initSkillsAnimation(): void {
       });
     });
 
-    // --- NOWY KOD ---
-    // Nasłuchuj na opuszczenie przez kursor obszaru kontenera
     skillsBox.addEventListener('mouseleave', () => {
-      // Jeśli jakiś element jest aktualnie przeciągany, zakończ tę operację
       if (draggedSkill) {
         handleDragEnd();
       }
     });
-    // --- KONIEC NOWEGO KODU ---
 
     applyFilters();
     animate();
@@ -101,9 +97,10 @@ export function initSkillsAnimation(): void {
 
     visibleSkills = allSkills.filter((skill) => {
       const isPython = skill.categorySlug.includes('python');
+      const isDevOps = activeFilters.has('devops');
 
       const isVisible =
-        isPython ||
+        (isPython && !isDevOps) ||
         activeFilters.size === 0 ||
         activeFilters.has(skill.categorySlug);
 

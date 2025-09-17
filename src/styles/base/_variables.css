@@ -5,6 +5,10 @@
 }
 
 :root {
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif; /* Ustawiamy Inter jako domyślny sans-serif */
+
   --bg-color: #050505;
   --font-sans: 'Inter', sans-serif;
   --bg-secondary-color: #0a0a0a;

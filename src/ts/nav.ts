@@ -1,6 +1,7 @@
 // src/ts/nav.ts
 
-import arrowIcon from '../assets/arrow.svg';
+// Usunięto import, bo SVG będzie wbudowane
+// import arrowIcon from '../assets/arrow.svg';
 
 export function initMobileNav(): void {
   const hamburgerBtn = document.getElementById(
@@ -14,18 +15,22 @@ export function initMobileNav(): void {
     return;
   }
 
+  // ZAKTUALIZOWANA STRUKTURA HTML
   const navLinksHTML = `
     <div class="nav-links">
       <a href="/#about" data-translate-key="navAbout">O Mnie</a>
       <a href="/#skills" data-translate-key="navSkills">Umiejętności</a>
       <div class="nav-item has-submenu">
-        <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu" data-translate-key="navProjects">
-          Projekty
-          <img class="arrow" src="${arrowIcon}" alt="Rozwiń menu projektów" aria-hidden="true">
+        <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="projects-submenu">
+          <span data-translate-key="navProjects">Projekty</span>
+          <svg class="submenu-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+            <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+          </svg>
         </button>
         <div class="submenu" id="projects-submenu">
           <a href="/projekt-dashboard.html" data-translate-key="navProjectDashboard">Analiza Danych Sprzedażowych</a>
-          <a href="#" class="disabled" data-translate-key="navProjectEcommerce">Sklep E-commerce (wkrótce)</a>
+          <a href="/projekt-zachowania.html" data-translate-key="project2Title">Analiza zachowań użytkowników</a>
+          <a href="#" class="disabled" data-translate-key="navProjectSoon">Sklep E-commerce (wkrótce)</a>
         </div>
       </div>
       <a href="/#contact" data-translate-key="navContact">Kontakt</a>
@@ -74,7 +79,6 @@ export function initMobileNav(): void {
     });
   }
 
-  // Naprawa buga przy zmianie rozdzielczości
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
       if (overlayMenu.classList.contains('is-active')) {
