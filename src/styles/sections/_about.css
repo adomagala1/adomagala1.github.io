@@ -144,6 +144,7 @@
   padding-left: 20px;
   margin-top: 30px;
   font-style: italic;
+  letter-spacing: 0.5px;
   color: var(--text-color);
   border-left: 3px solid var(--highlighted-border);
 }
