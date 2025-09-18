@@ -1,4 +1,3 @@
-// src/ts/languageSwitcher.ts
 const translations = {
   // === GŁÓWNE, WSPÓLNE DLA WSZYSTKICH STRON ===
   metaTitle: {
@@ -153,6 +152,7 @@ const langToggleButton = document.getElementById('lang-toggle-btn');
 const currentLangText = document.getElementById('current-lang-text');
 const langMenu = document.getElementById('lang-menu');
 
+// --- NOWA, POTĘŻNA FUNKCJA DO ANIMACJI ---
 const scrambleEffect = (
   element: HTMLElement,
   newText: string
@@ -168,18 +168,11 @@ const scrambleEffect = (
     tempDiv.innerHTML = originalHTML;
     const originalText = tempDiv.textContent || '';
 
-    // Ustalamy pozycję i rozmiary, żeby nie zmieniały się w trakcie animacji
+    // Upewniamy się, że element ma stały rozmiar podczas animacji
     const rect = element.getBoundingClientRect();
-    const originalStyles = window.getComputedStyle(element);
-    const originalPosition = originalStyles.position;
-    const originalDisplay = originalStyles.display;
-
-    // Przypisujemy elementowi stałą szerokość i wysokość
-    element.style.position = 'absolute'; // Używamy absolutnej pozycji tylko dla animacji
-    element.style.left = `${rect.left}px`;
-    element.style.top = `${rect.top}px`;
-    element.style.width = `${rect.width}px`; // Szerokość elementu
-    element.style.height = `${rect.height}px`; // Wysokość elementu
+    element.style.width = `${rect.width}px`;
+    element.style.height = `${rect.height}px`;
+    element.style.display = 'inline-block'; // lub 'block', w zależności od elementu
 
     const animDuration = 700;
     const stepDuration = 70;
@@ -200,12 +193,10 @@ const scrambleEffect = (
         if (interval) clearInterval(interval);
         // Po animacji wstawiamy nowy tekst Z TAGAMI HTML
         element.innerHTML = newText;
-
-        // Przywracamy oryginalny styl i pozycję
-        element.style.position = originalPosition;
-        element.style.display = originalDisplay;
+        // Usuwamy style, żeby element wrócił do normalności
         element.style.width = '';
         element.style.height = '';
+        element.style.display = '';
         resolve();
       }
 
