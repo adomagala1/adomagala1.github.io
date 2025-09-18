@@ -6,8 +6,9 @@
 
 :root {
   --font-heading: 'Poppins', sans-serif;
+  --font-about: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --font-sans: 'Inter', sans-serif; /* Ustawiamy Inter jako domyślny sans-serif */
+  --font-sans: 'Inter', sans-serif;
 
   --bg-color: #050505;
   --font-sans: 'Inter', sans-serif;
@@ -32,9 +33,9 @@
   --photo-shadow: #ffffff8a;
   --primary-color-rgb: 76, 175, 80;
   --projects-border: #1a3f91;
+
   --highlight-bg-color: rgba(30, 40, 50, 0.5);
 
-  --image-corner-color2: rgba(51, 27, 187, 0.793);
   --lang-button-hover: rgba(5, 5, 5, 0.7);
   --lang-buttons-text-color: #ffffff;
   --lang-option-bg: #3731a7;
@@ -77,6 +78,11 @@
   --legend-active-bar-color: rgb(42, 53, 211);
   --preloader-color: #e0e0e0;
   --highlighted-border: rgba(51, 27, 187, 0.793);
+
+  --image-corner-color1: rgba(255, 255, 255, 0.793);
+  --image-corner-color2: rgba(51, 27, 187, 0.793);
+
+  --about-header-color: rgba(201, 200, 221, 0.556);
 }
 
 html.light-mode {
@@ -86,7 +92,7 @@ html.light-mode {
   --bg-secondary-color: #ffffff;
   --card-bg-color: #ffffff;
   --text-color: #333333;
-  --photo-shadow: #0054f1;
+  --photo-shadow: #0209c7fc;
   --text-secondary-color: #666666;
   --border-color: rgba(0, 0, 0, 0.1);
   --primary-color: #007bff;
@@ -95,7 +101,7 @@ html.light-mode {
   --glitch-red: #dc3545;
   --shadow-color: #051d49d0;
   --nav-color: #3946be;
-
+  --about-header-color: #3946be94;
   --preloader-color: #e0e0e0;
 
   --lang-option-bg: rgb(98, 98, 208);
@@ -103,14 +109,15 @@ html.light-mode {
   --legend-active-bar-color: #372dc4;
 
   --highlighted-border: rgba(51, 27, 187, 0.793);
-  --color-python: #3b82f6; /* Niebieski */
+  --color-python: #3b82f6;
   --color-python-hover: rgba(59, 130, 246, 0.1);
   --color-yellow-gradient: #facc15;
 
   --about-me-text-color: #222020e1;
   --highligted-text: rgb(15, 15, 15);
 
-  --image-corner-color: rgba(244, 9, 9, 0.793);
+  --image-corner-color1: rgb(73, 49, 207);
+  --image-corner-color2: rgba(0, 0, 0, 0.137);
 
   --btn-gradient-start: #007bff;
   --btn-gradient-end: #0056b3;

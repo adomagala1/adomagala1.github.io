@@ -95,6 +95,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap"
       rel="stylesheet"
     />
+
     <script>
       (function () {
         const theme = localStorage.getItem('theme');
@@ -247,52 +248,62 @@
           </div>
         </section>
         <section id="about" class="about-section">
-          <div class="container animate-on-scroll">
-            <h2 class="section-title" data-translate-key="aboutSectionTitle">
+          <div class="container">
+            <h2
+              class="section-title"
+              data-aos="fade-up"
+              data-translate-key="aboutSectionTitle"
+            >
               O Mnie
             </h2>
+
             <div class="about-content">
-              <div class="about-image">
+              <!-- Obrazek z narożnikami (animacja z prawej) -->
+              <div class="about-image-wrapper" data-aos="fade-right">
                 <img
                   src="./src/assets/ad3.png"
-                  alt="Adrian Domagała Zdjęcie Adrian Domagała"
+                  alt="Zdjęcie Adriana Domagały"
+                  class="profile-pic"
                 />
-                <span class="corner tl"></span>
-                <span class="corner tr"></span>
-                <span class="corner bl"></span>
-                <span class="corner br"></span>
+                <span class="corner corner-tl"></span>
+                <span class="corner corner-tr"></span>
+                <span class="corner corner-bl"></span>
+                <span class="corner corner-br"></span>
               </div>
-              <div class="about-text">
-                <h3 data-translate-key="aboutGreeting">
-                  Cześc, tu Adrian Domagała<br />
-                  Dlaczego tutaj jesteś - Już tłumaczę
+
+              <!-- Tekst (animacja z lewej, z małym opóźnieniem) -->
+              <div class="about-text" data-aos="fade-left" data-aos-delay="200">
+                <h3 data-translate-key="aboutGreetingSub">
+                  Cześć, tu Adrian Domagała
                 </h3>
+                <h1 data-translate-key="aboutGreetingMain">
+                  Dlaczego tutaj jesteś?<br />– Już tłumaczę
+                </h1>
                 <p data-translate-key="aboutP1">
-                  Szczerze - młoda osoba patrząca w przyszłość w technikum
-                  programistycznym, silnie zmotywowaa. Interesującą się
+                  Szczerze – młoda osoba patrząca w przyszłość w technikum
+                  programistycznym, silnie zmotywowana. Interesująca się
                   szczególnie analizą danych i rynkiem IT, nie mam dziesięciu
-                  lat doświadczenia na rynku ale mam konretne założenia i cele.
+                  lat doświadczenia na rynku, ale mam konkretne założenia i
+                  cele.
                 </p>
                 <p data-translate-key="aboutP2">
-                  Aktualna misja - wejście na rynek pracy i zdobywanie realnego
-                  doświadczenia - ale, co ważniejsze to
-                  <b>zdobycie odpowiedniego miejsca na rozwój </b> swoich pasji
-                  i progres w zawodzie.
-                  <br />
-                  <br />
-                  Pozwole sobie nakreślić poziom tego wyzwania. Patrząc na
+                  <strong>Aktualna misja</strong> – wejście na rynek pracy i
+                  zdobywanie realnego doświadczenia – ale, co ważniejsze, to
+                  zdobycie odpowiedniego miejsca na rozwój swoich pasji i
+                  progres w zawodzie. <br /><br />
+                  Pozwolę sobie nakreślić poziom tego wyzwania. Patrząc na
                   aktualny rozwój AI mało kto zwróci uwagę na siedemnastolatka
                   bez doświadczenia i medali za olimpiady, więc że tak powiem
-                  misja jest troszkę ciężka. Ale z natury jestem uparty więc
-                  robie swoje. Aktualnie, nie brzmi to jak odpowiedź na pytanie
+                  misja jest troszkę ciężka. Ale z natury jestem uparty, więc
+                  robię swoje. Aktualnie, nie brzmi to jak odpowiedź na pytanie
                   w nagłówku, więc już wracam do odpowiedzi na temat.
                 </p>
-                <p class="highlight-paragraph" data-translate-key="aboutP3">
-                  Szukam firmy, któa dostrzeże we mnie potencjał a przede
+                <blockquote data-translate-key="aboutP3">
+                  Szukam firmy, która dostrzeże we mnie potencjał, a przede
                   wszystkim uwierzy w mój potencjał oraz zapewni mi miejsce na
-                  rozwój tak by po powrocie z technikum praców i tak aby to była
-                  sytuacja win-win dla obydwu stron. W co szczerze wierzę.
-                </p>
+                  rozwój tak, by po powrocie z technikum pracować i tak, aby to
+                  była sytuacja win-win dla obydwu stron. W co szczerze wierzę.
+                </blockquote>
               </div>
             </div>
           </div>
