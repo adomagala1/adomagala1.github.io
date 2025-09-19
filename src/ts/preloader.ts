@@ -1,3 +1,5 @@
+// Plik: src/preloader.ts
+
 class SlotMachineManager {
   private readonly element: HTMLElement;
   private readonly finalChar: string;
@@ -8,7 +10,6 @@ class SlotMachineManager {
     this.finalChar = element.dataset.char || 'A';
   }
 
-  // Nowa, oddzielna funkcja do wolnego finału
   private async finalReveal(): Promise<void> {
     const slowInterval = 200;
     const revealSteps = 4;
@@ -25,23 +26,19 @@ class SlotMachineManager {
       this.element.style.setProperty('--char-before', `"${prevChar}"`);
       this.element.style.setProperty('--char-after', `"${nextChar}"`);
 
-      // Czekamy na następny krok
       await new Promise((res) => setTimeout(res, slowInterval + i * 20));
     }
 
-    // Ostateczne ustawienie
     this.element.innerText = this.finalChar;
     this.element.classList.add('is-final');
     this.element.style.setProperty('--char-before', '""');
     this.element.style.setProperty('--char-after', '""');
   }
 
-  // Główna funkcja startująca, teraz jest typu async
   public async start(duration: number): Promise<void> {
     const finalRevealDuration = 1100;
     const fastSpinDuration = duration - finalRevealDuration;
 
-    // FAZA 1: Szybkie kręcenie
     await new Promise<void>((resolve) => {
       const startTime = Date.now();
       const spinInterval = 100;
@@ -72,12 +69,10 @@ class SlotMachineManager {
       requestAnimationFrame(animate);
     });
 
-    // FAZA 2: Wolny, dramatyczny finał
     await this.finalReveal();
   }
 }
 
-// ScrambleManager - bez zmian
 class ScrambleManager {
   private readonly chars = '!<>-_\\/[]{}—=+*^?#_';
   private elements: HTMLElement[];
@@ -117,11 +112,11 @@ class ScrambleManager {
     requestAnimationFrame(update);
   }
 
-  startAll() {
+  public startAll() {
     this.elements.forEach((_, index) => this.scramble(index));
   }
 
-  reveal(index: number) {
+  public reveal(index: number) {
     if (this.animationFrameIds[index]) {
       cancelAnimationFrame(this.animationFrameIds[index] as number);
       this.animationFrameIds[index] = null;
@@ -140,10 +135,12 @@ class ScrambleManager {
   }
 }
 
+// --- POPRAWIONA FUNKCJA `initPreloader` ---
 export function initPreloader(): void {
   const preloader = document.getElementById('preloader') as HTMLDivElement;
   const pageContent = document.getElementById('page-content') as HTMLDivElement;
   const loaderLogo = document.getElementById('loader-logo');
+  const padlock = document.getElementById('padlock');
 
   const showPageContent = () => {
     if (pageContent) {
@@ -152,7 +149,7 @@ export function initPreloader(): void {
     }
   };
 
-  if (!preloader || !loaderLogo || !pageContent) {
+  if (!preloader || !loaderLogo || !pageContent || !padlock) {
     showPageContent();
     return;
   }
@@ -177,6 +174,8 @@ export function initPreloader(): void {
     const TOTAL_DURATION =
       scrambleTotalTime + SLOT_MACHINE_DURATION + FADE_OUT_DURATION;
 
+    // Ta animacja nie jest zdefiniowana w CSS, który podałeś,
+    // ale zostawiam ją, zakładając, że istnieje w innym pliku
     loaderLogo.style.animation = `shrinkAndFade ${
       TOTAL_DURATION / 1000
     }s ease-in-out forwards`;
@@ -187,12 +186,19 @@ export function initPreloader(): void {
     await scrambleManager.revealSequentially(SCRAMBLE_REVEAL_DELAY);
     await slotMachineManager.start(SLOT_MACHINE_DURATION);
 
+    padlock.classList.add('is-visible');
+
+    await new Promise((res) => setTimeout(res, 300));
+    padlock.classList.add('is-unlocked');
+
     setTimeout(() => {
       preloader.classList.add('loaded');
       showPageContent();
       sessionStorage.setItem('preloaderShown', 'true');
-    }, 500);
+    }, 800);
   };
 
+  // Użyj 'load', aby upewnić się, że wszystkie zasoby (np. czcionki) są załadowane,
+  // co jest ważne dla preloaderów, by uniknąć "mignięcia" nieostylowanej treści.
   window.addEventListener('load', startPreloaderSequence);
 }

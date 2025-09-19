@@ -1,3 +1,4 @@
+/* Twoje istniejące style dla #loader-logo... */
 #loader-logo > span:first-child {
   position: relative;
   margin: 0.2em 0;
@@ -14,21 +15,125 @@
   color: var(--text-secondary-color);
 }
 
-/* Litera nad */
 #loader-logo > span:first-child::before {
   content: var(--char-before, '');
   bottom: 100%;
 }
 
-/* Litera pod */
 #loader-logo > span:first-child::after {
   content: var(--char-after, '');
   top: 100%;
 }
 
-/* koncowa literka */
 #loader-logo > span:first-child.is-final {
   color: #b42222;
   transform: scale(1.15);
   transition: all 0.3s ease-out;
+}
+
+/* --- NOWE STYLE DLA KŁÓDKI --- */
+
+.padlock-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  color: #ffffff; /* Kolor kłódki */
+  opacity: 0; /* Na początku niewidoczna */
+  transform: scale(0.8);
+  transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+}
+
+/* Stan, w którym kłódka staje się widoczna */
+.padlock-container.is-visible {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+/* Animacja otwierania pałąka */
+@keyframes unlock-animation {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0deg); /* Najpierw lekko w górę */
+  }
+  100% {
+    transform: translateY(-8px) rotate(-25deg); /* Potem obrót */
+  }
+}
+
+/* Klasa .is-unlocked uruchomi animację */
+.padlock-container.is-unlocked #padlock-shackle {
+  animation: unlock-animation 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+    forwards;
+  transform-origin: 17px 11px; /* Ustawienie punktu obrotu pałąka */
+}
+#loader-logo {
+  /* Ważne dla pozycjonowania podkreślenia */
+  position: relative;
+  display: flex; /* Utrzymujemy flexbox */
+  gap: 0.1em; /* Można dostosować odstępy */
+}
+
+/* Styl dla każdej litery, również tej z efektem slot machine */
+#loader-logo > span {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#loader-logo > span:first-child {
+  position: relative;
+  margin: 0; /* Usuwamy stary margines */
+}
+
+#loader-logo > span:first-child::before,
+#loader-logo > span:first-child::after {
+  /* ... bez zmian ... */
+}
+
+/* Koncowa literka - dodajemy glow effect */
+#loader-logo > span:first-child.is-final {
+  color: #b42222;
+  transform: scale(1.15);
+  /* NOWOŚĆ: Efekt poświaty */
+  text-shadow: 0 0 10px rgba(180, 34, 34, 0.8);
+  transition: all 0.3s ease-out;
+}
+
+/* --- NOWE STYLE I ANIMACJE DLA "ŁADNIEJSZEGO" EFEKTU --- */
+
+/* Animacja "wejścia" dla każdej odkrytej litery */
+@keyframes punch-in {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Klasa dodawana przez JS do każdej odkrytej litery */
+#loader-logo > span.is-revealed {
+  animation: punch-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Styl dla podkreślenia */
+.loader-logo .underline {
+  position: absolute;
+  bottom: -15px; /* Pozycja pod napisem */
+  left: 0;
+  width: 0; /* Na początku niewidoczne */
+  height: 2px;
+  background-color: #b42222;
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Stan po narysowaniu */
+.loader-logo .underline.is-drawn {
+  width: 100%;
 }
