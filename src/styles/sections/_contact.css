@@ -30,3 +30,8 @@
 .social-links a:hover {
   color: var(--primary-color);
 }
+
+.section-title {
+  width: 100%;
+  text-align: center;
+}
