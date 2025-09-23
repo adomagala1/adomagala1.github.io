@@ -53,12 +53,12 @@
   content: '';
   position: absolute;
   bottom: -10px;
-  left: 0;
-  width: 60%;
+  left: 50%;
+  width: 10%;
   height: 4px;
   background: var(--highlighted-border);
   border-radius: 2px;
-  transform: translateX(33%);
+  transform: translateX(-50%);
 }
 
 .about-content {

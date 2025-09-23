@@ -57,7 +57,7 @@ section {
 .section-title::after {
   content: '';
   position: absolute;
-  width: 60%;
+  width: 10%;
   height: 3px;
   background-color: var(--nav-color);
   bottom: -10px;
