@@ -26,7 +26,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: conic-gradient(from var(--angle), #39363695, #d20d0d, #3b26fb);
+  background: conic-gradient(from var(--angle), #d20d0d, #3b26fb);
   border-radius: inherit;
   opacity: 0;
   filter: blur(8px);
@@ -67,13 +67,17 @@ html.light-mode .project-card::before {
 .project-image {
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .project-image img {
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: auto;
   object-fit: cover;
-  display: block;
+  transform: scale(1.05);
+  border-radius: 10px;
   transition: transform var(--transition-speed);
 }
 
@@ -83,9 +87,8 @@ html.light-mode .project-card::before {
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.05);
+  transform: scale(1.2);
 }
-
 .project-card:hover::before {
   opacity: 1;
   filter: blur(2px);
@@ -104,13 +107,18 @@ html.light-mode .project-card::before {
 .project-card:hover .project-tech span {
   color: white;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  border-color: black;
+  border-color: rgb(247, 247, 247);
 }
 
 .project-card:hover .project-links .btn {
   background-color: white;
   color: black;
+  border: 2px solid white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition-timing-function: ease-in;
+}
+html.light-mode .project-card:hover .project-links .btn {
+  border-color: red;
 }
 
 .project-info {
@@ -121,8 +129,8 @@ html.light-mode .project-card::before {
 }
 
 .project-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 17px;
   color: var(--text-color);
   transition: color var(--transition-speed), text-shadow var(--transition-speed);
 }
@@ -150,10 +158,7 @@ html.light-mode .project-card::before {
   border: 1px solid white;
   transition: color var(--transition-speed), text-shadow var(--transition-speed),
     border-color var(--transition-speed);
-}
-
-html.light-mode .project-tech span {
-  border-color: #ccc;
+  border-color: transparent !important;
 }
 
 .project-links {

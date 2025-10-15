@@ -55,21 +55,21 @@ const translations = {
   },
 
   // === Projekty ===
-  projectsSectionTitle: { pl: 'Wybrane Projekty', en: 'Selected Projects' },
-  project1Title: { pl: 'Program do Analizy Spólek GPW', en: 'Stock analyzer' },
+  projectsSectionTitle: { pl: 'Projekty', en: 'Projects ' },
+  project1Title: { pl: 'Stock playground', en: 'Stock playground' },
   project1Desc: {
-    pl: 'Program pobiera dane o wszystkich spółkach na GPW, analizuje ich wyniki, ocenia pod kątem inwestycyjnym, zbiera wiadomości pojawiające się w internecie i zapisuje do lokalnej bazy danych SQLite. Program jest w trakcie tworzenia.',
-    en: 'The program collects data on all companies listed on the Warsaw Stock Exchange, analyzes their results, evaluates them from an investment perspective, collects news appearing on the Internet, and saves it to a local SQLite database. The program is under development.'
+    pl: 'Plac zabaw - pobieranie statystyk cenowych akcji w czasie rzeczywistym, mozliwosc zapisywania, to samo z newsami, watchlista spółek, system logowania podpięcie swoich baz danych',
+    en: 'Playground - downloading real-time stock statistics, saving, the same with news, watchlist of companies, login system connection to your databases'
   },
   project1Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
   project2Title: {
-    pl: 'Analiza zachowań użytkowników co robią na komputerze zbieranie danych',
-    en: 'User behavior analysis and data collection, prediction '
+    pl: 'Analiza zachowania użytkowników i zbieranie danych, predykcja zachowania',
+    en: 'User behavior analysis and data collection, behavior prediction'
   },
   project2Desc: {
-    pl: 'x ',
-    en: 'x'
+    pl: 'Dostępne od 20.10.2025 ',
+    en: 'Available from 10.20.2025'
   },
   project2Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
@@ -81,62 +81,62 @@ const translations = {
   },
   contactButton: { pl: 'Napisz Wiadomość', en: 'Send a Message' },
 
-  // === Strona Projektu GPW ===
+  // === Strona Projektu  ===
   projectDetailHeroTitle: {
-    pl: 'Analiza Rynku GPW',
-    en: 'Stock Market Analyzer'
+    pl: 'Analiza Spólek NASDAQ',
+    en: 'Stock NASDAQ Analyzer'
   },
   projectDetailHeroSubtitle: {
-    pl: 'Narzędzie w trakcie tworzenia do analizy i wizualizacji wskaźników fundamentalnych oraz sentymentu dla spółek notowanych na GPW.',
-    en: 'A tool under development for analyzing and visualizing fundamental indicators and sentiment for companies listed on the Warsaw Stock Exchange.'
+    pl: 'Aplikacja, pozwalająca pobierać, zapisywać analizować newsy, logowanie watchlista alerty cenowe, jest również model predykcyjny w dużej wersji beta, statystyki dotyczące firm udostepniająca zapisywanie do MongoDB bierzących newsow o spólkach na NASDAQ, do SUPABASE danych o statystykach',
+    en: 'An application that allows you to download, save, and analyze news, log in, create watchlists, and set price alerts. It is also a predictive model in a large beta version, providing statistics on companies and allowing you to save current news about NASDAQ companies to MongoDB and statistics data to SUPABASE.'
   },
   projectMetaGoal: { pl: 'Cel Projektu', en: 'Project Goal' },
   projectMetaGoalDesc: {
-    pl: 'Celem projektu jest stworzenie programu, który automatycznie zbiera dane rynkowe, raporty finansowe i newsy, analizuje fundamenty spółek oraz ich sentyment rynkowy, aby pomagać inwestorom w wyborze najlepszych spółek pod różne strategie inwestycyjne. Program jest obecnie w fazie tworzenia.',
-    en: 'The goal of the project is to develop a program that automatically collects market data, financial reports, and news, analyzes company fundamentals and market sentiment, and assists investors in selecting the best companies for various investment strategies. The program is currently under development.'
+    pl: 'Celem projektu było stworzenie platformy, gdzie użytkownikownik za jednym kliknięciem dostaje automatycznie zebrane dane rynkowe, newsy wraz z sentymentem dla społek wszystko w jednym miejscu + mozliwość podpięcia baz danych przez uzytkownika MongoDB oraz Supabase',
+    en: 'The aim of the project was to create a platform where users can automatically receive collected market data, news, and sentiment analysis for companies, all in one place, with the option to connect MongoDB and Supabase databases.'
   },
   projectArticleTitle: {
     pl: 'Proces i Wyzwania',
     en: 'Process and Challenges'
   },
   projectArticleP1: {
-    pl: 'Projekt jest w fazie tworzenia. Rozpoczęto od określenia kluczowych funkcjonalności: automatycznego pobierania danych rynkowych, raportów finansowych spółek, analizy fundamentalnej, technicznej oraz sentymentu z newsów i komunikatów. Największym wyzwaniem będzie integracja danych z różnych źródeł oraz zapewnienie spójności historycznych rekordów spółek.',
-    en: 'The project is currently under development. The key functionalities identified include automatic collection of market data, company financial reports, fundamental and technical analysis, as well as sentiment analysis from news and announcements. The biggest challenge will be integrating data from various sources and ensuring consistency of historical company records.'
+    pl: 'Na początku miałem duże zakłopotanie dotyczące konfiguracji baz danych. Zastanawiałem się, czy wymagać od użytkownika zawsze własnej bazy, czy dać dostęp do testowej. Początkowo projekt miał działać jako wykonywalny .exe z lokalnymi bazami, ale chciałem użyć Streamlit Cloud, aby każdy mógł zobaczyć demo. Jest też tryb gościa bez logowania.',
+    en: 'At first, I was confused about database configuration. I debated whether to always require a user database or provide access to a test one. Initially, the project was designed as a standalone .exe with local databases, but I wanted to use Streamlit Cloud so anyone could view it. There is also a guest mode without login.'
   },
   projectArticleH1: {
     pl: '1. Zbieranie i Przygotowanie Danych',
     en: '1. Data Collection and Preparation'
   },
   projectArticleP2: {
-    pl: 'Surowe dane rynkowe i finansowe wymagają standaryzacji. Planowane jest użycie bibliotek Pythonowych (np. Pandas, BeautifulSoup) do automatyzacji procesu pobierania i czyszczenia danych oraz przygotowania spójnego zbioru do dalszej analizy.',
-    en: 'Raw market and financial data need standardization. Python libraries (e.g., Pandas, BeautifulSoup) will be used to automate the process of data collection and cleaning and to prepare a consistent dataset for further analysis.'
+    pl: 'Aplikacja automatycznie pobiera dane giełdowe z Finviz oraz newsy z Google News. Biblioteki Python (np. Pandas, BeautifulSoup) standaryzują i czyszczą dane, tworząc spójny zbiór do analizy i dalszego przetwarzania.',
+    en: 'The application automatically fetches stock data from Finviz and news from Google News. Python libraries (e.g., Pandas, BeautifulSoup) standardize and clean the data, producing a consistent dataset for analysis and further processing.'
   },
   projectArticleH2: {
     pl: '2. Analiza Fundamentalna i Sentymentu',
     en: '2. Fundamental and Sentiment Analysis'
   },
   projectArticleP3: {
-    pl: 'Program będzie automatycznie oceniać spółki pod kątem regularnego wzrostu przychodów, zysku operacyjnego, branży, skuteczności zarządu oraz prognoz rozwoju. Dodatkowo analizowany będzie sentyment z newsów, komunikatów ESPI/EBI i artykułów branżowych w celu wykrywania sygnałów przyspieszenia wzrostu.',
-    en: 'The program will automatically evaluate companies based on regular revenue growth, operating profit, industry, management effectiveness, and growth forecasts. Additionally, sentiment from news, ESPI/EBI announcements, and industry articles will be analyzed to detect signals of accelerated growth.'
+    pl: 'Program analizuje spółki pod kątem ceny zachowania na rynku, P/E itp, branży.  Dodatkowo wykonuje analizę sentymentu newsów i artykułów branżowych, co pozwala wykrywać sygnały potencjalnego wzrostu.',
+    en: 'The program analyzes companies in terms of market price, P/E, etc., and industry.  In addition, it analyzes the sentiment of news and industry articles, which allows it to detect signals of potential growth.'
   },
   projectArticleH3: {
-    pl: 'Wyniki i Wpływ na Biznes',
-    en: 'Results and Business Impact'
+    pl: '3. Model Predykcyjny i Wyniki',
+    en: '3. Predictive Model and Results'
   },
   projectArticleP4: {
-    pl: 'Program jest w trakcie tworzenia, więc nie ma jeszcze gotowych wyników. Docelowo wdrożenie pozwoli inwestorom szybciej identyfikować spółki o wysokim potencjale wzrostu, co usprawni podejmowanie decyzji inwestycyjnych i może przyczynić się do zwiększenia efektywności portfela inwestycyjnego.',
-    en: 'The program is under development, so there are no results yet. Ultimately, the implementation will allow investors to quickly identify high-potential growth companies, facilitating investment decisions and potentially increasing portfolio efficiency.'
+    pl: 'Aplikacja wykorzystuje dane historyczne z baz danych użytkownika i aktualne do generowania rankingu potencjału wzrostu spółek oraz analizy "na żywo" dla wybranych tickerów. Dzięki temu inwestorzy mogą szybciej podejmować decyzje i lepiej zarządzać portfelem.',
+    en: 'The application uses historical and current data to generate a growth potential ranking of companies and live analysis for selected tickers. This enables investors to make faster decisions and better manage their portfolios.'
   },
+
   projectNavBack: { pl: 'Wszystkie Projekty', en: 'All Projects' },
 
-  // PROJEKT ANALIZA ZACHOWANIA
   project2DetailHeroTitle: {
     pl: 'Analiza Zachowania',
     en: 'Behaviour Analysis'
   },
   project2DetailHeroSubtitle: {
-    pl: ' Analiza Zachowań użytkwoników co robią na komputerze itp, + rozwiązywanie ich problemów ze sprzętem za pomocą zdalnej kontrolii ',
-    en: 'User Behavior Analysis, + solving their problems with remote control'
+    pl: ' Analiza Zachowań użytkwoników na komputerze, zbieranie danych i predykcyja ich zachowania',
+    en: 'Analysis of user behavior on computers, data collection, and prediction of user behavior'
   },
   project2MetaGoalDesc: {
     pl: 'Program uruchamia połączenie z serwerem poprzez TORA i serwer pobiera dane o urzadzeniu dostaje dostep do zdalnej kontroli',
