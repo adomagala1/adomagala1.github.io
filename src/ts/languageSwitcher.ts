@@ -34,7 +34,7 @@ const translations = {
   heroButton: { pl: 'O mnie', en: 'About Me' },
   aboutSectionTitle: { pl: 'O Mnie', en: 'About Me' },
   aboutGreeting: {
-    pl: 'Cześć, tu Adrian Domagała<br /> Dlaczego tutaj jesteś? <br />- Już tłumaczę',
+    pl: 'Cześć, tu Adrian Domagała<br />Wszystko co interesujące poniżej ',
     en: "Hi, I'm Adrian Domagała<br />So, why are you here? <br />- Let me explain"
   },
   aboutP1: {
@@ -46,7 +46,7 @@ const translations = {
     en: "Currently, my biggest goal is to enter the job market and gain real experience - but, more importantly, to <b>find the right place to develop</b> my passions and progress in my profession.<br /><br />Let me outline the level of this challenge. Looking at the current development of AI and LLMs, few will pay attention to a 17-year-old without experience or Olympic medals, so the mission is a bit tough. But I am stubborn by nature, so I do my thing. This doesn't sound like an answer to the header question, so I'll get back to it."
   },
   aboutP3: {
-    pl: 'Szukam firmy, która dostrzeże we mnie potencjał a przede wszystkim uwierzy w mój potencjał oraz zapewni mi miejsce na rozwój tak by po powrocie z technikum praców i tak aby to była sytuacja win-win dla obydwu stron. W co szczerze wierzę.',
+    pl: ' Szukam miejsca - firmy, która dostrzeże we mnie potencjał a przede wszystkim uwierzy we mnie oraz zapewni mi miejsce na rozwój tak aby to była sytuacja win-win dla obydwu stron. W co szczerze wierzę.',
     en: 'I am looking for a company that will notice and, above all, believe in my potential and provide me with a place for growth, so that after returning from technical school, I can work in a win-win situation for both parties. I sincerely believe in that.'
   },
   aboutMotto: {
