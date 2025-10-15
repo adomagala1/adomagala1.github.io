@@ -284,25 +284,28 @@ export function initSkillsAnimation(): void {
     });
   });
 
-  let resizeTimeout: number;
+  let resizeTimeout: number | undefined;
   let lastBoxWidth = 0;
   let lastBoxHeight = 0;
 
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(() => {
       if (!skillsBox) return;
       const boxRect = skillsBox.getBoundingClientRect();
       if (boxRect.width !== lastBoxWidth || boxRect.height !== lastBoxHeight) {
         lastBoxWidth = boxRect.width;
         lastBoxHeight = boxRect.height;
-        if (animationFrameId) init();
+        if (typeof animationFrameId !== 'undefined' && animationFrameId) {
+          init();
+        }
       }
     }, 250);
   });
+
   const nudgeForce = 4;
   setInterval(() => {
-    if (visibleSkills.length === 0 || draggedSkill) return;
+    if (!visibleSkills || visibleSkills.length === 0 || draggedSkill) return;
     const randomIndex = Math.floor(Math.random() * visibleSkills.length);
     const randomSkill = visibleSkills[randomIndex];
     randomSkill.vx += (Math.random() - 0.5) * nudgeForce;

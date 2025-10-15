@@ -14,8 +14,8 @@ const translations = {
   navAbout: { pl: 'O mnie', en: 'About' },
   navProjects: { pl: 'Projekty', en: 'Projects' },
   navProjectDashboard: {
-    pl: 'Analiza Danych Sprzedażowych',
-    en: 'Sales Data Analysis'
+    pl: 'Nasdaq Analyzer',
+    en: 'NASDAQ Analyzer'
   },
   navContact: { pl: 'Kontakt', en: 'Contact' },
   footerCopyright: {
