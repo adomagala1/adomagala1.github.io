@@ -41,7 +41,7 @@ export function initContactDrawer(): void {
     (openDrawerButton as HTMLElement).focus();
   };
 
-  // --- 4. LOGIKA ZAKŁADEK (REFAKTORYZACJA) ---
+  // --- 4. LOGIKA ZAKŁADEK ---
   const setActiveTab = (tabToActivate: Element) => {
     const targetId = tabToActivate.getAttribute('data-tab');
     if (!targetId) return;
@@ -49,11 +49,9 @@ export function initContactDrawer(): void {
     const targetContent = document.getElementById(targetId + '-content');
     if (!targetContent) return;
 
-    // Deaktywuj wszystkie zakładki i panele
     tabs.forEach((tab) => tab.setAttribute('aria-selected', 'false'));
     tabContents.forEach((content) => content.classList.remove('active'));
 
-    // Aktywuj wybraną
     tabToActivate.setAttribute('aria-selected', 'true');
     targetContent.classList.add('active');
   };
@@ -68,7 +66,6 @@ export function initContactDrawer(): void {
       return;
     }
 
-    // NOWOŚĆ: Implementacja "pułapki na fokus"
     if (event.key === 'Tab') {
       const focusableElementsSelector =
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -96,15 +93,14 @@ export function initContactDrawer(): void {
   };
 
   // --- 6. INICJALIZACJA I NASŁUCHIWANIE ZDARZEŃ ---
-  // Ustaw atrybuty ARIA dla panelu
   drawer.setAttribute('aria-hidden', 'true');
   drawer.setAttribute('aria-modal', 'true');
   drawer.setAttribute('role', 'dialog');
 
-  // Ustaw atrybuty ARIA i event listenery dla zakładek
   tabs.forEach((tab) => {
     const targetId = tab.getAttribute('data-tab');
     if (!targetId) return;
+
     const targetContent = document.getElementById(targetId + '-content');
     if (!targetContent) return;
 
@@ -112,15 +108,21 @@ export function initContactDrawer(): void {
     targetContent.setAttribute('role', 'tabpanel');
     tab.setAttribute('aria-controls', targetContent.id);
 
-    tab.addEventListener('click', () => setActiveTab(tab));
+    tab.addEventListener('click', (e) => {
+      if (tab.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+
+      setActiveTab(tab);
+    });
   });
 
-  // Ustaw pierwszą zakładkę jako aktywną
   if (tabs.length > 0) {
     setActiveTab(tabs[0]);
   }
 
-  // Główne event listenery
   openDrawerButton.addEventListener('click', openDrawer);
   drawerHandle.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);

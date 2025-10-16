@@ -52,3 +52,30 @@ export function showToast(
     });
   }, duration);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const disabledTabs = document.querySelectorAll<HTMLButtonElement>(
+    '.drawer-tab.disabled'
+  );
+
+  disabledTabs.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // blokuje domyślne działanie button
+      e.stopImmediatePropagation(); // zatrzymuje WSZYSTKIE dalsze listener-y
+      showToast('Funkcja jeszcze niedostępna 🚧', 'error');
+    });
+  });
+
+  // Wszystkie karty nieaktywne
+  const disabledCards = document.querySelectorAll<HTMLAnchorElement>(
+    '.drawer-card.disabled'
+  );
+
+  disabledCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      showToast('Funkcja jeszcze niedostępna 🚧', 'error');
+    });
+  });
+});
