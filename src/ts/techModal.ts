@@ -22,166 +22,144 @@ const projectDetails: { [key: string]: { name: string } } = {
     name: 'Analiza zachowania użytkownika na komputerze'
   }
 };
-
 const techDescriptions: { [key: string]: TechInfo } = {
   Python: {
     title: 'Python',
     category: 'Główny Język Programowania',
     whereUsed:
-      'Analiza danych, AI, Backend praktycznie wszędzie i zawsze w projekcie będzie',
+      'Wykorzystywany w każdym aspekcie moich projektów – od analizy danych i automatyzacji po backend oraz modele AI. Fundament całego mojego ekosystemu',
     level: 95,
     icon: 'https://cdn.simpleicons.org/python/3776AB',
-    categorySlug: 'analysis',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'analysis'
   },
+
   FastAPI: {
     title: 'FastAPI',
     category: 'Framework API',
     whereUsed:
-      'Osobiście - uwielbiam stosować wraz z połaczeniem frontendu z backendem',
+      'Osobiście - uwielbiam stosować FastAPI, szybkie, skalowalne REST API, nowoczesna architektura - to jest to.',
     level: 80,
     icon: 'https://cdn.simpleicons.org/fastapi/009688',
-    categorySlug: 'web',
-    linkedProjects: ['projekt-user-behaviour-analyzer']
+    categorySlug: 'web'
   },
+
   MongoDB: {
     title: 'MongoDB',
     category: 'Baza danych',
-    whereUsed: 'Tam gdzie PosgtreSQL nie pomoże, tam MongoDB pomoże',
+    whereUsed:
+      'Idealny do przechwowywania nieustrukturyzowanych danych, elastyczne struktury danych',
     level: 75,
     icon: 'https://cdn.simpleicons.org/mongodb/47A248',
-    categorySlug: 'database',
-    linkedProjects: ['projekt-stock-momentum-analyzer']
+    categorySlug: 'database'
   },
+
   Pandas: {
     title: 'Pandas',
     category: 'Biblioteka do analizy danych',
-    whereUsed: 'Analiza danych wszędzie gdzie dane - tam jest Pandas tyle',
+    whereUsed:
+      'Przetwarzanie czyszczenie analiza danych, kluczowe w kazdym projekcie analitycznym',
     level: 80,
     icon: 'https://cdn.simpleicons.org/pandas/150458',
-    categorySlug: 'analysis',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'analysis'
   },
+
   NumPy: {
     title: 'NumPy',
     category: 'Biblioteka do analizy danych',
-    whereUsed: 'Podstawa obliczen numerycznych ',
+    whereUsed:
+      'Podstawa obliczen numerycznych, macierze. Niezbędny element w analizie danych i machine learningu ',
     level: 75,
     icon: 'https://cdn.simpleicons.org/numpy/013243',
-    categorySlug: 'analysis',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'analysis'
   },
+
   SQL: {
     title: 'SQL',
     category: 'Baza danych',
-    whereUsed: 'Wszędzie gdzie dane tam będzie SQL praktycznie',
+    whereUsed: 'Nawet nie trzeba nic mowic - SQL to SQL ',
     level: 90,
     icon: 'https://cdn.simpleicons.org/sqlite/003351',
-    categorySlug: 'database',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'database'
   },
+
   PostgreSQL: {
     title: 'PostgreSQL',
     category: 'Baza danych',
     whereUsed:
-      'Personalnie jestem dużym fanem - zaawansowany, open source tyle możliwości. Wszędzie gdzie potrzebne przechowywanie danych trwale, uporządkowanie',
+      'Osobiście jestem dużym fanem - zaawansowany, open source oferuje tyle możliwości. Wszędzie gdzie potrzebne przechowywanie danych trwałe jak i uporządkowane',
     level: 80,
     icon: 'https://cdn.simpleicons.org/postgresql/336791',
-    categorySlug: 'database',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'database'
   },
+
   Matplotlib: {
     title: 'Matplotlib',
     category: 'Biblioteka do wykresów',
     whereUsed:
-      'Wizualizacja danych tyle jakby nie jest skomplikowana ale jakoś lekko mnie nudzi ale jest dobra i przyjemna do użycia ',
+      'Wizualizacja danych, wykresy przydatne w projekcie analitycznym, przydatne w projekcie webowym',
     level: 60,
     icon: 'https://cdn.simpleicons.org/matplotlib/144A53',
-    categorySlug: 'visualization',
-    linkedProjects: ['projekt-stock-momentum-analyzer']
+    categorySlug: 'visualization'
   },
+
   SQLite: {
     title: 'SQLite',
     category: 'Baza danych',
     whereUsed:
-      'Prosta lokalna, przydawała sie na poczatku tworzenai projektow, jakby spoko jeśli jest tylko na lokalnym komputerze i najlepiej jeden plik albo jak taki dodatkowa funkcja zapisu jak w projekcie załączonym ',
+      'Wykorzystywany w mniejszych projektach lokalnych oraz do prototypowania. Lekka baza danych idealna do aplikacji standalone.',
     level: 90,
     icon: 'https://cdn.simpleicons.org/sqlite/003B57',
-    categorySlug: 'database',
-    linkedProjects: ['projekt-user-behaviour-analyzer']
+    categorySlug: 'database'
   },
+
   Git: {
     title: 'Git',
     category: 'System kontroli wersji',
     whereUsed:
-      'Wszystkie projekty na gicie, jedynie zdaje sobie sprawe, że ten poziom to 50/100 bo nie miałem styczności z realnymi projektami grupowymi a wiem że tam może się dużo dziać nowych rzeczy ',
+      'Używany do zarządzania wersjami kodu i pracy nad projektami. Znajomość podstawowych operacji i workflowów, rozwijana w kierunku współpracy zespołowej patrząc w przyszłość.',
     level: 50,
     icon: 'https://cdn.simpleicons.org/git/000000',
-    categorySlug: 'devops',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'devops'
   },
+
   GitHub: {
     title: 'GitHub',
     category: 'System kontroli wersji',
     whereUsed:
-      'Osobiscie nie wiem na jakiej ocenie oceniac, umiem w GitHuba nie pogubie sie, umiem znalesc przydatne rzeczy itp ',
+      'Platforma do hostowania kodu, przeglądania repozytoriów. Osobiscie nie wiem na jakiej ocenie oceniac, W pełni swobodna praca z GitHubem',
     level: 100,
     icon: 'https://cdn.simpleicons.org/github/181717',
-    categorySlug: 'devops',
-    linkedProjects: [
-      'projekt-stock-momentum-analyzer',
-      'projekt-user-behaviour-analyzer'
-    ]
+    categorySlug: 'devops'
   },
+
   Jupyter: {
     title: 'Jupyter',
     category: 'Framework do analizy danych',
     whereUsed:
-      'Bardzo dużo używałem, jestem zapoznany z funkcjami działaniem wszystkim, aktualnie troche skupiam sie bardziej na projektach bardziej rozwinietych i wychodzacych poza same analizy danych czy AI',
+      'Środowisko wykorzystywane w analizach danych, testowaniu modeli ML i eksploracji danych. Ułatwia iteracyjne eksperymentowanie z danymi',
     level: 100,
     icon: 'https://cdn.simpleicons.org/jupyter/F37626',
-    categorySlug: 'analysis',
-    linkedProjects: []
+    categorySlug: 'analysis'
   },
+
   MySQL: {
     title: 'MySQL',
     category: 'Baza danych',
-    whereUsed: 'Głownie uczyłem się w szkole nie zdarzyło mi sie uzyć poza nią',
+    whereUsed:
+      'Poznany w ramach nauki baz danych – solidne podstawy relacyjnych systemów, jednak rzadko używany w praktyce projektowej.',
     level: 80,
     icon: 'https://cdn.simpleicons.org/mysql/4479A1',
-    categorySlug: 'database',
-    linkedProjects: []
+    categorySlug: 'database'
   },
+
   Scikitlearn: {
     title: 'Scikitlearn',
     category: 'Biblioteka do Machine Learninga',
     whereUsed:
-      'Nie czuje sie zbyt pewnie w AI aktualnie jakoś tak po prostu, ale zaczyna się to zmieniać więc bardzo fajnie',
+      'Biblioteka używana do tworzenia, trenowania i oceny klasycznych modeli Machine Learning. Aktualnie rozwijam umiejętności w tym zakresie',
     level: 40,
     icon: 'https://cdn.simpleicons.org/scikit-learn/F23B52',
-    categorySlug: 'ml',
-    linkedProjects: [
-      'projekt-user-behaviour-analyzer',
-      'projekt-stock-momentum-analyzer'
-    ]
+    categorySlug: 'ml'
   }
 };
 
