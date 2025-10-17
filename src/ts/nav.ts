@@ -24,7 +24,7 @@ export function initMobileNav(): void {
           </svg>
         </button>
         <div class="submenu" id="projects-submenu">
-          <a href="/nasdaq-analyzer.html" data-translate-key="navProjectDashboard">Analiza nasdaq</a>
+          <a href="/nasdaq_analyzer.html" data-translate-key="navProjectDashboard">Analiza nasdaq</a>
         </div>
       </div>
       <a href="/#contact" data-translate-key="navContact">Kontakt</a>
