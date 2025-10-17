@@ -24,7 +24,7 @@ main.project-detail-page {
 
 .project-main-image {
   margin-top: 50px;
-  border-radius: 8px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--border-color);
@@ -35,8 +35,7 @@ main.project-detail-page {
   height: 100%;
   display: block;
 }
-
-.project-content {
+.project-main .project-content {
   padding: 100px 0;
 }
 
@@ -108,8 +107,14 @@ main.project-detail-page {
 
 .project-description figure img {
   max-width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  transform-origin: center;
+  transition: all 0.7s ease;
+  border: 2px solid var(--border-color);
+}
+
+.project-description figure img:hover {
+  transform: scale(1.4);
 }
 
 .project-description figcaption {
@@ -147,4 +152,41 @@ main.project-detail-page {
   transform: translateX(-50px) scale(1.6) rotate(-5deg);
   filter: drop-shadow(0 0 50px var(--primary-color))
     drop-shadow(0 0 25px #ffd700) drop-shadow(0 0 8px #ffffff);
+}
+
+.img-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.img-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+
+.img-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.img-overlay.active img {
+  transform: scale(1);
+}
+.img-overlay {
+  cursor: pointer;
 }

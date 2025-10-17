@@ -135,7 +135,6 @@ class ScrambleManager {
   }
 }
 
-// --- POPRAWIONA FUNKCJA `initPreloader` ---
 export function initPreloader(): void {
   const preloader = document.getElementById('preloader') as HTMLDivElement;
   const pageContent = document.getElementById('page-content') as HTMLDivElement;
@@ -174,8 +173,6 @@ export function initPreloader(): void {
     const TOTAL_DURATION =
       scrambleTotalTime + SLOT_MACHINE_DURATION + FADE_OUT_DURATION;
 
-    // Ta animacja nie jest zdefiniowana w CSS, który podałeś,
-    // ale zostawiam ją, zakładając, że istnieje w innym pliku
     loaderLogo.style.animation = `shrinkAndFade ${
       TOTAL_DURATION / 1000
     }s ease-in-out forwards`;
@@ -198,7 +195,5 @@ export function initPreloader(): void {
     }, 800);
   };
 
-  // Użyj 'load', aby upewnić się, że wszystkie zasoby (np. czcionki) są załadowane,
-  // co jest ważne dla preloaderów, by uniknąć "mignięcia" nieostylowanej treści.
   window.addEventListener('load', startPreloaderSequence);
 }

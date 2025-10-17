@@ -12,7 +12,7 @@ const translations = {
   ariaMenuToggle: { pl: 'Otwórz menu', en: 'Open menu' },
   navSkills: { pl: 'Umiejętności', en: 'Skills' },
   navAbout: { pl: 'O mnie', en: 'About' },
-  navProjects: { pl: 'Projekty', en: 'Projects' },
+  navProjects: { pl: 'Projekty publiczne', en: 'Public projects' },
   navProjectDashboard: {
     pl: 'Nasdaq Analyzer',
     en: 'NASDAQ Analyzer'
@@ -64,7 +64,7 @@ const translations = {
   project1Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
   project2Title: {
-    pl: 'Analiza zachowania użytkowników i zbieranie danych, predykcja zachowania',
+    pl: 'Analiza zachowania użytkowników',
     en: 'User behavior analysis and data collection, behavior prediction'
   },
   project2Desc: {
@@ -108,7 +108,7 @@ const translations = {
     en: '1. Data Collection and Preparation'
   },
   projectArticleP2: {
-    pl: 'Aplikacja automatycznie pobiera dane giełdowe z Finviz oraz newsy z Google News. Biblioteki Python (np. Pandas, BeautifulSoup) standaryzują i czyszczą dane, tworząc spójny zbiór do analizy i dalszego przetwarzania.',
+    pl: 'Aplikacja automatycznie pobiera dane giełdowe z Finviz oraz newsy z Google News. Biblioteki Python (Pandas, BeautifulSoup) standaryzują i czyszczą dane, tworząc spójny zbiór do analizy i dalszego przetwarzania.',
     en: 'The application automatically fetches stock data from Finviz and news from Google News. Python libraries (e.g., Pandas, BeautifulSoup) standardize and clean the data, producing a consistent dataset for analysis and further processing.'
   },
   projectArticleH2: {
@@ -124,11 +124,14 @@ const translations = {
     en: '3. Predictive Model and Results'
   },
   projectArticleP4: {
-    pl: 'Aplikacja wykorzystuje dane historyczne z baz danych użytkownika i aktualne do generowania rankingu potencjału wzrostu spółek oraz analizy "na żywo" dla wybranych tickerów. Dzięki temu inwestorzy mogą szybciej podejmować decyzje i lepiej zarządzać portfelem.',
+    pl: 'Aplikacja wykorzystuje dane historyczne z baz danych użytkownika i aktualne (live) do generowania rankingu potencjału wzrostu spółek oraz analizy "na żywo" dla wybranych tickerów. Dzięki temu nie trzeba poświecać czasu na analize danych i to jest takie wsparcie dla inwestorów .',
     en: 'The application uses historical and current data to generate a growth potential ranking of companies and live analysis for selected tickers. This enables investors to make faster decisions and better manage their portfolios.'
   },
 
-  projectNavBack: { pl: 'Wszystkie Projekty', en: 'All Projects' },
+  projectNavBack: {
+    pl: 'Projekty dostępne publicznie',
+    en: 'Publicly available projects'
+  },
 
   project2DetailHeroTitle: {
     pl: 'Analiza Zachowania',

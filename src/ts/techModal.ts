@@ -177,7 +177,6 @@ const hide = () => modal?.classList.remove('is-visible');
 export function initTechModal(): void {
   modal = document.getElementById('tech-modal');
   if (!modal) {
-    console.error('Modal not found!');
     return;
   }
 

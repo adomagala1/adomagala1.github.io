@@ -27,10 +27,9 @@ function main() {
   initContactDrawer();
   initLanguageSwitcher();
   initContactForm();
+  console.log('Spokojnie wszystko git :)');
 }
 
-// Uruchom główną funkcję, gdy dokument jest gotowy
-// (DOMContentLoaded jest lepszy niż czekanie na 'load' dla skryptów)
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', main);
 } else {
@@ -75,18 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Logika przełączania zakładek (tabs)
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      // Pobierz cel z atrybutu data-tab
       const targetId = tab.getAttribute('data-tab');
       if (!targetId) return;
 
-      // Zdejmij klasę 'active' ze wszystkich zakładek i zawartości
       tabs.forEach((t) => t.classList.remove('active'));
       tabContents.forEach((c) => c.classList.remove('active'));
 
-      // Dodaj klasę 'active' do klikniętej zakładki
       tab.classList.add('active');
 
-      // Znajdź i pokaż odpowiednią zawartość
       const targetContent = document.getElementById(targetId + '-content');
       if (targetContent) {
         targetContent.classList.add('active');

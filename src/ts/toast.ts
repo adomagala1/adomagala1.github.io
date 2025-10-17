@@ -58,24 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
     '.drawer-tab.disabled'
   );
 
-  disabledTabs.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault(); // blokuje domyślne działanie button
-      e.stopImmediatePropagation(); // zatrzymuje WSZYSTKIE dalsze listener-y
-      showToast('Funkcja jeszcze niedostępna 🚧', 'error');
-    });
-  });
-
-  // Wszystkie karty nieaktywne
   const disabledCards = document.querySelectorAll<HTMLAnchorElement>(
     '.drawer-card.disabled'
   );
 
-  disabledCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      showToast('Funkcja jeszcze niedostępna 🚧', 'error');
-    });
-  });
+  const caseStudyBtn = document.querySelector<HTMLAnchorElement>(
+    '.btn.btn-secondary.disabled[data-translate-key="project2Button"]'
+  );
+
+  const handleDisabledClick = (e: Event) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    showToast('Funkcja jeszcze niedostepna', 'error');
+  };
+
+  disabledTabs.forEach((btn) =>
+    btn.addEventListener('click', handleDisabledClick)
+  );
+  disabledCards.forEach((card) =>
+    card.addEventListener('click', handleDisabledClick)
+  );
+
+  if (caseStudyBtn) {
+    caseStudyBtn.addEventListener('click', handleDisabledClick);
+  }
 });
