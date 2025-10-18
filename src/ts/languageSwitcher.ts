@@ -42,7 +42,7 @@ const translations = {
     en: "Honestly - I'm a young person from a programming technical high school interested in data analysis and the IT market. I don't have ten years of market experience, but I have concrete assumptions and goals."
   },
   aboutP2: {
-    pl: 'Aktualna misja - wejście na rynek pracy i zdobywanie realnego doświadczenia - ale, co ważniejsze to <b>zdobycie odpowiedniego miejsca na rozwój </b> swoich pasji i progres w zawodzie. <br /><br /> Pozwole sobie nakreślić poziom tego wyzwania. Patrząc na aktualny rozwój AI mało kto zwróci uwagę na siedemnastolatka bez doświadczenia i medali za olimpiady, więc że tak powiem misja jest troszkę ciężka. Ale z natury jestem uparty więc robie swoje. Aktualnie, nie brzmi to jak odpowiedź na pytanie w nagłówku, więc już wracam do odpowiedzi na temat.',
+    pl: '                                  <strong>Aktualna misja</strong> – wejście na rynek pracy i zdobywanie realnego doświadczenia – ale, co ważniejsze, to  zdobycie odpowiedniego miejsca na rozwój swoich pasji i progres w zawodzie. <br /><br />  Mam już początki pracy w grupie za sobą - brałem udział w hackathonie drużynowym i co więcej -  pełniłem role nieformalnego lidera grupy.',
     en: "Currently, my biggest goal is to enter the job market and gain real experience - but, more importantly, to <b>find the right place to develop</b> my passions and progress in my profession.<br /><br />Let me outline the level of this challenge. Looking at the current development of AI and LLMs, few will pay attention to a 17-year-old without experience or Olympic medals, so the mission is a bit tough. But I am stubborn by nature, so I do my thing. This doesn't sound like an answer to the header question, so I'll get back to it."
   },
   aboutP3: {
