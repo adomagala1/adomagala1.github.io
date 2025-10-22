@@ -68,8 +68,8 @@ const translations = {
     en: 'User behavior analysis and data collection, behavior prediction'
   },
   project2Desc: {
-    pl: 'Dostępne od 20.10.2025 ',
-    en: 'Available from 10.20.2025'
+    pl: 'Dostępne od 26.10.2025 ',
+    en: 'Available from 10.26.2025'
   },
   project2Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
