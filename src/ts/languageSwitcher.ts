@@ -1,5 +1,4 @@
 const translations = {
-  // === GŁÓWNE, WSPÓLNE DLA WSZYSTKICH STRON ===
   metaTitle: {
     pl: 'Portfolio | Adrian Domagała - Analityk Danych & Python Developer',
     en: 'Portfolio | Adrian Domagała - Data Analyst & Python Developer'
@@ -25,7 +24,6 @@ const translations = {
   langOptionPl: { pl: 'Polski', en: 'Polish' },
   langOptionEn: { pl: 'Angielski', en: 'English' },
 
-  // === STRONA GŁÓWNA ===
   heroTitle: { pl: 'Analityk Danych & Python', en: 'Data Analyst & Python' },
   heroSubtitle: {
     pl: 'Posiadam umiejętności i podejście, które twojej firmie się spodobają',
@@ -54,7 +52,6 @@ const translations = {
     en: 'I analyze. I predict. I win.'
   },
 
-  // === Projekty ===
   projectsSectionTitle: { pl: 'Projekty', en: 'Projects ' },
   project1Title: { pl: 'Stock playground', en: 'Stock playground' },
   project1Desc: {
@@ -68,12 +65,11 @@ const translations = {
     en: 'User behavior analysis and data collection, behavior prediction'
   },
   project2Desc: {
-    pl: 'Dostępne od 26.10.2025 ',
-    en: 'Available from 10.26.2025'
+    pl: 'Dostępne nie wiem kiedy :( ',
+    en: 'Available from time to time'
   },
   project2Button: { pl: 'Zobacz Case Study', en: 'View Case Study' },
 
-  // === Kontakt ===
   contactSectionTitle: { pl: 'Nawiążmy Kontakt', en: "Let's Get in Touch" },
   contactSubtitle: {
     pl: 'Masz problem z danymi lub szukasz kogoś do zespołu? Jestem otwarty na ciekawe wyzwania. <br />Napisz do mnie, a na pewno odpowiem.',
@@ -81,7 +77,6 @@ const translations = {
   },
   contactButton: { pl: 'Napisz Wiadomość', en: 'Send a Message' },
 
-  // === Strona Projektu  ===
   projectDetailHeroTitle: {
     pl: 'Analiza Spólek NASDAQ',
     en: 'Stock NASDAQ Analyzer'
